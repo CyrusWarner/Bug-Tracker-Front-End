@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Signup from './Components/Signup/signup';
 import axios from 'axios';
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -26,7 +27,8 @@ const App = () => {
     <React.Fragment>
       <Router>
         <Switch>
-          
+        {/* <Route path="/" exact render={(props) => <Home {...props} />} /> */}
+        <Route path="/Signup" render={(props) => <Signup {...props} />} />
         </Switch>
       </Router>
     </React.Fragment>
