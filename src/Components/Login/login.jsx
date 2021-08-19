@@ -4,8 +4,8 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import axios from 'axios';
 import { useHistory } from 'react-router';
 
-const Login = () => {
-
+const Login = (props) => {
+    const {createCurrentUser} = props;
     const {register, handleSubmit} = useForm()
     const history = useHistory();
 
@@ -16,13 +16,14 @@ const Login = () => {
         }
          await axios.post(`http://localhost:27029/api/User/Login`, user).then((res => {
             if(res.status === 200) {
-                console.log(res)
-                history.push("/")
+                createCurrentUser(res.data);
+                history.push("/");
             }
         }))
         .catch((err) => {
             if(err){
                 console.log(err)
+                //ADD TOASTIFY NOTIFICATION HERE
             }
         })
     }
