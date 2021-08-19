@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const Signup = () => {
@@ -11,11 +12,13 @@ const Signup = () => {
         password: ""
     }
     const {register, handleSubmit} = useForm();
+    const history = useHistory();
 
     const onSubmit = async (values) => {
         await axios.post("http://localhost:27029/api/User", values).then((res) => {
             if(res.status === 200) {
-                console.log(res)
+                history.push("/Login")
+                //Add Toastify notification here
             }
         })
         .catch((err) => {
@@ -48,7 +51,10 @@ const Signup = () => {
                         <div>
                         <input className="form-control" {...register("password")} id="password"></input>
                         </div>
-                        <Button type="submit" className="mt-2">Submit</Button>
+                        <Button type="submit" className="mt-2">Signup</Button>
+                        <Link to="/Login">
+                            <Button className="mt-2 ms-2">Login</Button>
+                            </Link>
                         </Form>
                     </Col>
                     <Col sm={2}></Col>
