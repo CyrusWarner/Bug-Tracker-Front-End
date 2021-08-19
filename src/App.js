@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Signup from './Components/Signup/signup';
 import Login from './Components/Login/login';
 import Home from './Components/Home/home';
+import ShowBoard from './Components/ShowBoard/showBoard';
+import "./app.css"
 import axios from 'axios';
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -55,6 +57,7 @@ const App = () => {
         <Route path="/" exact  render={(props) => <Home {...props}  currentUser={currentUser} userBoards={userBoards} getUsersBoards={getUsersBoards}/>} /> 
         <Route path="/Login"  render={(props) => <Login {...props} createCurrentUser={createCurrentUser} />}  />
         <Route path="/Signup"  render={(props) => <Signup {...props} />} />
+        <Route path="/ShowBoard/:id" render={(props) => <ShowBoard {...props} />} />
         </Switch>
       </Router>
     </React.Fragment>
