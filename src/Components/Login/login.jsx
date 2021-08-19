@@ -36,7 +36,7 @@ const Login = (props) => {
                     <Form onSubmit={handleSubmit(onSubmit)}>
                         <div>
                         <label>Email</label>
-                        <input tyoe="text" className="form-control" {...register("email")}></input>
+                        <input type="text" className="form-control" {...register("email")}></input>
                         </div>
                         <div>
                         <label>Password</label>

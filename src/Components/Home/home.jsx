@@ -1,8 +1,9 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import DisplayBoards from '../DisplayBoards/displayBoards';
+import CreateBoard from '../CreateBoard/createBoard';
 const Home = (props) => {
-    const {currentUser, userBoards} = props;
+    const {currentUser, userBoards, getUsersBoards} = props;
     return (
         <React.Fragment>
             <Container>
@@ -21,12 +22,7 @@ const Home = (props) => {
                     <Col sm={4}></Col>
                 </Row>
             </Container>
-            <Container className="mt-5">
-                <Row>
-                    <Col sm={8}>Wow</Col>
-                    <Col sm={4}></Col>
-                </Row>
-            </Container>
+            <CreateBoard currentUser={currentUser} getUsersBoards={getUsersBoards}/>
         </React.Fragment>
     )
 }

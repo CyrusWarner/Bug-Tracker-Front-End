@@ -52,7 +52,7 @@ const App = () => {
     <React.Fragment>
       <Router>
         <Switch>
-        <Route path="/" exact  render={(props) => <Home {...props}  currentUser={currentUser} userBoards={userBoards}/>} /> 
+        <Route path="/" exact  render={(props) => <Home {...props}  currentUser={currentUser} userBoards={userBoards} getUsersBoards={getUsersBoards}/>} /> 
         <Route path="/Login"  render={(props) => <Login {...props} createCurrentUser={createCurrentUser} />}  />
         <Route path="/Signup"  render={(props) => <Signup {...props} />} />
         </Switch>
