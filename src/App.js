@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -23,7 +24,11 @@ const App = () => {
   }
   return (
     <React.Fragment>
-      <h1>Hello</h1>
+      <Router>
+        <Switch>
+          
+        </Switch>
+      </Router>
     </React.Fragment>
   )
 }
