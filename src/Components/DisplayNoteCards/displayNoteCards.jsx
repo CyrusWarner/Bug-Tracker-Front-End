@@ -1,6 +1,8 @@
 import React from 'react';
 import { Card, Container, Row } from 'react-bootstrap';
-const DisplayNoteCards = ({allNotes}) => {
+import UpdateNotecardForm from '../UpdateNotecardForm/updateNotecardForm';
+import DeleteNotecardForm from '../DeleteNotecardForm/deleteNotecardForm';
+const DisplayNoteCards = ({allNotes, currentBoard, currentUser, getAllNotes}) => {
     return (
         <React.Fragment>
             <Container fluid>
@@ -9,14 +11,10 @@ const DisplayNoteCards = ({allNotes}) => {
                 return(
                     <Card className="m-4" style={{ width: '18rem' }}>
                     <Card.Body>
-                      <Card.Title>Card Title</Card.Title>
-                      <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
-                      <Card.Text>
-                        Some quick example text to build on the card title and make up the bulk of
-                        the card's content.
-                      </Card.Text>
-                      <Card.Link href="#">Card Link</Card.Link>
-                      <Card.Link href="#">Another Link</Card.Link>
+                      <Card.Title>{note.title}</Card.Title>
+                      <Card.Text>{note.description}</Card.Text>
+                      <UpdateNotecardForm note={note} currentBoard={currentBoard} currentUser={currentUser} getAllNotes={getAllNotes}/>
+                      <DeleteNotecardForm note={note} currentBoard={currentBoard} currentUser={currentUser} getAllNotes={getAllNotes}/>
                     </Card.Body>
                   </Card>
                 )

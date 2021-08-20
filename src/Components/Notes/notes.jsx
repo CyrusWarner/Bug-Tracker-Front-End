@@ -6,7 +6,6 @@ import axios from 'axios';
 const Notes = ({currentBoard, currentUser}) => {
     const [allNotes, setAllNotes] = useState([]);
     const {title} = currentBoard;
-    console.log(currentBoard.boardId)
 
     useEffect(() => {
         getAllNotes();
@@ -17,7 +16,6 @@ const Notes = ({currentBoard, currentUser}) => {
         await axios.get(`http://localhost:27029/api/Notes/BoardNotes/${boardId}`).then((res) => {
             if(res.status === 200){
                 setAllNotes(res.data)
-                console.log(res)
             }
         })
         .catch((err) => {
@@ -26,6 +24,7 @@ const Notes = ({currentBoard, currentUser}) => {
             }
         })
     }
+
     return (
         <React.Fragment>
             <Container>
@@ -38,7 +37,7 @@ const Notes = ({currentBoard, currentUser}) => {
             {currentBoard.length !== 0 &&
             <div>
             <NoteCardForm currentBoard={currentBoard} currentUser={currentUser} getAllNotes={getAllNotes}/>
-                <DisplayNoteCards allNotes={allNotes}/>
+                <DisplayNoteCards allNotes={allNotes} currentBoard={currentBoard} currentUser={currentUser} getAllNotes={getAllNotes}/>
                 </div>
             }
         </React.Fragment>
