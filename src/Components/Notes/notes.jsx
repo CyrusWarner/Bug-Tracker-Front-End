@@ -1,10 +1,31 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import DisplayNoteCards from '../DisplayNoteCards/displayNoteCards';
 import NoteCardForm from '../NoteCardForm/noteCardForm';
+import axios from 'axios';
 const Notes = ({currentBoard, currentUser}) => {
+    const [allNotes, setAllNotes] = useState([]);
     const {title} = currentBoard;
-    console.log(currentUser)
+    console.log(currentBoard.boardId)
+
+    useEffect(() => {
+        getAllNotes();
+    }, [])
+
+    const getAllNotes = async () => {
+        const boardId = currentBoard.boardId
+        await axios.get(`http://localhost:27029/api/Notes/BoardNotes/${boardId}`).then((res) => {
+            if(res.status === 200){
+                setAllNotes(res.data)
+                console.log(res)
+            }
+        })
+        .catch((err) => {
+            if(err){
+                console.log(err)
+            }
+        })
+    }
     return (
         <React.Fragment>
             <Container>
@@ -14,8 +35,12 @@ const Notes = ({currentBoard, currentUser}) => {
                     <Col sm={1}></Col>
                 </Row>
             </Container>
-            <NoteCardForm />
-                <DisplayNoteCards />
+            {currentBoard.length !== 0 &&
+            <div>
+            <NoteCardForm currentBoard={currentBoard} currentUser={currentUser} getAllNotes={getAllNotes}/>
+                <DisplayNoteCards allNotes={allNotes}/>
+                </div>
+            }
         </React.Fragment>
     )
 }
