@@ -1,9 +1,8 @@
 import React from 'react';
-import NavBar from '../NavBar/navBar';
-const ShowBoard = () => {
+const ShowBoard = ({currentBoard}) => {
     return (
         <React.Fragment>
-            <NavBar />
+            
             <h1>Hello</h1>
         </React.Fragment>
         

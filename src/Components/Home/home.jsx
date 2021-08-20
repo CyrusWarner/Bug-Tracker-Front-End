@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import DisplayBoards from '../DisplayBoards/displayBoards';
 import CreateBoard from '../CreateBoard/createBoard';
 const Home = (props) => {
-    const {currentUser, userBoards, getUsersBoards} = props;
+    const {currentUser, userBoards, getUsersBoards, getCurrentBoard} = props;
     return (
         <React.Fragment>
             <Container>
@@ -14,14 +14,7 @@ const Home = (props) => {
                     <Col sm={4}></Col>
                 </Row>
             </Container>
-            <Container>
-                <Row>
-                    <Col sm={8}><h1>Your Boards</h1>
-                    <DisplayBoards userBoards={userBoards}/>
-                    </Col>
-                    <Col sm={4}></Col>
-                </Row>
-            </Container>
+            <DisplayBoards userBoards={userBoards} getCurrentBoard={getCurrentBoard} />
             <CreateBoard currentUser={currentUser} getUsersBoards={getUsersBoards}/>
         </React.Fragment>
     )

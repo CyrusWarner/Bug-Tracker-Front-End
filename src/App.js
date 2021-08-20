@@ -4,11 +4,13 @@ import Signup from './Components/Signup/signup';
 import Login from './Components/Login/login';
 import Home from './Components/Home/home';
 import ShowBoard from './Components/ShowBoard/showBoard';
+import NavBar from './Components/NavBar/navBar';
 import "./app.css"
 import axios from 'axios';
 const App = () => {
   const [users, setUsers] = useState([]);
   const [userBoards, setUsersBoards] = useState([]);
+  const [currentBoard, setCurrentBoard] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
   useEffect (() => {
     if(currentUser.length !== 0){
@@ -50,14 +52,29 @@ const App = () => {
     setCurrentUser(user)
   }
 
+  const getCurrentBoard = async () => {
+    await axios.get("http://localhost:27029/api/Board/CurrentBoard/14").then((res) => {
+      if (res.status == 200) {
+        setCurrentBoard(res.data)
+      }
+    })
+    .catch((err) => {
+      if(err){
+        //ADD TOASTIFY NOTIFICATION HERE
+        console.log(err)
+      }
+    })
+  }
+
   return (
     <React.Fragment>
       <Router>
+      <NavBar />
         <Switch>
-        <Route path="/" exact  render={(props) => <Home {...props}  currentUser={currentUser} userBoards={userBoards} getUsersBoards={getUsersBoards}/>} /> 
+        <Route path="/" exact  render={(props) => <Home {...props}  currentUser={currentUser} userBoards={userBoards} getUsersBoards={getUsersBoards} getCurrentBoard={getCurrentBoard} currentBoard={currentBoard}/>} /> 
         <Route path="/Login"  render={(props) => <Login {...props} createCurrentUser={createCurrentUser} />}  />
         <Route path="/Signup"  render={(props) => <Signup {...props} />} />
-        <Route path="/ShowBoard/:id" render={(props) => <ShowBoard {...props} />} />
+        <Route path="/ShowBoard/:id" render={(props) => <ShowBoard {...props} currentBoard={currentBoard}/>} />
         </Switch>
       </Router>
     </React.Fragment>
