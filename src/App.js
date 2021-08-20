@@ -55,7 +55,7 @@ const App = () => {
   const getCurrentBoard = async () => {
     await axios.get("http://localhost:27029/api/Board/CurrentBoard/14").then((res) => {
       if (res.status == 200) {
-        setCurrentBoard(res.data)
+        setCurrentBoard(res.data[0])
       }
     })
     .catch((err) => {

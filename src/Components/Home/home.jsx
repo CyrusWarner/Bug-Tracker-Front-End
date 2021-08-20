@@ -8,10 +8,11 @@ const Home = (props) => {
         <React.Fragment>
             <Container>
                 <Row>
-                    <Col sm={8}>
-                    <h1 className="mt-2 mb-5">Welcome Back {currentUser.firstName}</h1>
+                    <Col sm={1}></Col>
+                    <Col sm={10}>
+                    <h1 className="mt-4 mb-5">Welcome Back {currentUser.firstName}</h1>
                     </Col>
-                    <Col sm={4}></Col>
+                    <Col sm={1}></Col>
                 </Row>
             </Container>
             <DisplayBoards userBoards={userBoards} getCurrentBoard={getCurrentBoard} />
