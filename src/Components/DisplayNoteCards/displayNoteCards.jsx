@@ -14,7 +14,7 @@ const DisplayNoteCards = ({allNotes, currentBoard, currentUser, getAllNotes}) =>
                       <Card.Title>{note.title}</Card.Title>
                       <Card.Text>{note.description}</Card.Text>
                       <UpdateNotecardForm note={note} currentBoard={currentBoard} currentUser={currentUser} getAllNotes={getAllNotes}/>
-                      <DeleteNotecardForm note={note} currentBoard={currentBoard} currentUser={currentUser} getAllNotes={getAllNotes}/>
+                      <DeleteNotecardForm note={note} getAllNotes={getAllNotes}/>
                     </Card.Body>
                   </Card>
                 )
