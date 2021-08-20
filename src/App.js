@@ -4,6 +4,7 @@ import Signup from './Components/Signup/signup';
 import Login from './Components/Login/login';
 import Home from './Components/Home/home';
 import ShowBoard from './Components/ShowBoard/showBoard';
+import Notes from './Components/Notes/notes';
 import NavBar from './Components/NavBar/navBar';
 import "./app.css"
 import axios from 'axios';
@@ -74,6 +75,7 @@ const App = () => {
         <Route path="/" exact  render={(props) => <Home {...props}  currentUser={currentUser} userBoards={userBoards} getUsersBoards={getUsersBoards} getCurrentBoard={getCurrentBoard} currentBoard={currentBoard}/>} /> 
         <Route path="/Login"  render={(props) => <Login {...props} createCurrentUser={createCurrentUser} />}  />
         <Route path="/Signup"  render={(props) => <Signup {...props} />} />
+        <Route path="/Notes" render={(props) => <Notes {...props} currentUser={currentUser} currentBoard={currentBoard}/>} />
         <Route path="/ShowBoard/:id" render={(props) => <ShowBoard {...props} currentBoard={currentBoard}/>} />
         </Switch>
       </Router>
