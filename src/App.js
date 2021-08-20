@@ -79,7 +79,7 @@ const App = () => {
         <Route path="/Notes" render={(props) => <Notes {...props} currentUser={currentUser} currentBoard={currentBoard}/>} />
         <Route path="/ShowBoard/:id" render={(props) => <ShowBoard {...props} currentBoard={currentBoard}/>} />
         <Route path="/Invite" render={(props) => <InviteCoworker users={users} currentBoard={currentBoard}/>} />
-        <Route path="/ViewCalendar" render={(props) => <Calendar />} />
+        <Route path="/ViewCalendar" render={(props) => <Calendar {...props} currentBoard={currentBoard}/>} />
         </Switch>
       </Router>
     </React.Fragment>
