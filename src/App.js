@@ -5,6 +5,8 @@ import Login from './Components/Login/login';
 import Home from './Components/Home/home';
 import ShowBoard from './Components/ShowBoard/showBoard';
 import Notes from './Components/Notes/notes';
+import InviteCoworker from './Components/InviteCoworker/inviteCoworker';
+import Calendar from './Components/Calendar/calendar';
 import NavBar from './Components/NavBar/navBar';
 import "./app.css"
 import axios from 'axios';
@@ -53,8 +55,8 @@ const App = () => {
     setCurrentUser(user)
   }
 
-  const getCurrentBoard = async () => {
-    await axios.get("http://localhost:27029/api/Board/CurrentBoard/14").then((res) => {
+  const getCurrentBoard = async (boardId) => {
+    await axios.get(`http://localhost:27029/api/Board/CurrentBoard/${boardId}`).then((res) => {
       if (res.status == 200) {
         setCurrentBoard(res.data[0])
       }
@@ -66,7 +68,6 @@ const App = () => {
       }
     })
   }
-
   return (
     <React.Fragment>
       <Router>
@@ -77,6 +78,8 @@ const App = () => {
         <Route path="/Signup"  render={(props) => <Signup {...props} />} />
         <Route path="/Notes" render={(props) => <Notes {...props} currentUser={currentUser} currentBoard={currentBoard}/>} />
         <Route path="/ShowBoard/:id" render={(props) => <ShowBoard {...props} currentBoard={currentBoard}/>} />
+        <Route path="/Invite" render={(props) => <InviteCoworker users={users} currentBoard={currentBoard}/>} />
+        <Route path="/ViewCalendar" render={(props) => <Calendar />} />
         </Switch>
       </Router>
     </React.Fragment>

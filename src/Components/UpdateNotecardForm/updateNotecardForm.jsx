@@ -34,7 +34,7 @@ const UpdateNotecardForm = ({note, currentBoard, currentUser, getAllNotes}) => {
     }
     return (
         <React.Fragment>
-            <FiIcons.FiEdit style={{cursor: "pointer"}} size="1.5rem" onClick={handleShow}/>
+            <FiIcons.FiEdit style={{cursor: "pointer", color: "blue"}} size="1.5rem" onClick={handleShow}/>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Update Note</Modal.Title>

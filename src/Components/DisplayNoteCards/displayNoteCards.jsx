@@ -13,8 +13,10 @@ const DisplayNoteCards = ({allNotes, currentBoard, currentUser, getAllNotes}) =>
                     <Card.Body>
                       <Card.Title>{note.title}</Card.Title>
                       <Card.Text>{note.description}</Card.Text>
+                      <div className="d-flex justify-content-around">
                       <UpdateNotecardForm note={note} currentBoard={currentBoard} currentUser={currentUser} getAllNotes={getAllNotes}/>
                       <DeleteNotecardForm note={note} getAllNotes={getAllNotes}/>
+                      </div>
                     </Card.Body>
                   </Card>
                 )

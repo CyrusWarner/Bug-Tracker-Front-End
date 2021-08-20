@@ -23,7 +23,7 @@ const DeleteNotecardForm = ({note, getAllNotes}) => {
     }
     return (
         <React.Fragment>
-            <AiIcons.AiFillDelete className="ms-2" style={{cursor: "pointer"}} size="1.5rem"  onClick={handleShow}/>
+            <AiIcons.AiFillDelete style={{cursor: "pointer", color: "red"}} size="1.5rem"  onClick={handleShow}/>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>Delete {title}</Modal.Title>
