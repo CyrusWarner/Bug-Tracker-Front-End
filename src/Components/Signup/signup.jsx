@@ -40,27 +40,29 @@ const Signup = () => {
                     <Col sm={2}></Col>
                     <Col sm={2}></Col>
                     <Col sm={8}>
-                        <Form className="text-center" onSubmit={handleSubmit(onSubmit)}>              
-                        <label>First Name</label>
-                        <div> 
-                        <input className="form-control" {...register("firstName")} id="firstName"></input>
+                        <Form className="text-center" onSubmit={handleSubmit(onSubmit)}>   
+                        <div className="form-floating"> 
+                        <input style={{borderColor: "#060b26"}} className="form-control" {...register("firstName")} id="firstName"></input>
+                        <label className="floatingInputGrid fs-5">First Name</label>
                         </div> 
-                        <label>Last Name</label>
-                        <div>
-                        <input className="form-control" {...register("lastName")} id="lastName"></input>
+
+                        <div className="form-floating mt-2">
+                        <input style={{borderColor: "#060b26"}} className="form-control" {...register("lastName")} id="lastName"></input>
+                        <label className="floatingInputGrid fs-5">Last Name</label>
                         </div>
-                        <label >Email</label>
-                        <div>
-                        <input className="form-control" {...register("email")} id="email"></input>
+
+                        <div className="form-floating mt-2">
+                        <input style={{borderColor: "#060b26"}} className="form-control" {...register("email")} id="email"></input>
+                        <label className="floatingInputGrid fs-5" >Email</label>
                         </div>
-                        <label>Password</label>
-                        <div>
-                        <input className="form-control" {...register("password")} id="password"></input>
+
+                        <div className="form-floating mt-2">
+                        <input style={{borderColor: "#060b26"}} className="form-control" {...register("password")} id="password"></input>
+                        <label className="floatingInputGrid fs-5">Password</label>
                         </div>
-                        <Button type="submit" className="mt-2">Signup</Button>
-                        <Link to="/Login">
-                            <Button className="mt-2 ms-2">Login</Button>
-                            </Link>
+                        <div>
+                        <button style={{borderColor: "#060b26", color: "#060b26"}} className="btn btn-outline-primary mt-2" type="submit">Complete Signup</button>
+                        </div>
                         </Form>
                     </Col>
                     <Col sm={2}></Col>
