@@ -13,7 +13,7 @@ const DisplayBoards = ({userBoards, getCurrentBoard}) => {
             {userBoards.map((board) => {
                 return(
                     <React.Fragment>
-                        <Link 
+                        <Link className="itemLink" 
                         onClick={() => (getCurrentBoard(board.boardId))}
                         to={`/ShowBoard/${board.boardId}`}
                         style={{textDecoration: "none"}}>

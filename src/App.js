@@ -38,7 +38,9 @@ const App = () => {
 
   const getUsersBoards = async () => {
     let userId = currentUser.userId
-    await axios.get(`http://localhost:27029/api/Board/${userId}`).then((res) => {
+
+    //CHANGE THIS BACK TO THIS CALL WHEN FINISHED WITH BACKEND JUNCTION TABLE await axios.get(`http://localhost:27029/api/Board/${userId}`)
+    await axios.get(`http://localhost:27029/api/Board`).then((res) => {
       if(res.status == 200){
         setUsersBoards(res.data)
       }
@@ -71,7 +73,7 @@ const App = () => {
   return (
     <React.Fragment>
       <Router>
-      <NavBar />
+      <NavBar currentUser={currentUser}/>
         <Switch>
         <Route path="/" exact  render={(props) => <Home {...props}  currentUser={currentUser} userBoards={userBoards} getUsersBoards={getUsersBoards} getCurrentBoard={getCurrentBoard} currentBoard={currentBoard}/>} /> 
         <Route path="/Login"  render={(props) => <Login {...props} createCurrentUser={createCurrentUser} />}  />

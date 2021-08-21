@@ -1,18 +1,25 @@
 .wrapper{
-    max-height: 120px;
+    max-height: 200px;
     display: flex;
     overflow-x: auto;
     justify-content: center;
+    margin-top: 3rem;
+    
 }
 
 /* .wrapper::-webkit-scrollbar{
     width: 0;
 } */
 .wrapper .item {
-    min-width: 110px;
-    height: 110px;
+    min-width: 190px;
+    height: 190px;
     line-height: 110px;
     text-align: center;
-    background-color: gray;
-    margin-right: 5px;
+    margin-right: 10px;
+    border: 4px solid #060b26;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+}
+
+.itemLink {
+    color: #060b26;
 }

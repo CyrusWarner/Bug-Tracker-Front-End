@@ -5,7 +5,7 @@ import { IconContext } from 'react-icons/lib';
 import "./navbar.css";
 import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
-const NavBar = () => {
+const NavBar = ({currentUser}) => {
     const [sidebar, setSidebar] = useState(false)
     const showSidebar = () => setSidebar(!sidebar)
     return(
@@ -23,6 +23,7 @@ const NavBar = () => {
                     <AiIcons.AiOutlineClose />
                     </Link>
                 </li>
+                <li style={{color: "white"}} className="fs-5 nav-text"> Welcome Back {currentUser.firstName}</li>
                 {SidebarData.map((data, index) => {
                     return(
                         <li key={index} className={data.className}>
