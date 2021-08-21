@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Container, Row } from 'react-bootstrap';
 import UpdateNotecardForm from '../UpdateNotecardForm/updateNotecardForm';
 import DeleteNotecardForm from '../DeleteNotecardForm/deleteNotecardForm';
+import './displayNoteCards.css'
 const DisplayNoteCards = ({allNotes, currentBoard, currentUser, getAllNotes}) => {
     return (
         <React.Fragment>
@@ -9,7 +10,7 @@ const DisplayNoteCards = ({allNotes, currentBoard, currentUser, getAllNotes}) =>
                 <Row className="d-flex justify-content-center">
             {allNotes.map((note) => {
                 return(
-                    <Card className="m-4" style={{ width: '18rem' }}>
+                    <Card className="cardContainer m-4" style={{ width: '18rem' }}>
                     <Card.Body>
                       <Card.Title>{note.title}</Card.Title>
                       <Card.Text>{note.description}</Card.Text>

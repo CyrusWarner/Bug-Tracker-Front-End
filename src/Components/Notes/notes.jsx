@@ -30,7 +30,12 @@ const Notes = ({currentBoard, currentUser}) => {
             <Container>
                 <Row>
                     <Col sm={1}></Col>
-                    <Col sm={10}><h1 className="mt-4 mb-5">Welcome to {title}'s notes</h1></Col>
+                    <Col sm={10}>
+                        <div className="text-center">
+                        <h1 className="title mt-4 mb-5">{title}'s notes</h1>
+                        </div>
+                        </Col>
+                        
                     <Col sm={1}></Col>
                 </Row>
             </Container>
