@@ -42,6 +42,11 @@ const NavBar = ({currentUser, currentBoard}) => {
                     </Link>
                 </li>
                 <li className="nav-text">
+                    <Link to="/Notes"><BsIcons.BsPencilSquare />
+                        <span>Notes</span>
+                    </Link>
+                </li>
+                <li className="nav-text">
                     <Link to="/ViewCalendar"><AiIcons.AiOutlineCalendar />
                         <span>View Calendar</span>
                     </Link>

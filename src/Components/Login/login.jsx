@@ -29,25 +29,38 @@ const Login = (props) => {
     }
 
     return (
+        <React.Fragment>
+            <Container>
+                <Row>
+                    <Col sm={2}></Col>
+                    <Col sm={8}>
+                        <div className="text-center">
+                        <h1 className="title mb-5">Login</h1>
+                        </div>
+                    </Col>
+                    <Col sm={2}></Col>
+                </Row>
+            </Container>
         <Container>
             <Row>
                 <Col sm={2}></Col>
                 <Col sm={8}>
-                    <Form onSubmit={handleSubmit(onSubmit)}>
-                        <div>
-                        <label>Email</label>
-                        <input type="text" className="form-control" {...register("email")}></input>
+                    <Form className="text-center" onSubmit={handleSubmit(onSubmit)}>
+                        <div className="form-floating">
+                        <input style={{borderColor: "#060b26"}} type="text" className="form-control" {...register("email")}></input>
+                        <label className="floatingInputGrid">Email</label>
                         </div>
-                        <div>
-                        <label>Password</label>
-                        <input type="password" className="form-control" {...register("password")}></input>
+                        <div className="form-floating mt-2">
+                        <input style={{borderColor: "#060b26"}} type="password" className="form-control" {...register("password")}></input>
+                        <label className="floatingInputGrid">Password</label>
                         </div>
-                        <Button className="mt-2" type="submit">Submit</Button>
+                        <button style={{borderColor: "#060b26", color: "#060b26"}} className="btn btn-outline-primary mt-2" type="submit">Submit</button>
                     </Form>
                 </Col>
                 <Col sm={2}></Col>
             </Row>
         </Container>
+        </React.Fragment>
     )
 
 }
