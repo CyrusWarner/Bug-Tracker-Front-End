@@ -33,8 +33,14 @@ const Signup = () => {
                 <Row>
                     <Col sm={2}></Col>
                     <Col sm={8}>
-                        <Form className="text-center" onSubmit={handleSubmit(onSubmit)}>
-                        <h1 className="mb-5">Signup</h1>
+                        <div className="text-center">
+                        <h1 className="title mb-5">Signup</h1>
+                        </div>
+                    </Col>
+                    <Col sm={2}></Col>
+                    <Col sm={2}></Col>
+                    <Col sm={8}>
+                        <Form className="text-center" onSubmit={handleSubmit(onSubmit)}>              
                         <label>First Name</label>
                         <div> 
                         <input className="form-control" {...register("firstName")} id="firstName"></input>

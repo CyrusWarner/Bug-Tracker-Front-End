@@ -73,7 +73,7 @@ const App = () => {
   return (
     <React.Fragment>
       <Router>
-      <NavBar currentUser={currentUser}/>
+      <NavBar currentUser={currentUser} currentBoard={currentBoard}/>
         <Switch>
         <Route path="/" exact  render={(props) => <Home {...props}  currentUser={currentUser} userBoards={userBoards} getUsersBoards={getUsersBoards} getCurrentBoard={getCurrentBoard} currentBoard={currentBoard}/>} /> 
         <Route path="/Login"  render={(props) => <Login {...props} createCurrentUser={createCurrentUser} />}  />
