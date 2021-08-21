@@ -17,9 +17,13 @@
     text-align: center;
     margin-right: 10px;
     border: 4px solid #060b26;
-    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+    box-shadow: 0 3px 25px #060b26;
+    transition: all .2s ease-in-out
 }
 
+.wrapper .item:hover {
+    transform: scale(0.9);
+}
 .itemLink {
     color: #060b26;
 }

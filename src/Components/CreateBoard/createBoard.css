@@ -1,0 +1,17 @@
+.title {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: inline-block;
+    position: relative;
+    color: #060b26;
+}
+
+.title:after {
+    content: '';
+    height: 2px;
+    width: 100%;
+    background: crimson;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import "./createBoard.css"
 //CLEAR USER INPUT WITH USEFORM HOOK DO RESEARCH ON THIS
 const CreateBoard = ({currentUser, getUsersBoards}) => {
     const {register, handleSubmit} = useForm();
@@ -32,17 +33,19 @@ return (
             <Row>
                 <Col sm={1}></Col>
                 <Col sm={10}>
-                <h1 className="text-center">Add New Board</h1>
+                    <div className="text-center">
+                <h1 className="title">Add New Board</h1>
+                    </div>
         <Form onSubmit={handleSubmit(onSubmit)}>
-            <div>
-            <label className="fs-4">Board Title:</label>
-            <input type="text" className="form-control" {...register("title")}></input>
+            <div className="form-floating">
+            <input style={{borderColor: "#060b26"}} type="text" className="form-control" {...register("title")} defaultValue="Rhenium DevCodeCamp..."></input>
+            <label className="floatingInputGrid">Board Title</label>
             </div>
-            <div>
-            <label className="fs-4">Board Description:</label>
-            <textarea type="text" className="form-control" {...register("description")}></textarea>
+            <div className="mt-2 form-floating">
+            <textarea style={{borderColor: "#060b26"}} type="text" className="form-control" {...register("description")} defaultValue="Rhenium Team Chat For Handling Errors..."></textarea>
+            <label className="floatingInputGrid">Board Description:</label>
             </div>
-            <Button type="submit" className="mt-2">Add Board</Button>
+            <button type="submit" style={{borderColor: "#060b26", color: "#060b26"}} className="btn btn-outline-primary mt-2">Add Board</button>
         </Form>
         </Col>
         <Col sm={1}></Col>
