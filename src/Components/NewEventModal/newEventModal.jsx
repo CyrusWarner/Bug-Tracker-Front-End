@@ -13,8 +13,8 @@ const NewEventModal = ({onEventAdded}) => {
     }
     return (
         <>
-        <Button variant="primary" onClick={handleShow}>
-          New Event
+        <Button className="mt-3 mb-3" variant="primary" onClick={handleShow}>
+          Add Event
         </Button>
   
         <Modal show={show} onHide={handleClose}>

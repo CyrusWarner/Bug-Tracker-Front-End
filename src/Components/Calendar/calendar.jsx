@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from "react";
 import FullCalendar, { CalendarApi } from "@fullcalendar/react";
 import { Container, Row, Col, Button } from "react-bootstrap";
-import Modal from 'react-modal'
 import dayGridPlugin from "@fullcalendar/daygrid";
 import NewEventModal from "../NewEventModal/newEventModal";
+import './calendar.css'
 import axios from "axios";
 const Calendar = ({currentBoard}) => {
     const [events, setEvents] = useState([]);

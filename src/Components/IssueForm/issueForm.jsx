@@ -4,7 +4,8 @@ import { Container, Row, Col, Form } from "react-bootstrap";
 import axios from "axios";
 const IssueForm = ({currentUser, currentBoard, getAllIssues}) => {
   const {register, handleSubmit} = useForm();
-  const {userId, boardId} = currentUser;
+  const {boardId} = currentBoard;
+  const {userId} = currentUser;
   const onSubmit = async (issueData) => {
     const data = {
       title: issueData.title,
