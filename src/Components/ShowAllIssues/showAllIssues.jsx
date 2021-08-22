@@ -4,7 +4,7 @@ import UpdateIssueModal from '../UpdateIssueModal/updateIssueModal';
 import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
 import { IoIosSquareOutline } from 'react-icons/io';
-const ShowAllIssues = ({allIssues}) => {
+const ShowAllIssues = ({allIssues, getAllIssues, currentUser}) => {
     return (
         <React.Fragment>
             <Container>
@@ -26,7 +26,7 @@ const ShowAllIssues = ({allIssues}) => {
                                   <Card.Text>
                                     {issue.description}
                                   </Card.Text>
-                                  <UpdateIssueModal currentIssue={issue}/>
+                                  <UpdateIssueModal currentIssue={issue} getAllIssues={getAllIssues} currentUser={currentUser}/>
                                 </Card.Body>
                               </Card>
                             )

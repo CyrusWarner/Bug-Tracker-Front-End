@@ -42,7 +42,7 @@ const ShowBoard = ({currentBoard, currentUser}) => {
                 </Row>
             </Container>
             }
-            <ShowAllIssues allIssues={allIssues}/>
+            <ShowAllIssues allIssues={allIssues} getAllIssues={getAllIssues} currentUser={currentUser}/>
         </React.Fragment>
         
     )
