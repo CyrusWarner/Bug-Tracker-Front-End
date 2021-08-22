@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import * as BsIcons from 'react-icons/bs'
-import { Modal, Button, Form, Container } from 'react-bootstrap';
+import { Modal, Button, Form } from 'react-bootstrap';
+import * as AiIcons from 'react-icons/ai'
+
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 const UpdateIssueModal = ({currentIssue, getAllIssues, currentUser}) => {
   const {userId} = currentUser;
-    const {title, description, issuesId} = currentIssue;
+    const {title, description, issuesId, isCompleted} = currentIssue;
     const {register, handleSubmit, watch} = useForm();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -48,7 +50,7 @@ const UpdateIssueModal = ({currentIssue, getAllIssues, currentUser}) => {
                     <label className="floatingInputGrid fs-5">Issue Description...</label>
                 </div>
                 <div class="form-check mt-2">
-  <input class="form-check-input fs-4 ms-1" type="checkbox"{...register("isCompleted")} value="" id="flexCheckDefault"></input>
+  <input class="form-check-input fs-4 ms-1" defaultValue={isCompleted} type="checkbox"{...register("isCompleted")} value="" id="flexCheckDefault"></input>
   <label class="form-check-label fs-5 ms-1" for="flexCheckDefault">
     Bug Complete
   </label>
