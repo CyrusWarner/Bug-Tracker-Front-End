@@ -13,6 +13,7 @@ const CreateBoard = ({currentUser, getUsersBoards}) => {
             description: data.description,
             userId: currentUser.userId
         }
+        debugger
 
         await axios.post("http://localhost:27029/api/Board", board).then((res) => {
             if(res.status == 200){
@@ -32,12 +33,12 @@ return (
         <Container className="mt-5">
             <Row>
                 <Col sm={1}></Col>
-                <Col sm={10}>
+                <Col  style={{position: "relative"}} sm={10}>
                     <div className="text-center">
                 <h1 className="title">Add New Board</h1>
                     </div>
         <Form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-floating">
+            <div className="form-floating ">
             <input style={{borderColor: "#060b26"}} type="text" className="form-control" {...register("title")} defaultValue="Rhenium DevCodeCamp..."></input>
             <label className="floatingInputGrid">Board Title</label>
             </div>

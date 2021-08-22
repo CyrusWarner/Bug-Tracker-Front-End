@@ -1,9 +1,10 @@
 import axios from 'axios';
 import React from 'react';
+import IssueForm from '../IssueForm/issueForm';
 import { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import ShowAllIssues from '../ShowAllIssues/showAllIssues';
-const ShowBoard = ({currentBoard}) => {
+const ShowBoard = ({currentBoard, currentUser}) => {
     const {title, description, boardId} = currentBoard
     const [allIssues, setAllIssues] = useState([]);
     useEffect(() => {
@@ -35,6 +36,7 @@ const ShowBoard = ({currentBoard}) => {
                         {title}
                         </h1>
                         <p className="fs-6">{description}</p>
+                        <IssueForm currentUser={currentUser} currentBoard={currentBoard} getAllIssues={getAllIssues}/>
                         </Col>
                     <Col sm={1}></Col>
                 </Row>

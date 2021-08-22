@@ -3,6 +3,7 @@ import './displayBoards.css'
 import { Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
 const DisplayBoards = ({userBoards, getCurrentBoard}) => {
+
     return (
         <React.Fragment>
             <Container>
@@ -14,9 +15,9 @@ const DisplayBoards = ({userBoards, getCurrentBoard}) => {
                 return(
                     <React.Fragment>
                         <Link className="itemLink" 
-                        onClick={() => (getCurrentBoard(board.boardId))}
+                        onClick={ ()  =>  ( getCurrentBoard(board.boardId))}
                         to={`/ShowBoard/${board.boardId}`}
-                        style={{textDecoration: "none"}}>
+                        style={{textDecoration: "none", color: "#060b26"}}>
                     <div className="item">{board.title}</div>
                     </Link>
                     </React.Fragment>

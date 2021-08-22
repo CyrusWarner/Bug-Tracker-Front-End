@@ -1,9 +1,12 @@
-import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import React, {useEffect} from 'react';
 import DisplayBoards from '../DisplayBoards/displayBoards';
 import CreateBoard from '../CreateBoard/createBoard';
 const Home = (props) => {
-    const {currentUser, userBoards, getUsersBoards, getCurrentBoard} = props;
+
+    useEffect(() => {
+        setCurrentBoard([])
+    },[])
+    const {currentUser, userBoards, getUsersBoards, getCurrentBoard, setCurrentBoard} = props;
     return (
         <React.Fragment>
             <DisplayBoards userBoards={userBoards} getCurrentBoard={getCurrentBoard} />
