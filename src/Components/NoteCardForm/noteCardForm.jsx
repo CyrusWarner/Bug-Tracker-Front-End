@@ -2,12 +2,14 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import { Container, Row, Col, Modal, Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 const NoteCardForm = ({currentBoard, currentUser, getAllNotes}) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const {register, handleSubmit} = useForm();
+    const {register, handleSubmit, reset, formState: {errors}} = useForm();
+
     const onSubmit = async (data) => {
       const notecard = {
         title: data.title,
@@ -18,15 +20,18 @@ const NoteCardForm = ({currentBoard, currentUser, getAllNotes}) => {
        await axios.post("http://localhost:27029/api/Notes/New", notecard).then((res) => {
          if(res.status === 200){
             getAllNotes();
+            toast.success("Note Added Successfully")
          }
        })
        .catch((err) => {
          if(err){
            console.log(err);
-           //TOASTIFY NOTIFICATION HERE
+           toast.error("Error Occured While Adding Note")
          }
        })
+       reset();
     }
+    
     return (
         <Container>
             <Row className="text-center">
@@ -45,11 +50,13 @@ const NoteCardForm = ({currentBoard, currentUser, getAllNotes}) => {
           
           <div>
           <label className="fs-3">Title:</label>
-          <input type="text" {...register("title")} className="form-control"></input>
+          <input type="text" {...register("title", {required: true})} className="form-control"></input>
+          {errors.title && <p className="ms-1" style={{ color: "crimson" }}>{errors.title.message}</p>}
           </div>
           <div>
             <label  className="fs-3">Description:</label>
-            <textarea type="text" {...register("description")} className="form-control"></textarea>
+            <textarea type="text" {...register("description", {required: true})} className="form-control"></textarea>
+            {errors.description && <p className="ms-1" style={{ color: "crimson" }}>{errors.description.message}</p>}
           </div>
           </Modal.Body>
         <Modal.Footer>

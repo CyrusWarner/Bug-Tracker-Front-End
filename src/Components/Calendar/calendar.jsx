@@ -5,6 +5,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import NewEventModal from "../NewEventModal/newEventModal";
 import './calendar.css'
 import axios from "axios";
+import { toast } from "react-toastify";
 const Calendar = ({currentBoard}) => {
     const [events, setEvents] = useState([]);
     const {boardId} = currentBoard;
@@ -17,12 +18,12 @@ const Calendar = ({currentBoard}) => {
         await axios.post("http://localhost:27029/api/Events", data).then((res) => {
             if(res.status == 200) {
                 getAllEvents();
-                //ADD TOASTIFY NOTIFICATION HERE
+                toast.success("Event Added Succesffuly")
             }
         })
         .catch((err) => {
             if (err){
-                console.log(err)
+              toast.error("Error Occured While Adding Event")
             }
         })
     }

@@ -5,11 +5,11 @@ const NewEventModal = ({onEventAdded}) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const {register, handleSubmit} = useForm();
+    const {register, handleSubmit, reset, formState: {errors}} = useForm();
 
     const onSubmit = (eventData) => {
-        console.log(eventData)
         onEventAdded(eventData)
+        reset();
     }
     return (
         <>
@@ -25,11 +25,13 @@ const NewEventModal = ({onEventAdded}) => {
           <Modal.Body>
               <div>
               <label>Event Title:</label>
-              <input {...register("title")} className="form-control"></input>
+              <input {...register("title", {required: "Please Enter A Title For The Event"})} className="form-control"></input>
+              {errors.title && <p className="ms-1" style={{ color: "crimson" }}>{errors.title.message}</p>}
               </div>
               <div>
                   <label>Event Date:</label>
-                  <input {...register("date")} type="date" className="form-control"></input>
+                  <input {...register("date", {required: "Please Enter A Date For The Event"})} type="date" className="form-control"></input>
+                  {errors.date && <p className="ms-1" style={{ color: "crimson" }}>{errors.date.message}</p>}
               </div>
           </Modal.Body>
           <Modal.Footer>

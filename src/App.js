@@ -13,6 +13,8 @@ import Notes from "./Components/Notes/notes";
 import InviteCoworker from "./Components/InviteCoworker/inviteCoworker";
 import Calendar from "./Components/Calendar/calendar";
 import NavBar from "./Components/NavBar/navBar";
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import "./app.css";
 import axios from "axios";
 const App = () => {
@@ -83,6 +85,7 @@ const App = () => {
   };
   return (
     <React.Fragment>
+      <ToastContainer autoClose={3000}/>
       <Router>
         <NavBar currentUser={currentUser} currentBoard={currentBoard} />
         <Switch>

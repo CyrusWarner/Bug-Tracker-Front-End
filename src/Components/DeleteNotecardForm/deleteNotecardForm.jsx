@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import * as AiIcons from 'react-icons/ai'
+import { toast } from 'react-toastify';
 const DeleteNotecardForm = ({note, getAllNotes}) => {
     const {title, notesId} = note;
     const [show, setShow] = useState(false);
@@ -12,12 +13,12 @@ const DeleteNotecardForm = ({note, getAllNotes}) => {
         await axios.delete(`http://localhost:27029/api/Notes/${notesId}`).then((res) => {
             if(res.status == 200){
                 getAllNotes();
-                //TOASTIFY NOTIFICATION HERE
+                toast.success("Note Deleted Successfully")
             }
         })
         .catch((err) => {
             if(err){
-                console.log(err)
+                toast.error("Error While Deleting Note")
             }
         })
     }

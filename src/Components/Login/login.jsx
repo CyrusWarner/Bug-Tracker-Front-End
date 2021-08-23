@@ -1,12 +1,13 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import { Container, Row, Col, Form } from 'react-bootstrap';
 import axios from 'axios';
 import { useHistory } from 'react-router';
+import { toast } from 'react-toastify';
 
 const Login = (props) => {
     const {createCurrentUser} = props;
-    const {register, handleSubmit} = useForm()
+    const {register, handleSubmit, formState: {errors}, reset} = useForm()
     const history = useHistory();
 
     const onSubmit =  async (data) => {
@@ -17,15 +18,17 @@ const Login = (props) => {
          await axios.post(`http://localhost:27029/api/User/Login`, user).then((res => {
             if(res.status === 200) {
                 createCurrentUser(res.data);
+                toast.success(`Welcome Back ${res.data.firstName}`)
                 history.push("/");
             }
         }))
         .catch((err) => {
             if(err){
                 console.log(err)
-                //ADD TOASTIFY NOTIFICATION HERE
+                toast.error("Invalid Email Or Password")
             }
         })
+        reset();
     }
 
     return (
@@ -45,15 +48,11 @@ const Login = (props) => {
             <Row>
                 <Col sm={2}></Col>
                 <Col sm={8}>
-                    <Form className="text-center" onSubmit={handleSubmit(onSubmit)}>
-                        <div className="form-floating">
-                        <input style={{borderColor: "#060b26"}} type="text" className="form-control" {...register("email")}></input>
-                        <label className="floatingInputGrid">Email</label>
-                        </div>
-                        <div className="form-floating mt-2">
-                        <input style={{borderColor: "#060b26"}} type="password" className="form-control" {...register("password")}></input>
-                        <label className="floatingInputGrid">Password</label>
-                        </div>
+                    <Form onSubmit={handleSubmit(onSubmit)}>
+                        <input style={{borderColor: "#060b26"}} type="text" placeholder="Email" className="form-control" {...register("email", {required: "Please Enter Your Email"})}></input>
+                        {errors.email && <p className="ms-1" style={{ color: "crimson" }}>{errors.email.message}</p>}
+                        <input style={{borderColor: "#060b26"}} type="password" placeholder="Password" className="form-control mt-2" {...register("password", {required: "Please Enter Your Password"})}></input>
+                        {errors.password && <p p className="ms-1" style={{ color: "crimson" }}>{errors.password.message}</p>}
                         <button style={{borderColor: "#060b26", color: "#060b26"}} className="btn btn-outline-primary mt-2" type="submit">Submit</button>
                     </Form>
                 </Col>

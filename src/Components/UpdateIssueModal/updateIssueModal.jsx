@@ -5,10 +5,11 @@ import * as AiIcons from 'react-icons/ai'
 
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 const UpdateIssueModal = ({currentIssue, getAllIssues, currentUser}) => {
   const {userId} = currentUser;
     const {title, description, issuesId, isCompleted} = currentIssue;
-    const {register, handleSubmit, watch} = useForm();
+    const {register, handleSubmit, reset} = useForm();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -22,12 +23,12 @@ const UpdateIssueModal = ({currentIssue, getAllIssues, currentUser}) => {
         await axios.put(`http://localhost:27029/api/Issues/${issuesId}`, updatedIssue).then((res) => {
             if (res.status){
                 getAllIssues();
-                //TOASTIFY NOTIFICATION HERE
+                toast.sucess("Bug Updated Successfully")
             }
         })
         .catch((err) => {
             if(err){
-                console.log(err)
+              toast.error("Error Occured While Updating Bug")
             }
         })
     }
@@ -42,11 +43,11 @@ const UpdateIssueModal = ({currentIssue, getAllIssues, currentUser}) => {
           <Form onSubmit={handleSubmit(onSubmit)}>
           <Modal.Body>
                 <div className="form-floating mt-2">
-                    <input style={{borderColor: "#060b26"}} className="form-control" {...register("title")} defaultValue={title}></input>
+                    <input style={{borderColor: "#060b26"}} className="form-control" {...register("title", {required: true})} defaultValue={title}></input>
                     <label className="floatingInputGrid fs-5">Issue Title...</label>
                 </div>
                 <div className="form-floating mt-2">
-                    <input style={{borderColor: "#060b26"}} className="form-control" {...register("description")} defaultValue={description}></input>
+                    <input style={{borderColor: "#060b26"}} className="form-control" {...register("description", {required: true})} defaultValue={description}></input>
                     <label className="floatingInputGrid fs-5">Issue Description...</label>
                 </div>
                 <div class="form-check mt-2">

@@ -5,25 +5,13 @@ import { Link, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const Signup = () => {
-    const signupFormValues = {
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: ""
-    }
-    const {register, handleSubmit} = useForm();
+    const {register, handleSubmit, formState: {errors}, reset} = useForm();
     const history = useHistory();
 
     const onSubmit = async (values) => {
         await axios.post("http://localhost:27029/api/User", values).then((res) => {
             if(res.status === 200) {
                 history.push("/Login")
-                //Add Toastify notification here
-            }
-        })
-        .catch((err) => {
-            if(err){
-                console.log(err)
             }
         })
     }
@@ -42,23 +30,27 @@ const Signup = () => {
                     <Col sm={8}>
                         <Form className="text-center" onSubmit={handleSubmit(onSubmit)}>   
                         <div className="form-floating"> 
-                        <input style={{borderColor: "#060b26"}} className="form-control" {...register("firstName")} id="firstName"></input>
+                        <input style={{borderColor: "#060b26"}} className="form-control" {...register("firstName", {required: "First Name Is Required"})} id="firstName"></input>
                         <label className="floatingInputGrid fs-5">First Name</label>
+                        {errors.firstName && <p className="ms-1" style={{ color: "crimson" }}>{errors.firstName.message}</p>}
                         </div> 
 
                         <div className="form-floating mt-2">
-                        <input style={{borderColor: "#060b26"}} className="form-control" {...register("lastName")} id="lastName"></input>
+                        <input style={{borderColor: "#060b26"}} className="form-control" {...register("lastName", {required: "Last Name Is Required"})} id="lastName"></input>
                         <label className="floatingInputGrid fs-5">Last Name</label>
+                        {errors.lastName && <p className="ms-1" style={{ color: "crimson" }}>{errors.lastName.message}</p>}
                         </div>
 
                         <div className="form-floating mt-2">
-                        <input style={{borderColor: "#060b26"}} className="form-control" {...register("email")} id="email"></input>
+                        <input style={{borderColor: "#060b26"}} className="form-control" {...register("email", {required: "Email Is Required"})} id="email"></input>
                         <label className="floatingInputGrid fs-5" >Email</label>
+                        {errors.email && <p className="ms-1" style={{ color: "crimson" }}>{errors.email.message}</p>}
                         </div>
 
                         <div className="form-floating mt-2">
-                        <input style={{borderColor: "#060b26"}} className="form-control" {...register("password")} id="password"></input>
+                        <input style={{borderColor: "#060b26"}} type="password" className="form-control" {...register("password", {required: "Password Is Required"})} id="password"></input>
                         <label className="floatingInputGrid fs-5">Password</label>
+                        {errors.password && <p className="ms-1" style={{ color: "crimson" }}>{errors.password.message}</p>}
                         </div>
                         <div>
                         <button style={{borderColor: "#060b26", color: "#060b26"}} className="btn btn-outline-primary mt-2" type="submit">Complete Signup</button>

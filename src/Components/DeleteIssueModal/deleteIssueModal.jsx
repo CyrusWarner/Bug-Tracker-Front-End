@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import * as AiIcons from 'react-icons/ai'
+import { toast } from 'react-toastify';
 const DeleteIssueModal = ({currentIssue, getAllIssues}) => {
     const {issuesId} = currentIssue;
     const [show, setShow] = useState(false);
@@ -12,13 +13,12 @@ const DeleteIssueModal = ({currentIssue, getAllIssues}) => {
         await axios.delete(`http://localhost:27029/api/Issues/${issuesId}`).then((res) => {
             if(res.status === 200){
                 getAllIssues();
-                //TOASTIFY NOTIFICATION HERE
+                toast.success("Bug Deleted Successfully")
             }
         })
         .catch((err) => {
             if(err){
-                console.log(err)
-                 //TOASTIFY NOTIFICATION HERE
+              toast.success("Error Occured While Deleting Bug")
             }
         })
     }

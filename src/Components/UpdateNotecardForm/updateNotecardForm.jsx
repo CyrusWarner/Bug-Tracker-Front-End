@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import * as FiIcons from 'react-icons/fi'
+import { toast } from 'react-toastify';
 const UpdateNotecardForm = ({note, currentBoard, currentUser, getAllNotes}) => {
     const {boardId} = currentBoard;
     const {userId} = currentUser;
@@ -23,12 +24,12 @@ const UpdateNotecardForm = ({note, currentBoard, currentUser, getAllNotes}) => {
         await axios.put(`http://localhost:27029/api/Notes/${noteId}`, currentNote).then((res) => {
             if(res.status === 200){
                 getAllNotes();
+                toast.success("Note Updated Successfully")
             }
         })
         .catch((err) => {
             if(err){
-                console.log(err);
-                //TOASTIFY NOTIFICATION HERE
+                toast.error("Error Occured While Updating Note")
             }
         })
     }
