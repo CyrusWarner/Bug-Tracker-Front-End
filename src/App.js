@@ -48,6 +48,11 @@ const App = () => {
     }
   }, [currentUser]);
 
+  const logout = () => {
+    localStorage.clear();
+    window.location.href = "/login";
+  }
+
   const getUsers = async () => {
     await axios
       .get("http://localhost:27029/api/User")
@@ -108,7 +113,7 @@ const App = () => {
       <Router>
         {!loading &&
         <div>
-        <NavBar currentUser={currentUser} currentBoard={currentBoard} />
+        <NavBar currentUser={currentUser} currentBoard={currentBoard} logout={logout}/>
         <Switch>
           <Route
             path="/"
