@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Container, Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons/lib";
 import "./navbar.css";
@@ -12,88 +13,39 @@ const NavBar = ({ currentUser, currentBoard, logout }) => {
   const showSidebar = () => setSidebar(!sidebar);
   return (
     <React.Fragment>
-      <IconContext.Provider value={{ color: "#fff" }}>
-        <div className="navbar">
-          <Link className="menu-bars">
-            <FaIcons.FaBars onClick={showSidebar} />
-          </Link>
-        </div>
-        <nav className={sidebar ? "nav-menu active" : "nav-menu"}>
-          <ul className="nav-menu-items" onClick={showSidebar}>
-            <li className="navbar-toggle">
-              <Link to="#" className="menu-bars">
-                <AiIcons.AiOutlineClose />
-              </Link>
-            </li>
-            {currentUser.length !== 0 && (
-              <li style={{ color: "white" }} className="fs-5 nav-text">
-                {" "}
-                Welcome Back {currentUser.firstName}
-              </li>
-            )}
-            {currentUser.length !== 0 && (
-              <li className="nav-text">
-                <Link to="/">
-                  <AiIcons.AiFillHome />
-                  <span>Home</span>
-                </Link>
-              </li>
-            )}
-            {currentBoard.length !== 0 && (
-              <React.Fragment>
-                <li className="nav-text">
-                  <Link to="/Invite">
-                    <IoIcons.IoMdPeople />
-                    <span>Invite Coworkers</span>
-                  </Link>
-                </li>
-                <li className="nav-text">
-                  <Link to="/Notes">
-                    <BsIcons.BsPencilSquare />
-                    <span>Notes</span>
-                  </Link>
-                </li>
-                <li className="nav-text">
-                  <Link to="/ViewCalendar">
-                    <AiIcons.AiOutlineCalendar />
-                    <span>View Calendar</span>
-                  </Link>
-                </li>
-                <li className="nav-text">
-                  <Link to="/Chat">
-                    <AiIcons.AiOutlineMessage />
-                    <span>Chat</span>
-                  </Link>
-                </li>
-              </React.Fragment>
-            )}
-            {currentUser.length === 0 && (
-              <React.Fragment>
-                <li className="nav-text">
-                  <Link to="/Login">
-                    <AiIcons.AiOutlineLogin />
-                    <span>Login</span>
-                  </Link>
-                </li>
-
-                <li className="nav-text">
-                  <Link to="/Signup">
-                    <BsIcons.BsPencilSquare />
-                    <span>Signup</span>
-                  </Link>
-                </li>
-              </React.Fragment>
-            )}
-            {currentUser.length !== 0 &&
-            <li className="nav-text">
-              <Link onClick={logout}>
-                  <FiIcons.FiLogOut />
-                <span>Logout</span>
-              </Link>
-            </li>
-            }
-          </ul>
-        </nav>
+      <IconContext.Provider value={{ color: "white" }}>
+      <Navbar  expand="lg">
+  <Container>
+    <Navbar.Brand style={{color: "#fff"}} >React-Bootstrap</Navbar.Brand>
+    <Navbar.Toggle style={{color: "#fff"}}aria-controls="basic-navbar-nav" />
+    <Navbar.Collapse id="basic-navbar-nav">
+      <Nav className="me-auto">
+        <div className="nav-text">
+      {currentUser.length !== 0 && 
+        <Nav.Link as={Link} to="/"> <AiIcons.AiFillHome /><span style={{color: "#fff"}}>Home</span></Nav.Link>
+        }
+      {currentBoard.length !== 0 && 
+      <React.Fragment>
+        <Nav.Link  as={Link} to="/Invite"><IoIcons.IoMdPeople /><span style={{color: "#fff"}}>Invite Coworkers</span></Nav.Link>
+        <Nav.Link  as={Link} to="/Notes"><BsIcons.BsPencilSquare /><span style={{color: "#fff"}}>Notes</span></Nav.Link>
+        <Nav.Link as={Link} to="/ViewCalendar"><AiIcons.AiOutlineCalendar /><span style={{color: "#fff"}}>View Calendar</span></Nav.Link>
+        <Nav.Link as={Link} to="/Chat"><AiIcons.AiOutlineMessage /><span style={{color: "#fff"}}>Chat</span></Nav.Link>
+        </React.Fragment>
+      }
+      {currentUser.length === 0 && 
+      <React.Fragment>
+        <Nav.Link as={Link} to="/Login"><AiIcons.AiOutlineLogin /><span style={{color: "#fff"}}>Login</span></Nav.Link>
+      <Nav.Link as={Link} to="/Signup"><BsIcons.BsPencilSquare /><span style={{color: "#fff"}}>Signup</span></Nav.Link>
+      </React.Fragment>
+      } 
+      {currentUser.length !== 0 &&
+      <Nav.Link as={Link} to="/Logout"><FiIcons.FiLogOut /><span style={{color: "#fff"}}>Logout</span></Nav.Link>
+      }
+      </div>
+      </Nav>
+    </Navbar.Collapse>
+  </Container>
+</Navbar>
       </IconContext.Provider>
     </React.Fragment>
   );
