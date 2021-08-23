@@ -17,12 +17,31 @@ import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import "./app.css";
 import axios from "axios";
+import { WindowScrollController } from "@fullcalendar/react";
 const App = () => {
   const [users, setUsers] = useState([]);
   const [userBoards, setUsersBoards] = useState([]);
   const [currentBoard, setCurrentBoard] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
+  const [loading, setLoading] = useState(true)
+
   useEffect(() => {
+    const currentInfo = window.localStorage.getItem('saved-info')
+    const savedInfo = JSON.parse(currentInfo)
+    if(savedInfo !== null){
+      setCurrentBoard(savedInfo.board)
+      setCurrentUser(savedInfo.user)
+      setLoading(false)
+    }
+    else if (savedInfo === null){
+      setLoading(false)
+    }
+  }, [])
+  useEffect(() => {
+    let user = currentUser
+    let board = currentBoard
+    const valuesToSave = {user, board}
+    window.localStorage.setItem('saved-info', JSON.stringify(valuesToSave))
     if (currentUser.length !== 0) {
       getUsers();
       getUsersBoards();
@@ -87,6 +106,8 @@ const App = () => {
     <React.Fragment>
       <ToastContainer autoClose={3000}/>
       <Router>
+        {!loading &&
+        <div>
         <NavBar currentUser={currentUser} currentBoard={currentBoard} />
         <Switch>
           <Route
@@ -155,6 +176,8 @@ const App = () => {
             )}
           />
         </Switch>
+        </div>
+    }
       </Router>
     </React.Fragment>
   );
