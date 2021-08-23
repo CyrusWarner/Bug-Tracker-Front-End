@@ -84,12 +84,14 @@ const NavBar = ({ currentUser, currentBoard, logout }) => {
                 </li>
               </React.Fragment>
             )}
+            {currentUser.length !== 0 &&
             <li className="nav-text">
               <Link onClick={logout}>
                   <FiIcons.FiLogOut />
                 <span>Logout</span>
               </Link>
             </li>
+            }
           </ul>
         </nav>
       </IconContext.Provider>
