@@ -32,7 +32,6 @@ const CreateBoard = ({ currentUser, getUsersBoards, currentBoard }) => {
   };
 
   const addRelationshipToUserBoardTable = async (newBoard) => {
-    console.log(newBoard)
     await axios.post(`http://localhost:27029/api/Board/addUserToBoard/${userId}`, newBoard).then((res) => {
       getUsersBoards();
     })

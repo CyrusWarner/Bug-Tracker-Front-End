@@ -1,11 +1,15 @@
 import React from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
-const ShowCoworkers = () => {
+const ShowCoworkers = ({ boardUsers }) => {
   return (
     <React.Fragment>
-      <Card>
-        <Card.Body>This is some text within a card body.</Card.Body>
-      </Card>
+      {boardUsers.map((user) => {
+        return (
+          <Card>
+            <Card.Body>{user.email}</Card.Body>
+          </Card>
+        );
+      })}
     </React.Fragment>
   );
 };

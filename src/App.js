@@ -168,7 +168,7 @@ const App = () => {
           <Route
             path="/Invite"
             render={(props) => (
-              <InviteCoworker users={users} currentBoard={currentBoard} />
+              <InviteCoworker users={users} currentBoard={currentBoard} currentUser={currentUser}/>
             )}
           />
           <Route
