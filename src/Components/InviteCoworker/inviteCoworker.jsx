@@ -3,11 +3,14 @@ import ShowCoworkers from '../ShowCoworkers/showCoworkers';
 import './inviteCoworker.css'
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 const InviteCoworker = ({users, currentBoard, currentUser}) => {
 const [suggestions, setSuggestions] = useState([]);
 const [boardUsers, setBoardUsers] = useState([]);
 const [text, setText] = useState("");
 const [userToAdd, setUserToAdd] = useState([]);
+const {boardId} = currentBoard;
+
 
 useEffect(() => {
     displayBoardUsers();
@@ -50,7 +53,6 @@ useEffect(() => {
     }
 
     const displayBoardUsers = async () => {
-        const {boardId} = currentBoard;
         await axios.get(`http://localhost:27029/api/User/${boardId}`).then((res) => {
             if(res.status == 200){
                 setBoardUsers(res.data)
@@ -66,6 +68,15 @@ useEffect(() => {
                 }
             })
         }
+    }
+
+    const removeUser = async (userId) => {
+        await axios.delete(`http://localhost:27029/api/User/${userId}/Board/${boardId}`).then((res) => {
+            if(res.status === 200){
+                toast.success("User Removed Successfully");
+                displayBoardUsers();
+            }
+        })
     }
     return (
         <React.Fragment>
@@ -85,7 +96,7 @@ useEffect(() => {
                         </div>
                     </Col>
                     <Col sm={6}>
-            <ShowCoworkers boardUsers={boardUsers}/>
+            <ShowCoworkers boardUsers={boardUsers} removeUser={removeUser}/>
                     </Col>
                 </Row>
             </Container>
