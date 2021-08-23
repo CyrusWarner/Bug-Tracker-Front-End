@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons/lib";
-import "./navbar.css";
-import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 import * as BsIcons from "react-icons/bs";
@@ -14,13 +12,12 @@ const NavBar = ({ currentUser, currentBoard, logout }) => {
   return (
     <React.Fragment>
       <IconContext.Provider value={{ color: "white" }}>
-      <Navbar  expand="lg">
+      <Navbar bg="dark" expand="lg">
   <Container>
     <Navbar.Brand style={{color: "#fff"}} >React-Bootstrap</Navbar.Brand>
     <Navbar.Toggle style={{color: "#fff"}}aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
-        <div className="nav-text">
       {currentUser.length !== 0 && 
         <Nav.Link as={Link} to="/"> <AiIcons.AiFillHome /><span style={{color: "#fff"}}>Home</span></Nav.Link>
         }
@@ -39,9 +36,8 @@ const NavBar = ({ currentUser, currentBoard, logout }) => {
       </React.Fragment>
       } 
       {currentUser.length !== 0 &&
-      <Nav.Link as={Link} to="/Logout"><FiIcons.FiLogOut /><span style={{color: "#fff"}}>Logout</span></Nav.Link>
+      <Nav.Link as={Link} onClick={logout}><FiIcons.FiLogOut /><span style={{color: "#fff"}}>Logout</span></Nav.Link>
       }
-      </div>
       </Nav>
     </Navbar.Collapse>
   </Container>
