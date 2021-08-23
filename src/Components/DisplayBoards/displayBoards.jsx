@@ -1,36 +1,33 @@
-import React from 'react';
-import './displayBoards.css'
-import { Link } from 'react-router-dom';
-import { Container, Row, Col } from 'react-bootstrap';
-const DisplayBoards = ({userBoards, getCurrentBoard}) => {
-
-    return (
-        <React.Fragment>
-            <Container>
-                <Row>
-                    <Col sm={1}></Col>
-                    <Col sm={10}>
-        <div className="wrapper">
-            {userBoards.map((board) => {
-                return(
-                    <React.Fragment>
-                        <Link className="itemLink" 
-                        onClick={ ()  =>  ( getCurrentBoard(board.boardId))}
-                        to={`/ShowBoard/${board.boardId}`}
-                        style={{textDecoration: "none", color: "#060b26"}}>
-                    <div className="item">{board.title}</div>
-                    </Link>
-                    </React.Fragment>
-                )
-                
-            })}
-        </div>
-        </Col>
-        <Col sm={1}></Col>
+import React from "react";
+import { Link } from "react-router-dom";
+import { Container, Row, Card } from "react-bootstrap";
+const DisplayBoards = ({ userBoards, getCurrentBoard, getUsersBoards }) => {
+  return (
+    <React.Fragment>
+      <Container fluid >
+        <Row className="d-flex justify-content-center">
+             
+              {userBoards.map((board) => {
+                return (
+                    <Card  className="mt-4" style={{ width: "18rem", margin: "1rem" }}>
+                      <Card.Body>
+                        <Card.Title>{board.title}</Card.Title>
+                        <Card.Text>{board.description}</Card.Text>
+                        <Card.Link
+                          as={Link}
+                          to={`/ShowBoard/${board.boardId}`}
+                          onClick={() => getCurrentBoard(board.boardId)}
+                        >
+                          Card Link
+                        </Card.Link>
+                      </Card.Body>
+                    </Card>
+                );
+              })}
         </Row>
-        </Container>
-        </React.Fragment>
-    )
-}
+      </Container>
+    </React.Fragment>
+  );
+};
 
 export default DisplayBoards;

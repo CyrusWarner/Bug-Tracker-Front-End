@@ -1,11 +1,16 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import ShowCoworkers from '../ShowCoworkers/showCoworkers';
 import './inviteCoworker.css'
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import axios from 'axios';
 const InviteCoworker = ({users, currentBoard}) => {
 const [suggestions, setSuggestions] = useState([]);
+const [boardUsers, setBoardUsers] = useState([]);
 const [text, setText] = useState("");
+
+useEffect(() => {
+    displayBoardUsers();
+}, [])
     const handleChange = (event) => {
         const value = event.target.value;
         let suggestions = [];
@@ -36,12 +41,26 @@ const [text, setText] = useState("");
             </ul>
         )
     }
+
+    const displayBoardUsers = async () => {
+        const {boardId} = currentBoard;
+        console.log(boardId)
+        await axios.get(`http://localhost:27029/api/User/${boardId}`).then((res) => {
+            if(res.status == 200){
+                console.log(res)
+            }
+        })
+    }
     return (
         <React.Fragment>
-            <ShowCoworkers />
+            <Container >
+                    <h1 className="mt-3">Current People On Board</h1>
+            </Container>
             <Container>
                 <Row>
-                    <Col sm={4}></Col>
+                    <Col sm={4}>
+            <ShowCoworkers />
+                    </Col>
                     <Col sm={4}>
                         <div className="d-flex justify-content-center">
                         <Button>Add User</Button>

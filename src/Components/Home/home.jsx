@@ -6,11 +6,15 @@ const Home = (props) => {
     useEffect(() => {
         setCurrentBoard([])
     },[])
-    const {currentUser, userBoards, getUsersBoards, getCurrentBoard, setCurrentBoard} = props;
+    const {currentUser, userBoards, getUsersBoards, getCurrentBoard, setCurrentBoard, currentBoard} = props;
     return (
         <React.Fragment>
-            <DisplayBoards userBoards={userBoards} getCurrentBoard={getCurrentBoard} />
-            <CreateBoard currentUser={currentUser} getUsersBoards={getUsersBoards}/>
+            <div>
+            <CreateBoard currentUser={currentUser} getUsersBoards={getUsersBoards} currentBoard={currentBoard}/>
+            </div>
+            <div>
+            <DisplayBoards userBoards={userBoards} getCurrentBoard={getCurrentBoard} getUsersBoards={getUsersBoards}/>
+            </div>
         </React.Fragment>
     )
 }

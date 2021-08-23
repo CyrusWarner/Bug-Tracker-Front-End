@@ -1,25 +1,25 @@
-import React from "react";
+import React, {useState} from "react";
 import { Form, Container, Row} from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import "./createBoard.css";
 import { toast } from "react-toastify";
 //CLEAR USER INPUT WITH USEFORM HOOK DO RESEARCH ON THIS
-const CreateBoard = ({ currentUser, getUsersBoards }) => {
+const CreateBoard = ({ currentUser, getUsersBoards, currentBoard }) => {
   const { register, reset, handleSubmit, formState: {errors} } = useForm();
-
+  const {userId} = currentUser;
   const onSubmit = async (data) => {
     const board = {
       title: data.title,
       description: data.description,
-      userId: currentUser.userId,
+      userId: userId,
     };
-
+    
     await axios
       .post("http://localhost:27029/api/Board", board)
       .then((res) => {
         if (res.status == 200) {
-          getUsersBoards();
+          addRelationshipToUserBoardTable(res.data);
           toast.success("Board Added Successfully")
         }
       })
@@ -30,6 +30,14 @@ const CreateBoard = ({ currentUser, getUsersBoards }) => {
       });
       reset();
   };
+
+  const addRelationshipToUserBoardTable = async (newBoard) => {
+    console.log(newBoard)
+    await axios.post(`http://localhost:27029/api/Board/addUserToBoard/${userId}`, newBoard).then((res) => {
+      getUsersBoards();
+    })
+  }
+
   return (
     <React.Fragment>
       <Container className="mt-5">

@@ -71,10 +71,8 @@ const App = () => {
 
   const getUsersBoards = async () => {
     let userId = currentUser.userId;
-
-    //CHANGE THIS BACK TO THIS CALL WHEN FINISHED WITH BACKEND JUNCTION TABLE await axios.get(`http://localhost:27029/api/Board/${userId}`)
     await axios
-      .get(`http://localhost:27029/api/Board`)
+      .get(`http://localhost:27029/api/Board/${userId}`)
       .then((res) => {
         if (res.status == 200) {
           setUsersBoards(res.data);
@@ -83,7 +81,6 @@ const App = () => {
       .catch((err) => {
         if (err) {
           console.log(err);
-          //COME BACK AND ADD TOASTIFY
         }
       });
   };
