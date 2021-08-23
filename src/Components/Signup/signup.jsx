@@ -2,15 +2,32 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import { Link, useHistory } from 'react-router-dom';
+import ApiKey from '../../ApiKey/apiKey';
 import axios from 'axios';
 
 const Signup = () => {
     const {register, handleSubmit, formState: {errors}, reset} = useForm();
     const history = useHistory();
 
+
+
     const onSubmit = async (values) => {
         await axios.post("http://localhost:27029/api/User", values).then((res) => {
             if(res.status === 200) {
+                var data = {
+                    "username": res.data.firstName,
+                    "secret": res.data.password,
+                    "email": res.data.email
+                }
+                var config = {
+                    method: 'post',
+                    url: 'https://api.chatengine.io/users/',
+                    headers: {
+                        'PRIVATE-KEY': `${ApiKey}`
+                    },
+                    data : data
+                };
+                axios(config)
                 history.push("/Login")
             }
         })

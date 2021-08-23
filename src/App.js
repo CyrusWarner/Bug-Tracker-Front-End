@@ -12,9 +12,10 @@ import ShowBoard from "./Components/ShowBoard/showBoard";
 import Notes from "./Components/Notes/notes";
 import InviteCoworker from "./Components/InviteCoworker/inviteCoworker";
 import Calendar from "./Components/Calendar/calendar";
+import Chat from "./Components/Chat/chat";
 import NavBar from "./Components/NavBar/navBar";
 import { toast, ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 import "./app.css";
 import axios from "axios";
 import { WindowScrollController } from "@fullcalendar/react";
@@ -23,25 +24,24 @@ const App = () => {
   const [userBoards, setUsersBoards] = useState([]);
   const [currentBoard, setCurrentBoard] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const currentInfo = window.localStorage.getItem('saved-info')
-    const savedInfo = JSON.parse(currentInfo)
-    if(savedInfo !== null){
-      setCurrentBoard(savedInfo.board)
-      setCurrentUser(savedInfo.user)
-      setLoading(false)
+    const currentInfo = window.localStorage.getItem("saved-info");
+    const savedInfo = JSON.parse(currentInfo);
+    if (savedInfo !== null) {
+      setCurrentBoard(savedInfo.board);
+      setCurrentUser(savedInfo.user);
+      setLoading(false);
+    } else if (savedInfo === null) {
+      setLoading(false);
     }
-    else if (savedInfo === null){
-      setLoading(false)
-    }
-  }, [])
+  }, []);
   useEffect(() => {
-    let user = currentUser
-    let board = currentBoard
-    const valuesToSave = {user, board}
-    window.localStorage.setItem('saved-info', JSON.stringify(valuesToSave))
+    let user = currentUser;
+    let board = currentBoard;
+    const valuesToSave = { user, board };
+    window.localStorage.setItem("saved-info", JSON.stringify(valuesToSave));
     if (currentUser.length !== 0) {
       getUsers();
       getUsersBoards();
@@ -51,7 +51,7 @@ const App = () => {
   const logout = () => {
     localStorage.clear();
     window.location.href = "/login";
-  }
+  };
 
   const getUsers = async () => {
     await axios
@@ -106,80 +106,96 @@ const App = () => {
   };
   return (
     <React.Fragment>
-      <ToastContainer autoClose={3000}/>
+      <ToastContainer autoClose={3000} />
       <Router>
-        {!loading &&
-        <div>
-        <NavBar currentUser={currentUser} currentBoard={currentBoard} logout={logout}/>
-        <Switch>
-          <Route
-            path="/"
-            exact
-            render={(props) => {
-              if (currentUser.length === 0) {
-                return <Redirect to="/Login" />;
-              } else {
-                return (
-                  <Home
+        {!loading && (
+          <div>
+            <NavBar
+              currentUser={currentUser}
+              currentBoard={currentBoard}
+              logout={logout}
+            />
+            <Switch>
+              <Route
+                path="/"
+                exact
+                render={(props) => {
+                  if (currentUser.length === 0) {
+                    return <Redirect to="/Login" />;
+                  } else {
+                    return (
+                      <Home
+                        {...props}
+                        currentUser={currentUser}
+                        userBoards={userBoards}
+                        getUsersBoards={getUsersBoards}
+                        getCurrentBoard={getCurrentBoard}
+                        currentBoard={currentBoard}
+                        setCurrentBoard={setCurrentBoard}
+                      />
+                    );
+                  }
+                }}
+              />
+              <Route
+                path="/Login"
+                render={(props) => (
+                  <Login {...props} createCurrentUser={createCurrentUser} />
+                )}
+              />
+              <Route path="/Signup" render={(props) => <Signup {...props} />} />
+              <Route
+                path="/Notes"
+                render={(props) => (
+                  <Notes
                     {...props}
                     currentUser={currentUser}
-                    userBoards={userBoards}
-                    getUsersBoards={getUsersBoards}
-                    getCurrentBoard={getCurrentBoard}
                     currentBoard={currentBoard}
-                    setCurrentBoard={setCurrentBoard}
                   />
-                );
-              }
-            }}
-          />
-          <Route
-            path="/Login"
-            render={(props) => (
-              <Login {...props} createCurrentUser={createCurrentUser} />
-            )}
-          />
-          <Route path="/Signup" render={(props) => <Signup {...props} />} />
-          <Route
-            path="/Notes"
-            render={(props) => (
-              <Notes
-                {...props}
-                currentUser={currentUser}
-                currentBoard={currentBoard}
+                )}
               />
-            )}
-          />
-          <Route
-            exact
-            path="/ShowBoard/:id"
-            render={(props) => {
-              if (currentUser.length === 0) {
-                return <Redirect to="/Login" />;
-              } 
-              else if (currentBoard.length === 0){
-                return <Redirect to="/"/>
-              }
-              else {
-                return <ShowBoard {...props} currentBoard={currentBoard} currentUser={currentUser}/>;
-              }
-            }}
-          />
-          <Route
-            path="/Invite"
-            render={(props) => (
-              <InviteCoworker users={users} currentBoard={currentBoard} currentUser={currentUser}/>
-            )}
-          />
-          <Route
-            path="/ViewCalendar"
-            render={(props) => (
-              <Calendar {...props} currentBoard={currentBoard} />
-            )}
-          />
-        </Switch>
-        </div>
-    }
+              <Route
+                exact
+                path="/ShowBoard/:id"
+                render={(props) => {
+                  if (currentUser.length === 0) {
+                    return <Redirect to="/Login" />;
+                  } else if (currentBoard.length === 0) {
+                    return <Redirect to="/" />;
+                  } else {
+                    return (
+                      <ShowBoard
+                        {...props}
+                        currentBoard={currentBoard}
+                        currentUser={currentUser}
+                      />
+                    );
+                  }
+                }}
+              />
+              <Route
+                path="/Chat"
+                render={(props) => <Chat {...props} currentUser={currentUser} />}
+              ></Route>
+              <Route
+                path="/Invite"
+                render={(props) => (
+                  <InviteCoworker
+                    users={users}
+                    currentBoard={currentBoard}
+                    currentUser={currentUser}
+                  />
+                )}
+              />
+              <Route
+                path="/ViewCalendar"
+                render={(props) => (
+                  <Calendar {...props} currentBoard={currentBoard} />
+                )}
+              />
+            </Switch>
+          </div>
+        )}
       </Router>
     </React.Fragment>
   );
