@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Form, Container, Row, Col} from "react-bootstrap";
+import { Form, Container, Row, Col, Button} from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import "./createBoard.css";
@@ -47,29 +47,35 @@ const CreateBoard = ({ currentUser, getUsersBoards, currentBoard }) => {
           <Col sm={3}></Col>
           <Col sm={6}>
           <Form onSubmit={handleSubmit(onSubmit)}>
+            <div className="form-floating">
             <input
-              style={{ borderColor: "#060b26" }}
               placeholder="Board Title..."
               type="text"
               className="form-control"
               {...register("title", {required: true})}
             ></input>
+            <label className="floatingInput">Board Title...</label>
+            </div>
             {errors.title && <p className="ms-1" style={{color: "crimson"}}>Board Title Is Required</p>}
+            <div className="form-floating">
             <textarea
-              style={{ borderColor: "#060b26" }}
               placeholder="Board Description..."
               type="text"
               className="form-control mt-2"
               {...register("description", {required: "Board Description Is Required", minLength: {value: 25, message: "Minimum Description Length Is 25 Characters"}})}
             ></textarea>
+            <label className="floating-input">Board Description...</label>
+            </div>
             {errors.description && <p className="ms-1" style={{color: "crimson"}}>{errors.description.message}</p>}
-            <button
+            <div className="text-center">
+            <Button
               type="submit"
               style={{ borderColor: "#060b26", color: "#060b26" }}
-              className="btn btn-outline-primary mt-2"
+              className="mt-2 mb-2"
             >
               Add Board
-            </button>
+            </Button>
+            </div>
           </Form>
           </Col>
           <Col sm={3}></Col>
