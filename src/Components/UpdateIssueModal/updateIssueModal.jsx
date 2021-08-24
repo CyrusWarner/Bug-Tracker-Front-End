@@ -1,15 +1,13 @@
 import React, {useState} from 'react';
 import * as BsIcons from 'react-icons/bs'
 import { Modal, Button, Form } from 'react-bootstrap';
-import * as AiIcons from 'react-icons/ai'
-
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 const UpdateIssueModal = ({currentIssue, getAllIssues, currentUser}) => {
   const {userId} = currentUser;
     const {title, description, issuesId, isCompleted} = currentIssue;
-    const {register, handleSubmit, reset} = useForm();
+    const {register, handleSubmit} = useForm();
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -21,13 +19,14 @@ const UpdateIssueModal = ({currentIssue, getAllIssues, currentUser}) => {
         userId: userId
       }
         await axios.put(`http://localhost:27029/api/Issues/${issuesId}`, updatedIssue).then((res) => {
-            if (res.status){
+            if (res.status === 200){
                 getAllIssues();
-                toast.sucess("Bug Updated Successfully")
+                toast.success("Bug Updated Successfully")
             }
         })
         .catch((err) => {
             if(err){
+              console.log(err)
               toast.error("Error Occured While Updating Bug")
             }
         })

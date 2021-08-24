@@ -1,0 +1,20 @@
+.form-control {
+    border-color: #45A29E !important;
+    box-shadow: none !important;
+}
+
+.form-control :focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.inputButton {
+    color: black !important;
+    background-color: #C5C6C7 !important;
+    border-color: #C5C6C7 !important;
+}
+
+.errorDisplay {
+    color: #FC4445;
+}
+

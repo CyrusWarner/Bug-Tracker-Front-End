@@ -1,10 +1,9 @@
 import React from 'react';
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 import UpdateIssueModal from '../UpdateIssueModal/updateIssueModal';
 import DeleteIssueModal from '../DeleteIssueModal/deleteIssueModal';
 import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
-import { IoIosSquareOutline } from 'react-icons/io';
 const ShowAllIssues = ({allIssues, getAllIssues, currentUser, userRole}) => {
     return (
         <React.Fragment>

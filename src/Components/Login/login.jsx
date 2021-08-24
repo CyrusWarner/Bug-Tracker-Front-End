@@ -1,6 +1,7 @@
 import React from 'react';
 import {useForm} from "react-hook-form";
-import { Container, Row, Col, Form } from 'react-bootstrap';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import './login.css'
 import axios from 'axios';
 import { useHistory } from 'react-router';
 import { toast } from 'react-toastify';
@@ -35,28 +36,26 @@ const Login = (props) => {
         <React.Fragment>
             <Container>
                 <Row>
-                    <Col sm={2}></Col>
-                    <Col sm={8}>
-                        <div className="text-center">
+                    <Col sm={3}></Col>
+                    <Col sm={6}>
                         <h1 className="title mb-5">Login</h1>
-                        </div>
                     </Col>
-                    <Col sm={2}></Col>
+                    <Col sm={3}></Col>
                 </Row>
             </Container>
         <Container>
             <Row>
-                <Col sm={2}></Col>
-                <Col sm={8}>
+                <Col sm={3}></Col>
+                <Col sm={6}>
                     <Form onSubmit={handleSubmit(onSubmit)}>
-                        <input style={{borderColor: "#060b26"}} type="text" placeholder="Email" className="form-control" {...register("email", {required: "Please Enter Your Email"})}></input>
-                        {errors.email && <p className="ms-1" style={{ color: "crimson" }}>{errors.email.message}</p>}
-                        <input style={{borderColor: "#060b26"}} type="password" placeholder="Password" className="form-control mt-2" {...register("password", {required: "Please Enter Your Password"})}></input>
-                        {errors.password && <p p className="ms-1" style={{ color: "crimson" }}>{errors.password.message}</p>}
-                        <button style={{borderColor: "#060b26", color: "#060b26"}} className="btn btn-outline-primary mt-2" type="submit">Submit</button>
+                        <input className="form-control"  type="text" placeholder="Email"  {...register("email", {required: "Please Enter Your Email"})}></input>
+                        {errors.email && <p className="errorDisplay ms-1" >{errors.email.message}</p>}
+                        <input className="form-control mt-2" type="password" placeholder="Password"  {...register("password", {required: "Please Enter Your Password"})}></input>
+                        {errors.password && <p className="errorDisplay ms-1" >{errors.password.message}</p>}
+                        <Button className="inputButton mt-2" type="submit">Submit</Button>
                     </Form>
                 </Col>
-                <Col sm={2}></Col>
+                <Col sm={3}></Col>
             </Row>
         </Container>
         </React.Fragment>

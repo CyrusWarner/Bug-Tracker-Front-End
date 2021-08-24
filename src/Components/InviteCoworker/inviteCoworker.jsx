@@ -54,7 +54,7 @@ useEffect(() => {
 
     const displayBoardUsers = async () => {
         await axios.get(`http://localhost:27029/api/User/${boardId}`).then((res) => {
-            if(res.status == 200){
+            if(res.status === 200){
                 setBoardUsers(res.data)
             }
         })
@@ -63,7 +63,7 @@ useEffect(() => {
         if(userToAdd.length !== 0){
             let userId = userToAdd.userId;
             await axios.post(`http://localhost:27029/api/User/InvitingUserToBoard/${userId}`, currentBoard).then((res) => {
-                if(res.status == 200){
+                if(res.status === 200){
                     displayBoardUsers();
                 }
             })

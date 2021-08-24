@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { IconContext } from "react-icons/lib";
@@ -8,8 +8,6 @@ import * as IoIcons from "react-icons/io";
 import * as BsIcons from "react-icons/bs";
 import * as FiIcons from "react-icons/fi";
 const NavBar = ({ currentUser, currentBoard, logout, userRole }) => {
-  const [sidebar, setSidebar] = useState(false);
-  const showSidebar = () => setSidebar(!sidebar);
   return (
     <React.Fragment>
       <IconContext.Provider value={{ color: "white" }}>

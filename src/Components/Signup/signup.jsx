@@ -1,12 +1,12 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
-import { Container, Row, Col, Form, Button } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
+import { Container, Row, Col, Form } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 import ApiKey from '../../ApiKey/apiKey';
 import axios from 'axios';
 
 const Signup = () => {
-    const {register, handleSubmit, formState: {errors}, reset} = useForm();
+    const {register, handleSubmit, formState: {errors}} = useForm();
     const history = useHistory();
 
 

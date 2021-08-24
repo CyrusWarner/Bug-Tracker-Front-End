@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Form, Container, Row} from "react-bootstrap";
+import { Form, Container, Row, Col} from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import "./createBoard.css";
@@ -44,6 +44,8 @@ const CreateBoard = ({ currentUser, getUsersBoards, currentBoard }) => {
           <div className="text-center">
             <h1 className="title">Add New Board</h1>
           </div>
+          <Col sm={3}></Col>
+          <Col sm={6}>
           <Form onSubmit={handleSubmit(onSubmit)}>
             <input
               style={{ borderColor: "#060b26" }}
@@ -69,6 +71,8 @@ const CreateBoard = ({ currentUser, getUsersBoards, currentBoard }) => {
               Add Board
             </button>
           </Form>
+          </Col>
+          <Col sm={3}></Col>
         </Row>
       </Container>
     </React.Fragment>

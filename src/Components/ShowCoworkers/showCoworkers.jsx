@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import {Card } from "react-bootstrap";
 import * as AiIcons from 'react-icons/ai'
 
 const ShowCoworkers = ({ boardUsers, removeUser }) => {

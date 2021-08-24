@@ -202,7 +202,7 @@ const App = () => {
                   if(currentBoard.length === 0){
                     return <Redirect to="/" />
                   }
-                  if(userRole !== "admin" ){
+                  if(userRole !== "Admin" ){
                     const boardId = currentBoard.boardId
                     return <Redirect to={`/ShowBoard/${boardId}`}/>
                   }
