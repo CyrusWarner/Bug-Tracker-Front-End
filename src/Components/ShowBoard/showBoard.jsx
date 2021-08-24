@@ -4,7 +4,7 @@ import IssueForm from '../IssueForm/issueForm';
 import { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import ShowAllIssues from '../ShowAllIssues/showAllIssues';
-const ShowBoard = ({currentBoard, currentUser}) => {
+const ShowBoard = ({currentBoard, currentUser, userRole}) => {
     const {title, description, boardId} = currentBoard
     const [allIssues, setAllIssues] = useState([]);
     useEffect(() => {
@@ -36,13 +36,15 @@ const ShowBoard = ({currentBoard, currentUser}) => {
                         {title}
                         </h1>
                         <p className="fs-6">{description}</p>
+                        {userRole === "Admin" &&
                         <IssueForm currentUser={currentUser} currentBoard={currentBoard} getAllIssues={getAllIssues}/>
+                        }
                         </Col>
                     <Col sm={1}></Col>
                 </Row>
             </Container>
             }
-            <ShowAllIssues allIssues={allIssues} getAllIssues={getAllIssues} currentUser={currentUser}/>
+            <ShowAllIssues allIssues={allIssues} getAllIssues={getAllIssues} currentUser={currentUser} userRole={userRole}/>
         </React.Fragment>
         
     )

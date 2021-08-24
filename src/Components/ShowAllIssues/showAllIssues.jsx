@@ -5,7 +5,7 @@ import DeleteIssueModal from '../DeleteIssueModal/deleteIssueModal';
 import * as FaIcons from 'react-icons/fa'
 import * as AiIcons from 'react-icons/ai'
 import { IoIosSquareOutline } from 'react-icons/io';
-const ShowAllIssues = ({allIssues, getAllIssues, currentUser}) => {
+const ShowAllIssues = ({allIssues, getAllIssues, currentUser, userRole}) => {
     return (
         <React.Fragment>
             <Container>
@@ -27,9 +27,13 @@ const ShowAllIssues = ({allIssues, getAllIssues, currentUser}) => {
                                   <Card.Text>
                                     {issue.description}
                                   </Card.Text>
+                                  {userRole === "Admin" &&
+                                  <div>
                                   <UpdateIssueModal currentIssue={issue} getAllIssues={getAllIssues} currentUser={currentUser}/>
                                   <span className="ms-3"></span>
                                   <DeleteIssueModal currentIssue={issue} getAllIssues={getAllIssues}/>
+                                  </div>
+                                    }
                                 </Card.Body>
                               </Card>
                             )

@@ -6,7 +6,7 @@ import NewEventModal from "../NewEventModal/newEventModal";
 import './calendar.css'
 import axios from "axios";
 import { toast } from "react-toastify";
-const Calendar = ({currentBoard}) => {
+const Calendar = ({currentBoard, userRole}) => {
     const [events, setEvents] = useState([]);
     const {boardId} = currentBoard;
     const onEventAdded = async (eventData) => {
@@ -59,7 +59,9 @@ const Calendar = ({currentBoard}) => {
               <Col sm={4}></Col>
               <Col sm={4}>
                   <div className="text-center">
+                    {userRole === "Admin" &&
               <NewEventModal onEventAdded={onEventAdded}/>
+                    }
                   </div>
               </Col>
               <Col sm={4}></Col>

@@ -185,6 +185,7 @@ const App = () => {
                         {...props}
                         currentBoard={currentBoard}
                         currentUser={currentUser}
+                        userRole={userRole}
                       />
                     );
                   }
@@ -196,18 +197,30 @@ const App = () => {
               ></Route>
               <Route
                 path="/Invite"
-                render={(props) => (
+                render={(props) => {
+                  if(currentBoard.length === 0){
+                    return <Redirect to="/" />
+                  }
+                  if(userRole !== "admin" ){
+                    const boardId = currentBoard.boardId
+                    return <Redirect to={`/ShowBoard/${boardId}`}/>
+                  }
+                  else{
+                    return(
                   <InviteCoworker
+                    {...props}
                     users={users}
                     currentBoard={currentBoard}
                     currentUser={currentUser}
                   />
-                )}
+                );
+                  }
+                }}
               />
               <Route
                 path="/ViewCalendar"
                 render={(props) => (
-                  <Calendar {...props} currentBoard={currentBoard} />
+                  <Calendar {...props} currentBoard={currentBoard} userRole={userRole}/>
                 )}
               />
             </Switch>
