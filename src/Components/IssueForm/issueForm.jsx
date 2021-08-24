@@ -1,6 +1,6 @@
 import React from "react";
 import {  useForm } from "react-hook-form";
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
 const IssueForm = ({ currentUser, currentBoard, getAllIssues }) => {
@@ -38,19 +38,22 @@ const IssueForm = ({ currentUser, currentBoard, getAllIssues }) => {
     <React.Fragment>
       <Container className="g-0">
         <Row>
-          <Col sm={6}>
             <Form onSubmit={handleSubmit(onSubmit)}>
+              <div className="form-floating">
               <input
                 style={{ borderColor: "#060b26" }}
                 placeholder="Bug Title.."
                 className="form-control"
                 {...register("title", { required: "Bug Title Is Required" })}
               ></input>
+              <label className="floatingInput">New Bug Title..</label>
+              </div>
               {errors.title && (
                 <p className="ms-1" style={{ color: "crimson" }}>
                   {errors.title.message}
                 </p>
               )}
+              <div className="form-floating">
               <textarea
                 style={{ borderColor: "#060b26" }}
                 placeholder="Bug Description.."
@@ -63,21 +66,21 @@ const IssueForm = ({ currentUser, currentBoard, getAllIssues }) => {
                   },
                 })}
               ></textarea>
+              <label className="floatingInput">Bug Description...</label>
+              </div>
               {errors.description && (
                 <p className="ms-1" style={{ color: "crimson" }}>
                   {errors.description.message}
                 </p>
               )}
-              <button
+              <Button
                 style={{ borderColor: "#060b26", color: "#060b26" }}
-                className="btn btn-outline-primary mt-2"
+                className="mt-2"
                 type="submit"
               >
                 Add Issue
-              </button>
+              </Button>
             </Form>
-          </Col>
-          <Col sm={6}></Col>
         </Row>
       </Container>
     </React.Fragment>

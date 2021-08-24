@@ -30,21 +30,21 @@ const ShowBoard = ({currentBoard, currentUser, userRole}) => {
             {currentBoard.length !== 0 &&
             <Container>
                 <Row>
-                    <Col sm={1}></Col>
-                    <Col sm={10}>
-                        <h1 className="mt-4">
+                    <Col sm={6}>
+                        <h1 className="title">
                         {title}
                         </h1>
-                        <p className="fs-6">{description}</p>
+                        <p style={{color: "#C5C6C7"}} className="fs-4">{description}</p>
                         {userRole === "Admin" &&
                         <IssueForm currentUser={currentUser} currentBoard={currentBoard} getAllIssues={getAllIssues}/>
                         }
                         </Col>
-                    <Col sm={1}></Col>
+                    <Col sm={6}>
+            <ShowAllIssues allIssues={allIssues} getAllIssues={getAllIssues} currentUser={currentUser} userRole={userRole}/>
+                    </Col>
                 </Row>
             </Container>
             }
-            <ShowAllIssues allIssues={allIssues} getAllIssues={getAllIssues} currentUser={currentUser} userRole={userRole}/>
         </React.Fragment>
         
     )

@@ -176,10 +176,9 @@ const App = () => {
                 exact
                 path="/ShowBoard/:id"
                 render={(props) => {
-                  if (currentUser.length === 0) {
+                  debugger
+                  if (!currentUser) {
                     return <Redirect to="/Login" />;
-                  } else if (currentBoard.length === 0) {
-                    return <Redirect to="/" />;
                   } else {
                     return (
                       <ShowBoard
