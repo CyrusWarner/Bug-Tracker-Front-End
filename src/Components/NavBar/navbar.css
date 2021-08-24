@@ -1,1 +1,7 @@
+.color-nav {
+    background-color: #060b26;
+}
 
+.customNavLink:hover {
+    background-color: blue;
+}

@@ -12,6 +12,7 @@ import ShowBoard from "./Components/ShowBoard/showBoard";
 import Notes from "./Components/Notes/notes";
 import InviteCoworker from "./Components/InviteCoworker/inviteCoworker";
 import Calendar from "./Components/Calendar/calendar";
+import Email from "./Components/Email/email";
 import Chat from "./Components/Chat/chat";
 import NavBar from "./Components/NavBar/navBar";
 import { toast, ToastContainer } from "react-toastify";
@@ -221,6 +222,12 @@ const App = () => {
                 path="/ViewCalendar"
                 render={(props) => (
                   <Calendar {...props} currentBoard={currentBoard} userRole={userRole}/>
+                )}
+              />
+              <Route
+                path="/Email"
+                render={(props) => (
+                  <Email {...props} currentBoard={currentBoard} currentUser={currentUser}/>
                 )}
               />
             </Switch>
