@@ -129,6 +129,7 @@ const App = () => {
             <NavBar
               currentUser={currentUser}
               currentBoard={currentBoard}
+              userRole={userRole}
               logout={logout}
             />
             <Switch>
