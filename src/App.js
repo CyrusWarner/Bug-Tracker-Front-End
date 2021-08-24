@@ -24,6 +24,7 @@ const App = () => {
   const [userBoards, setUsersBoards] = useState([]);
   const [currentBoard, setCurrentBoard] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
+  const [userRole, setUserRole] = useState("")
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -38,6 +39,9 @@ const App = () => {
     }
   }, []);
   useEffect(() => {
+    if(currentBoard.length !== 0){
+      getCurrentUserRole();
+    }
     let user = currentUser;
     let board = currentBoard;
     const valuesToSave = { user, board };
@@ -46,7 +50,7 @@ const App = () => {
       getUsers();
       getUsersBoards();
     }
-  }, [currentUser]);
+  }, [currentUser, currentBoard]);
 
   const logout = () => {
     localStorage.clear();
@@ -104,6 +108,18 @@ const App = () => {
         }
       });
   };
+
+  const getCurrentUserRole = async () => {
+    const userId = currentUser.userId;
+    const boardId = currentBoard.boardId
+    await axios.get(`http://localhost:27029/api/User/GetUserRole/Board/${boardId}/User/${userId}`).then((res) => {
+      if(res.status === 200){
+        // console.log(res.data)
+        setUserRole(res.data[0].roles.roleName)
+        console.log(res.data[0].roles.roleName)
+      }
+    })
+  }
   return (
     <React.Fragment>
       <ToastContainer autoClose={3000} />

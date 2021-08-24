@@ -7,7 +7,7 @@ const Chat = ({currentUser}) => {
     }, [])
     return (
         <ChatEngine
-        publicKey='f7aee748-649c-43a6-9991-12f851edb018'
+        publicKey='3bbece5e-9153-4f6e-b476-7f10c32f18a0'
         userName= {firstName}
         userSecret= {password}
         >
