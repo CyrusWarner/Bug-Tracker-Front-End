@@ -7,10 +7,10 @@ const DisplayNoteCards = ({allNotes, currentBoard, currentUser, getAllNotes}) =>
     return (
         <React.Fragment>
             <Container fluid>
-                <Row className="d-flex justify-content-center">
+                <Row className="d-flex justify-content-center m-3">
             {allNotes.map((note) => {
                 return(
-                    <Card className="cardContainer m-4" style={{ width: '18rem' }}>
+                    <Card className="cardContainer" style={{ width: '24rem' }}>
                     <Card.Body>
                       <Card.Title>{note.title}</Card.Title>
                       <Card.Text>{note.description}</Card.Text>

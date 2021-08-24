@@ -33,17 +33,14 @@ const NoteCardForm = ({currentBoard, currentUser, getAllNotes}) => {
     }
     
     return (
-        <Container>
-            <Row className="text-center">
-                <Col sm={4}></Col>
-                <Col sm={4}>
+      <React.Fragment>
                 <Button variant="primary" onClick={handleShow}>
         Add New Note Card
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Make A New Note</Modal.Title>
+          <Modal.Title>Add New Note</Modal.Title>
         </Modal.Header>
         <Form onSubmit={handleSubmit(onSubmit)}>
         <Modal.Body>
@@ -69,10 +66,7 @@ const NoteCardForm = ({currentBoard, currentUser, getAllNotes}) => {
         </Modal.Footer>
         </Form>
       </Modal>
-                </Col>
-                <Col sm={4}></Col>
-            </Row>
-        </Container>
+      </React.Fragment>
     )
 }
 

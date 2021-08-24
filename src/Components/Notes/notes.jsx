@@ -29,19 +29,15 @@ const Notes = ({currentBoard, currentUser}) => {
         <React.Fragment>
             <Container>
                 <Row>
-                    <Col sm={1}></Col>
-                    <Col sm={10}>
-                        <div className="text-center">
+                    <Col sm={6}>
                         <h1 className="title mt-4 mb-5">{title}'s notes</h1>
-                        </div>
+                        <NoteCardForm currentBoard={currentBoard} currentUser={currentUser} getAllNotes={getAllNotes}/>
                         </Col>
-                        
-                    <Col sm={1}></Col>
+                    <Col sm={6}></Col>
                 </Row>
             </Container>
             {currentBoard.length !== 0 &&
             <div>
-            <NoteCardForm currentBoard={currentBoard} currentUser={currentUser} getAllNotes={getAllNotes}/>
                 <DisplayNoteCards allNotes={allNotes} currentBoard={currentBoard} currentUser={currentUser} getAllNotes={getAllNotes}/>
                 </div>
             }
