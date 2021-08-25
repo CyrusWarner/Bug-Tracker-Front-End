@@ -195,6 +195,7 @@ const App = () => {
                         currentBoard={currentBoard}
                         currentUser={currentUser}
                         userRole={userRole}
+                        displayBoardUsers={displayBoardUsers}
                       />
                     );
                   }
@@ -237,7 +238,7 @@ const App = () => {
               <Route
                 path="/Email"
                 render={(props) => (
-                  <Email {...props} currentBoard={currentBoard} currentUser={currentUser}/>
+                  <Email {...props} currentBoard={currentBoard} currentUser={currentUser} boardUsers={boardUsers}/>
                 )}
               />
             </Switch>

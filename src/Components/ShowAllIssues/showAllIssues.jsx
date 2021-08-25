@@ -14,6 +14,11 @@ const ShowAllIssues = ({ allIssues, getAllIssues, currentUser, userRole }) => {
       <Container>
         <Row>
             <input type="search" className="form-control mt-4" placeholder="Search Issues By Title..." onChange={(event) => setSearch(event.target.value)}></input>
+            {filterIssues.length === 0 &&
+            <div className="text-center">
+            <h1 className="title">No Issues Currently</h1>
+            </div>
+            }
           {filterIssues.map((issue) => {
             return (
               <Card className="cardContainer mt-3">

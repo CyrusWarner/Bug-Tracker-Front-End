@@ -2,9 +2,9 @@ import React, {useState} from "react";
 import {Card, Container, Row } from "react-bootstrap";
 import * as AiIcons from 'react-icons/ai'
 
-const ShowCoworkers = ({ boardUsers, removeUser }) => {
+const ShowCoworkers = ({ boardUsers, removeUser, currentUser }) => {
   const [search, setSearch] = useState("");
-
+  const {userId} = currentUser;
   const filterUsers = boardUsers.filter((user) => 
     user.email.toLowerCase().includes(search.toLowerCase())
   );
@@ -17,7 +17,9 @@ const ShowCoworkers = ({ boardUsers, removeUser }) => {
         return (
           <Card className="cardContainer mt-2 mb-2"> 
             <Card.Body><div className="fs-5">{user.email}</div>
+            {userId !== user.userId &&
             <span className="position-absolute top-50 end-0 translate-middle-y"><AiIcons.AiOutlineClose  style={{cursor: "pointer "}} onClick={() => (removeUser(user.userId))} color="red" size="2rem" /></span>
+            }
             </Card.Body>
           </Card>
         );

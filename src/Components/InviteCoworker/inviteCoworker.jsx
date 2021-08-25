@@ -4,15 +4,11 @@ import "./inviteCoworker.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
-const InviteCoworker = ({ users, currentBoard, boardUsers, displayBoardUsers }) => {
+const InviteCoworker = ({ users, currentBoard, boardUsers, displayBoardUsers, currentUser }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [text, setText] = useState("");
   const [userToAdd, setUserToAdd] = useState([]);
   const { boardId } = currentBoard;
-
-  useEffect(() => {
-    displayBoardUsers(boardId);
-  }, []);
   const handleChange = (event) => {
     const value = event.target.value;
     let suggestions = [];
@@ -94,7 +90,7 @@ const InviteCoworker = ({ users, currentBoard, boardUsers, displayBoardUsers }) 
             </div>
           </Col>
           <Col sm={6}>
-            <ShowCoworkers boardUsers={boardUsers} removeUser={removeUser} />
+            <ShowCoworkers boardUsers={boardUsers} removeUser={removeUser} currentUser={currentUser} />
           </Col>
         </Row>
       </Container>

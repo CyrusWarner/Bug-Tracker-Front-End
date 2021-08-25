@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { Modal, Button, Table } from "react-bootstrap";
 import * as AiIcons from 'react-icons/ai'
 import { toast } from "react-toastify";
-const CalendarEventDetails = ({ show, handleClose, filteredEvents, getAllEvents }) => {
+const CalendarEventDetails = ({ show, handleClose, filteredEvents, getAllEvents, userRole }) => {
 
   const removeEvent = async (eventId) => {
     await axios.delete(`http://localhost:27029/api/Events/${eventId}`).then((res) => {
@@ -28,7 +28,9 @@ const CalendarEventDetails = ({ show, handleClose, filteredEvents, getAllEvents 
                   <th>Event Title</th>
                   <th>Event Assignee</th>
                   <th>Event Date</th>
+                  {userRole === "Admin" &&
                   <th>Actions</th>
+                  }
                 </tr>
               </thead>
               <tbody>
@@ -39,7 +41,9 @@ const CalendarEventDetails = ({ show, handleClose, filteredEvents, getAllEvents 
                         <td>{event.title}</td>
                         <td>{event.assignee}</td>
                         <td>{event.date}</td>
+                        {userRole === "Admin" &&
                         <td><AiIcons.AiFillDelete onClick={() => [removeEvent(event.eventsId), handleClose()]} style={{cursor: "pointer", color: "red"}} size="1.5rem" /></td>
+                        }
                       </tr>
                     </React.Fragment>
                   );

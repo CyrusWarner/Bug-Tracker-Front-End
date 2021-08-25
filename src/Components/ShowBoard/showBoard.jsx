@@ -4,11 +4,12 @@ import IssueForm from '../IssueForm/issueForm';
 import { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import ShowAllIssues from '../ShowAllIssues/showAllIssues';
-const ShowBoard = ({currentBoard, currentUser, userRole}) => {
+const ShowBoard = ({currentBoard, currentUser, userRole, displayBoardUsers}) => {
     const {title, description, boardId} = currentBoard
     const [allIssues, setAllIssues] = useState([]);
     useEffect(() => {
         getAllIssues();
+        displayBoardUsers(boardId);
     }, [boardId])
 
     const getAllIssues = async () => {

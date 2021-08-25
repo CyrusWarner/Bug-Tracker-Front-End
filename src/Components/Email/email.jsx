@@ -1,21 +1,19 @@
-import React from 'react';
+import React, {useState} from 'react';
 import EmailContactForm from '../EmailContactForm/emailContactForm';
 import { Container, Row, Col } from 'react-bootstrap';
-const Email = () => {
+const Email = ({currentUser, boardUsers}) => {
     return (
         <React.Fragment>
            <Container>
                <Row>
-                   <Col sm={4}> </Col>
-                   <Col sm={4}>
-                       <div className="text-center">
+                   <Col sm={6}> 
                        <h1 className="title">Email</h1>
-                       </div>
+                       <EmailContactForm currentUser={currentUser}/>
                    </Col>
-                   <Col sm={4}></Col>              
+                   <Col sm={6}></Col>         
                </Row>
            </Container>
-           <EmailContactForm />
+          
         </React.Fragment>
     )
 }

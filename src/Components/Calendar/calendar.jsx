@@ -75,7 +75,7 @@ const Calendar = ({ currentBoard, userRole, boardUsers, displayBoardUsers }) => 
             </div>
           </Col>
           <Col sm={1}>
-          <CalendarEventDetails filteredEvents={filteredEvents} show={show} handleClose={handleClose} getAllEvents={getAllEvents}/>
+          <CalendarEventDetails filteredEvents={filteredEvents} show={show} handleClose={handleClose} getAllEvents={getAllEvents} userRole={userRole}/>
           </Col>
         </Row>
       </Container>
@@ -92,6 +92,7 @@ const Calendar = ({ currentBoard, userRole, boardUsers, displayBoardUsers }) => 
         <Row>
           <Col sm={1}></Col>
           <Col sm={10}>
+            <div className="m-3">
             <FullCalendar
               plugins={[dayGridPlugin, interactionPlugin]}
               dateClick={handleDateClick}
@@ -99,6 +100,7 @@ const Calendar = ({ currentBoard, userRole, boardUsers, displayBoardUsers }) => 
               weekends={false}
               events={events}
             ></FullCalendar>
+            </div>
           </Col>
           <Col sm={1}></Col>
         </Row>
