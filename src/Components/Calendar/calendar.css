@@ -2,3 +2,33 @@
     display: flex;
     margin-right: 0.5rem;
 }
+
+.fc-daygrid {
+    background-color: #C5C6C7;
+}
+
+.fc-daygrid-day-number { 
+    color: black;
+}
+
+.fc-toolbar-title {
+    color: #EDF5E1;
+}
+
+.fc-col-header-cell-cushion {
+    color: black;
+}
+
+.fc-daygrid-day-frame {
+    cursor: pointer;
+}
+
+.fc-daygrid-day :hover {
+    background-color: #45A29E;
+    cursor: pointer;
+}
+
+.fc-event-title-container {
+    background-color: #FC4445;
+}
+

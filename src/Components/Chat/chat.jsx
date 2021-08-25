@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { ChatEngine, ChatFeed } from "react-chat-engine";
+import { ChatEngine } from "react-chat-engine";
 import { Container } from "react-bootstrap";
 const Chat = ({ currentUser }) => {
   const { firstName, password } = currentUser;

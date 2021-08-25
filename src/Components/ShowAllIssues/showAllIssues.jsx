@@ -41,7 +41,7 @@ const ShowAllIssues = ({ allIssues, getAllIssues, currentUser, userRole }) => {
                 <Card.Body>
                   <Card.Text>{issue.description}</Card.Text>
                   {userRole === "Admin" && (
-                    <div>
+                    <div className="d-flex justify-content-end">
                       <UpdateIssueModal
                         currentIssue={issue}
                         getAllIssues={getAllIssues}
