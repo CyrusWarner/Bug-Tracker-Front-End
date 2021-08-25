@@ -11,7 +11,7 @@ const NavBar = ({ currentUser, currentBoard, logout, userRole }) => {
   return (
     <React.Fragment>
       <IconContext.Provider value={{ color: "white" }}>
-      <Navbar className="color-nav" expand="lg">
+      <Navbar bg="dark" expand="lg">
   <Container>
     <Navbar.Brand style={{color: "#fff"}} >React-Bootstrap</Navbar.Brand>
     <Navbar.Toggle style={{color: "#fff"}}aria-controls="basic-navbar-nav" />

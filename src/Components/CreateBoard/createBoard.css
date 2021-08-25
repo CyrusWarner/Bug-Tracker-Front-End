@@ -3,14 +3,14 @@
     margin-bottom: 2rem;
     display: inline-block;
     position: relative;
-    color: #EDF5E1;
+    color: #212529;
 }
 
 .title:after {
     content: '';
     height: 2px;
     width: 100%;
-    background: #FC4445;
+    background: #45A29E;
     position: absolute;
     left: 0;
     bottom: -8px;
