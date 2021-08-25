@@ -4,15 +4,14 @@ import "./inviteCoworker.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
-const InviteCoworker = ({ users, currentBoard, currentUser }) => {
+const InviteCoworker = ({ users, currentBoard, boardUsers, displayBoardUsers }) => {
   const [suggestions, setSuggestions] = useState([]);
-  const [boardUsers, setBoardUsers] = useState([]);
   const [text, setText] = useState("");
   const [userToAdd, setUserToAdd] = useState([]);
   const { boardId } = currentBoard;
 
   useEffect(() => {
-    displayBoardUsers();
+    displayBoardUsers(boardId);
   }, []);
   const handleChange = (event) => {
     const value = event.target.value;
@@ -48,16 +47,6 @@ const InviteCoworker = ({ users, currentBoard, currentUser }) => {
       </ul>
     );
   };
-
-  const displayBoardUsers = async () => {
-    await axios
-      .get(`http://localhost:27029/api/User/${boardId}`)
-      .then((res) => {
-        if (res.status === 200) {
-          setBoardUsers(res.data);
-        }
-      });
-  };
   const AddNewUser = async () => {
     if (userToAdd.length !== 0) {
       let userId = userToAdd.userId;
@@ -68,7 +57,7 @@ const InviteCoworker = ({ users, currentBoard, currentUser }) => {
         )
         .then((res) => {
           if (res.status === 200) {
-            displayBoardUsers();
+            displayBoardUsers(boardId);
           }
         });
     }
@@ -80,7 +69,7 @@ const InviteCoworker = ({ users, currentBoard, currentUser }) => {
       .then((res) => {
         if (res.status === 200) {
           toast.success("User Removed Successfully");
-          displayBoardUsers();
+          displayBoardUsers(boardId);
         }
       });
   };

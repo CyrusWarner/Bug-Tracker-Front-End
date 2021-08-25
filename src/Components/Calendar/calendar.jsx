@@ -8,21 +8,17 @@ import "./calendar.css";
 import axios from "axios";
 import { toast } from "react-toastify";
 import CalendarEventDetails from "../CalendarEventDetails/calendarEventDetails";
-const Calendar = ({ currentBoard, userRole }) => {
+const Calendar = ({ currentBoard, userRole, boardUsers, displayBoardUsers }) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [events, setEvents] = useState([]);
   const [filteredEvents, setFilteredEvents] = useState([]);
   const { boardId } = currentBoard;
+
   const onEventAdded = async (eventData) => {
-    const data = {
-      title: eventData.title,
-      date: eventData.date,
-      boardId: boardId,
-    };
     await axios
-      .post("http://localhost:27029/api/Events", data)
+      .post("http://localhost:27029/api/Events", eventData)
       .then((res) => {
         if (res.status == 200) {
           getAllEvents();
@@ -73,13 +69,14 @@ const Calendar = ({ currentBoard, userRole }) => {
             <h1 className="title">Employee Calendar</h1>
             <div>
               {userRole === "Admin" && (
-                <NewEventModal onEventAdded={onEventAdded} />
+                <NewEventModal onEventAdded={onEventAdded} boardUsers={boardUsers} currentBoard={currentBoard} displayBoardUsers={displayBoardUsers}/>
                 
               )}
             </div>
-            <CalendarEventDetails filteredEvents={filteredEvents} show={show} handleClose={handleClose}/>
           </Col>
-          <Col sm={1}></Col>
+          <Col sm={1}>
+          <CalendarEventDetails filteredEvents={filteredEvents} show={show} handleClose={handleClose}/>
+          </Col>
         </Row>
       </Container>
       <Container>

@@ -26,6 +26,7 @@ const App = () => {
   const [currentBoard, setCurrentBoard] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
   const [userRole, setUserRole] = useState("")
+  const [boardUsers, setBoardUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -117,10 +118,19 @@ const App = () => {
       if(res.status === 200){
         // console.log(res.data)
         setUserRole(res.data[0].roles.roleName)
-        console.log(res.data[0].roles.roleName)
       }
     })
   }
+
+  const displayBoardUsers = async (boardId) => {
+    await axios
+      .get(`http://localhost:27029/api/User/${boardId}`)
+      .then((res) => {
+        if (res.status === 200) {
+          setBoardUsers(res.data);
+        }
+      });
+  };
   return (
     <React.Fragment>
       <ToastContainer autoClose={3000} />
@@ -211,6 +221,8 @@ const App = () => {
                     users={users}
                     currentBoard={currentBoard}
                     currentUser={currentUser}
+                    displayBoardUsers={displayBoardUsers}
+                    boardUsers={boardUsers}
                   />
                 );
                   }
@@ -219,7 +231,7 @@ const App = () => {
               <Route
                 path="/ViewCalendar"
                 render={(props) => (
-                  <Calendar {...props} currentBoard={currentBoard} userRole={userRole}/>
+                  <Calendar {...props} currentBoard={currentBoard} userRole={userRole} boardUsers={boardUsers} displayBoardUsers={displayBoardUsers}/>
                 )}
               />
               <Route
