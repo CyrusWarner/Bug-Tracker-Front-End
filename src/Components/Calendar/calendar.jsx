@@ -75,7 +75,7 @@ const Calendar = ({ currentBoard, userRole, boardUsers, displayBoardUsers }) => 
             </div>
           </Col>
           <Col sm={1}>
-          <CalendarEventDetails filteredEvents={filteredEvents} show={show} handleClose={handleClose}/>
+          <CalendarEventDetails filteredEvents={filteredEvents} show={show} handleClose={handleClose} getAllEvents={getAllEvents}/>
           </Col>
         </Row>
       </Container>

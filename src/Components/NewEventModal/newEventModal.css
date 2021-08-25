@@ -1,0 +1,38 @@
+.eventAutoCompleteText {
+    width: 100%;
+    border: 1px solid grey;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 4px #C5C6C7;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.73);
+}
+
+.eventAutoCompleteText input {
+    width: 100%;
+    border: none;
+    font-size: 14px;
+    padding: 10px 5px;
+    color: rgba(0, 0, 0, 0.73);
+    box-sizing: border-box;
+    outline: none;
+}
+
+.eventAutoCompleteText ul {
+    list-style: none;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid grey;
+}
+.eventAutoCompleteText ul::before {
+    content: "";
+}
+
+.eventAutoCompleteText li {
+    padding: 10px 5px;
+    cursor: pointer;
+}
+
+.eventAutoCompleteText li:hover {
+    text-decoration: underline;
+    background-color: white;
+}

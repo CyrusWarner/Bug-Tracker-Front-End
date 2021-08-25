@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
+import './newEventModal.css'
 const NewEventModal = ({onEventAdded, boardUsers, currentBoard, displayBoardUsers}) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -21,9 +22,9 @@ const NewEventModal = ({onEventAdded, boardUsers, currentBoard, displayBoardUser
         boardId: boardId,
         assignee: userEmail,
       }
-      debugger
         onEventAdded(event)
         setUserEmail("");
+        setText("");
         reset();
     }
 
@@ -79,7 +80,7 @@ const NewEventModal = ({onEventAdded, boardUsers, currentBoard, displayBoardUser
               {errors.title && <p className="ms-1" style={{ color: "crimson" }}>{errors.title.message}</p>}
               </div>
               <div>
-              <div className="autoCompleteText mt-2">
+              <div className="eventAutoCompleteText mt-2">
               <input
                 aria-label="search"
                 placeholder="Email Search..."
