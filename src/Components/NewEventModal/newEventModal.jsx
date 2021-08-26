@@ -80,7 +80,8 @@ const NewEventModal = ({onEventAdded, boardUsers, currentBoard, displayBoardUser
               {errors.title && <p className="ms-1" style={{ color: "crimson" }}>{errors.title.message}</p>}
               </div>
               <div>
-              <div className="eventAutoCompleteText mt-2">
+              <label className="mt-2">Assignee:</label>
+              <div className="eventAutoCompleteText ">
               <input
                 aria-label="search"
                 placeholder="Email Search..."

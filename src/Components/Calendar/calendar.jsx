@@ -72,7 +72,11 @@ const Calendar = ({ currentBoard, userRole, boardUsers, displayBoardUsers }) => 
           <Col sm={10}>
             <h1 className="title">Employee Calendar<AiIcons.AiOutlineCalendar color="#45A29E" className="ms-1" size="3rem" /></h1>
             <p className="font-description fs-5">Click On Calendar Day For The Day's Events</p>
-          <div style={{color: "#45A29E"}} className="fs-4">Show Table View <BsIcons.BsTable onClick={() => setTableView(!tableView)} style={{cursor: "pointer", color: "#45A29E"}}/></div>
+            {tableView 
+              ? (<div style={{color: "#45A29E"}} className="fs-4">Show Calendar View <AiIcons.AiOutlineCalendar size="2rem" onClick={() => setTableView(!tableView)} style={{cursor: "pointer", color: "#45A29E"}}/></div>)
+              : (<div style={{color: "#45A29E"}} className="fs-4">Show Table View <BsIcons.BsTable  onClick={() => setTableView(!tableView)} style={{cursor: "pointer", color: "#45A29E"}}/></div>)
+            }
+   
             <div>
               {userRole === "Admin" && (
                 <NewEventModal onEventAdded={onEventAdded} boardUsers={boardUsers} currentBoard={currentBoard} displayBoardUsers={displayBoardUsers}/>

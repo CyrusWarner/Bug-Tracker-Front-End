@@ -70,7 +70,6 @@ const CreateBoard = ({ currentUser, getUsersBoards, currentBoard }) => {
             <div className="text-center">
             <Button
               type="submit"
-              style={{ borderColor: "#060b26", color: "#060b26" }}
               className="mt-2 mb-2"
             >
               Add Board

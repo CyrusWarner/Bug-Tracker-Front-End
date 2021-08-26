@@ -9,6 +9,7 @@ import * as BsIcons from "react-icons/bs";
 import * as FiIcons from "react-icons/fi";
 import * as GiIcons from "react-icons/gi";
 const NavBar = ({ currentUser, currentBoard, logout, userRole }) => {
+  const {boardId} = currentBoard;
   return (
     <React.Fragment>
       <IconContext.Provider value={{ color: "white" }}>
@@ -22,11 +23,12 @@ const NavBar = ({ currentUser, currentBoard, logout, userRole }) => {
     </Navbar.Toggle>
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
-      {currentUser.length !== 0 && 
-        <Nav.Link className="customNavLink" as={Link} to="/"> <AiIcons.AiFillHome /><span className="ms-2" style={{color: "#fff"}}>Home</span></Nav.Link>
+        {currentUser.length !== 0 &&
+        <Nav.Link className="customNavLink" as={Link} to="/"> <FiIcons.FiClipboard /><span className="ms-2" style={{color: "#fff"}}>All Boards</span></Nav.Link>
         }
       {currentBoard.length !== 0 && 
       <React.Fragment>
+        <Nav.Link className="customNavLink" as={Link} to={`/ShowBoard/${boardId}`}> <AiIcons.AiFillHome /><span className="ms-2" style={{color: "#fff"}}>Board Home</span></Nav.Link>
         {userRole === "Admin" &&
         <Nav.Link  className="customNavLink" as={Link} to="/Invite"><IoIcons.IoMdPeople /><span className="ms-2" style={{color: "#fff"}}>Invite Coworkers</span></Nav.Link>
         }

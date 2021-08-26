@@ -10,9 +10,10 @@ const DisplayNoteCards = ({allNotes, currentBoard, currentUser, getAllNotes}) =>
                 <Row className="d-flex justify-content-center m-3">
             {allNotes.map((note) => {
                 return(
-                    <Card className="cardContainer" style={{ width: '24rem' }}>
+                    <Card className="cardContainer text-center" style={{ width: '24rem' }}>
                     <Card.Body>
                       <Card.Title>{note.title}</Card.Title>
+                      <hr></hr>
                       <Card.Text>{note.description}</Card.Text>
                       <div className="d-flex justify-content-around">
                       <UpdateNotecardForm note={note} currentBoard={currentBoard} currentUser={currentUser} getAllNotes={getAllNotes}/>

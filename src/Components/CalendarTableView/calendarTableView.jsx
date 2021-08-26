@@ -1,8 +1,25 @@
-import React from "react";
+import React, {useState} from "react";
 import { Container, Row, Table, Col } from "react-bootstrap";
 const CalendarTableView = ({ events }) => {
+  const [search, setSearch] = useState("");
+  const filteredEvents = events.filter((boardEvent) =>
+  boardEvent.title.toLowerCase().includes(search.toLowerCase()) ||
+  boardEvent.assignee.toLowerCase().includes(search.toLowerCase()) ||
+  boardEvent.date.toLowerCase().includes(search.toLowerCase()) 
+  )
+
   return (
-    <Container fluid>
+    <React.Fragment>
+      <Container className="g-0">
+        <Row>
+          <Col sm={2}></Col>
+          <Col sm={8}>
+          <input onChange={(event) => setSearch(event.target.value)} placeholder="Search..." className="form-control mb-2"></input>
+          </Col>
+          <Col sm={2}></Col>
+        </Row>
+      </Container>
+    <Container fluid className="g-0">
       <Row>
           <Col sm={1}></Col>
         <Col sm={10}>
@@ -16,7 +33,7 @@ const CalendarTableView = ({ events }) => {
               </tr>
             </thead>
             <tbody>
-              {events.map((event) => {
+              {filteredEvents.map((event) => {
                   return(
                 <tr>
                   <td>{event.title}</td>
@@ -32,6 +49,7 @@ const CalendarTableView = ({ events }) => {
         <Col sm={1}></Col>
       </Row>
     </Container>
+    </React.Fragment>
   );
 };
 
