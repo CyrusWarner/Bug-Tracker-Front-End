@@ -1,0 +1,8 @@
+.wrapper {
+    max-height: 700px !important;
+    overflow-y: auto !important;
+}
+
+.item {
+    margin: 0.25rem;
+}

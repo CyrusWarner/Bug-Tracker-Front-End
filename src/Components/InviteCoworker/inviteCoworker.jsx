@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ShowCoworkers from "../ShowCoworkers/showCoworkers";
+import * as IoIcons from "react-icons/io";
 import "./inviteCoworker.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
@@ -53,7 +54,10 @@ const InviteCoworker = ({ users, currentBoard, boardUsers, displayBoardUsers, cu
         )
         .then((res) => {
           if (res.status === 200) {
+            toast.success("User Added Successfully")
             displayBoardUsers(boardId);
+            setText("")
+            setUserToAdd([])
           }
         });
     }
@@ -72,7 +76,8 @@ const InviteCoworker = ({ users, currentBoard, boardUsers, displayBoardUsers, cu
   return (
     <React.Fragment>
       <Container>
-        <h1 className="title">Board Users</h1>
+        <h1 className="title">Board Users<IoIcons.IoMdPeople className="ms-1" size="3rem"/>
+        </h1>
       </Container>
       <Container>
         <Row>

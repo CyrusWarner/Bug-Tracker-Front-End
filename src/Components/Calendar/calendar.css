@@ -4,19 +4,19 @@
 }
 
 .fc-daygrid {
-    background-color: #C5C6C7;
+    background-color: #212529;
 }
 
 .fc-daygrid-day-number { 
-    color: black;
+    color: #45A29E;
 }
 
 .fc-toolbar-title {
-    color: #EDF5E1;
+    color: #45A29E;
 }
 
 .fc-col-header-cell-cushion {
-    color: black;
+    color: #45A29E;
 }
 
 .fc-daygrid-day-frame {
@@ -28,7 +28,5 @@
     cursor: pointer;
 }
 
-.fc-event-title-container {
-    background-color: #FC4445;
-}
+
 

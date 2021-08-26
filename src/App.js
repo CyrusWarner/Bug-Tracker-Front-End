@@ -19,7 +19,6 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./app.css";
 import axios from "axios";
-import { WindowScrollController } from "@fullcalendar/react";
 const App = () => {
   const [users, setUsers] = useState([]);
   const [userBoards, setUsersBoards] = useState([]);
