@@ -66,7 +66,7 @@ const IssueForm = ({ currentUser, currentBoard, getAllIssues }) => {
                   },
                 })}
               ></textarea>
-              <label className="floatingInput">Bug Description...</label>
+              <label className="floatingInput">New Bug Description...</label>
               </div>
               {errors.description && (
                 <p className="ms-1" style={{ color: "crimson" }}>
@@ -74,7 +74,6 @@ const IssueForm = ({ currentUser, currentBoard, getAllIssues }) => {
                 </p>
               )}
               <Button
-                style={{ borderColor: "#060b26", color: "#060b26" }}
                 className="mt-2"
                 type="submit"
               >

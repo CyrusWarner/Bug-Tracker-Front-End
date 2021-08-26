@@ -7,14 +7,19 @@ import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 import * as BsIcons from "react-icons/bs";
 import * as FiIcons from "react-icons/fi";
+import * as GiIcons from "react-icons/gi";
 const NavBar = ({ currentUser, currentBoard, logout, userRole }) => {
   return (
     <React.Fragment>
       <IconContext.Provider value={{ color: "white" }}>
       <Navbar bg="dark" expand="lg">
   <Container>
-    <Navbar.Brand style={{color: "#fff"}} ><AiIcons.AiOutlineBug size="2rem"/> Bug Tracker</Navbar.Brand>
-    <Navbar.Toggle style={{color: "#fff"}}aria-controls="basic-navbar-nav" />
+    <Navbar.Brand style={{color: "#45A29E"}} ><AiIcons.AiOutlineBug color="#45A29E" size="2rem"/> Bug Tracker</Navbar.Brand>
+    <Navbar.Toggle aria-controls="basic-navbar-nav">
+      <span>
+        <GiIcons.GiHamburgerMenu color="#45A29E" size="2rem"/>
+      </span>
+    </Navbar.Toggle>
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
       {currentUser.length !== 0 && 

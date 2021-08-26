@@ -1,9 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Hina+Mincho&family=Roboto&display=swap');
+
 .title {
     margin-top: 2rem;
     margin-bottom: 2rem;
     display: inline-block;
     position: relative;
     color: #212529;
+    font-family: 'Hina Mincho', serif;
 }
 
 .title:after {

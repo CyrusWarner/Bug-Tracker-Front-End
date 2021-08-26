@@ -32,22 +32,22 @@ const ShowAllIssues = ({ allIssues, getAllIssues, currentUser, userRole }) => {
                   {!issue.isCompleted && (
                     <div
                       style={{ margin: "10px", color: "red" }}
-                      className="fs-5 position-absolute top-0 end-0  "
+                      className="ms-3 fs-4"
                     >
                       Bug In Progress{" "}
-                      <FaIcons.FaHourglassHalf style={{ color: "red" }} />
+                      <FaIcons.FaHourglassHalf size="1.5rem" style={{ color: "red" }} />
                     </div>
                   )}
                   {issue.isCompleted && (
                     <div
                       style={{ margin: "10px", color: "green" }}
-                      className="fs-5 position-absolute top-0 end-0 "
+                      className="ms-3 fs-4"
                     >
                       Bug Completed{" "}
                       <AiIcons.AiFillCheckCircle size="1.5rem" color="green" />
                     </div>
                   )}
-                  <Card.Header style={{backgroundColor: "white"}} className="cardText mt-4 fs-5">
+                  <Card.Header style={{backgroundColor: "white"}} className="cardText fs-5">
                     {issue.title}
                   </Card.Header>
                   <Card.Body>

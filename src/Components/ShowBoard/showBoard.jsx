@@ -35,7 +35,7 @@ const ShowBoard = ({currentBoard, currentUser, userRole, displayBoardUsers}) => 
                         <h1 className="title">
                         {title}
                         </h1>
-                        <p style={{color: "#212529"}} className="fs-4">{description}</p>
+                        <p style={{color: "#212529"}} className="font-description fs-5">{description}</p>
                         {userRole === "Admin" &&
                         <IssueForm currentUser={currentUser} currentBoard={currentBoard} getAllIssues={getAllIssues}/>
                         }
