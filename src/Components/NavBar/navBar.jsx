@@ -13,7 +13,7 @@ const NavBar = ({ currentUser, currentBoard, logout, userRole }) => {
       <IconContext.Provider value={{ color: "white" }}>
       <Navbar bg="dark" expand="lg">
   <Container>
-    <Navbar.Brand style={{color: "#fff"}} >React-Bootstrap</Navbar.Brand>
+    <Navbar.Brand style={{color: "#fff"}} ><AiIcons.AiOutlineBug size="2rem"/> Bug Tracker</Navbar.Brand>
     <Navbar.Toggle style={{color: "#fff"}}aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">

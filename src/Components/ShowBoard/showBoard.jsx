@@ -10,7 +10,7 @@ const ShowBoard = ({currentBoard, currentUser, userRole, displayBoardUsers}) => 
     useEffect(() => {
         getAllIssues();
         displayBoardUsers(boardId);
-    }, [boardId])
+    }, [currentBoard])
 
     const getAllIssues = async () => {
         if(boardId !== undefined) {

@@ -237,7 +237,7 @@ const App = () => {
               <Route
                 path="/Email"
                 render={(props) => (
-                  <Email {...props} currentBoard={currentBoard} currentUser={currentUser} boardUsers={boardUsers}/>
+                  <Email {...props} currentBoard={currentBoard} currentUser={currentUser} boardUsers={boardUsers} displayBoardUsers={displayBoardUsers}/>
                 )}
               />
             </Switch>

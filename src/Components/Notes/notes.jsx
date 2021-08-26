@@ -31,7 +31,7 @@ const Notes = ({currentBoard, currentUser}) => {
             <Container>
                 <Row>
                     <Col sm={6}>
-                        <h1 className="title mt-4 mb-5">{title}'s notes<BsIcons.BsPencilSquare className="ms-1" size="3rem" />
+                        <h1 className="title mt-4 mb-5">{title}'s notes<BsIcons.BsPencilSquare color="#45A29E" className="ms-1" size="3rem" />
                         </h1>
                         <div>
                         <NoteCardForm currentBoard={currentBoard} currentUser={currentUser} getAllNotes={getAllNotes}/>

@@ -70,7 +70,7 @@ const Calendar = ({ currentBoard, userRole, boardUsers, displayBoardUsers }) => 
         <Row>
           <Col sm={1}></Col>
           <Col sm={10}>
-            <h1 className="title">Employee Calendar<AiIcons.AiOutlineCalendar className="ms-1" size="3rem" /></h1>
+            <h1 className="title">Employee Calendar<AiIcons.AiOutlineCalendar color="#45A29E" className="ms-1" size="3rem" /></h1>
           <div style={{color: "#45A29E"}} className="fs-4">Show Table View <BsIcons.BsTable onClick={() => setTableView(!tableView)} style={{cursor: "pointer", color: "#45A29E"}}/></div>
             <div>
               {userRole === "Admin" && (

@@ -76,7 +76,7 @@ const InviteCoworker = ({ users, currentBoard, boardUsers, displayBoardUsers, cu
   return (
     <React.Fragment>
       <Container>
-        <h1 className="title">Board Users<IoIcons.IoMdPeople className="ms-1" size="3rem"/>
+        <h1 className="title">Board Users<IoIcons.IoMdPeople color="#45A29E" className="ms-1" size="3rem"/>
         </h1>
       </Container>
       <Container>

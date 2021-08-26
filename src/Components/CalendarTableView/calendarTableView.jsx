@@ -7,7 +7,7 @@ const CalendarTableView = ({ events }) => {
           <Col sm={1}></Col>
         <Col sm={10}>
             <div>
-          <Table  responsive striped bordered hover>
+          <Table className="text-center" style={{borderColor: "#45A29E"}} responsive striped bordered hover>
             <thead>
               <tr>
                 <th>Event Title</th>

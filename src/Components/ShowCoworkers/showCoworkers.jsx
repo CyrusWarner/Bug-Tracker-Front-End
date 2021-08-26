@@ -13,17 +13,21 @@ const ShowCoworkers = ({ boardUsers, removeUser, currentUser }) => {
       <Container>
         <Row>
           <input aria-label="search" type="search" className="form-control" placeholder="Search For Board User By Email..." onChange={(event) => setSearch(event.target.value)}></input>
+          <div className="wrapper">
       {filterUsers.map((user) => {
         return (
+          <div className="item">
           <Card className="cardContainer mt-2 mb-2"> 
-            <Card.Body><div className="fs-5">{user.email}</div>
-            {userId !== user.userId &&
-            <span className="position-absolute top-50 end-0 translate-middle-y"><AiIcons.AiOutlineClose  style={{cursor: "pointer "}} onClick={() => (removeUser(user.userId))} color="red" size="2rem" /></span>
+          {userId !== user.userId &&
+            <div className="position-absolute top-50 end-0 translate-middle-y"><AiIcons.AiOutlineClose  style={{cursor: "pointer "}} onClick={() => (removeUser(user.userId))} color="red" size="1.5rem" /></div>
             }
+            <Card.Body><div className="fs-5">{user.email}</div>
             </Card.Body>
           </Card>
+          </div>
         );
       })}
+      </div>
       </Row>
       </Container>
     </React.Fragment>
