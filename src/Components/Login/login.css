@@ -7,13 +7,11 @@
     box-shadow: none !important;
 }
 
-.inputButton {
-    color: #FC4445 !important;
-    background-color: #FC4445 !important;
-    border-color: #C5C6C7 !important;
-}
-
 .errorDisplay {
     color: #FC4445;
+}
+
+.register {
+    font-size: 14px;
 }
 

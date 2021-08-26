@@ -5,6 +5,7 @@ import './login.css'
 import axios from 'axios';
 import { useHistory } from 'react-router';
 import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
 const Login = (props) => {
     const {createCurrentUser} = props;
@@ -38,24 +39,33 @@ const Login = (props) => {
                 <Row>
                     <Col sm={3}></Col>
                     <Col sm={6}>
+                        <div className="text-center">
                         <h1 className="title mb-5">Login</h1>
+                        </div>
                     </Col>
                     <Col sm={3}></Col>
                 </Row>
             </Container>
         <Container>
             <Row>
-                <Col sm={3}></Col>
-                <Col sm={6}>
-                    <Form onSubmit={handleSubmit(onSubmit)}>
-                        <input className="form-control"  type="text" placeholder="Email"  {...register("email", {required: "Please Enter Your Email"})}></input>
+                <Col sm={2}></Col>
+                <Col sm={8}>
+                    <Form className="text-center" onSubmit={handleSubmit(onSubmit)}>
+                        <div className="form-floating">
+                        <input className="form-control"  type="text" placeholder="Email..."  {...register("email", {required: "Please Enter Your Email"})}></input>
+                        <label className="floatingInputGrid fs-5">Email...</label>
+                        </div>
                         {errors.email && <p className="errorDisplay ms-1" >{errors.email.message}</p>}
-                        <input className="form-control mt-2" type="password" placeholder="Password"  {...register("password", {required: "Please Enter Your Password"})}></input>
+                        <div className="form-floating">
+                        <input className="form-control mt-2" type="password" placeholder="Password..."  {...register("password", {required: "Please Enter Your Password"})}></input>
+                        <label className="floatingInputGrid fs-5">Password...</label>
+                        </div>
                         {errors.password && <p className="errorDisplay ms-1" >{errors.password.message}</p>}
                         <Button className="inputButton mt-2" type="submit">Submit</Button>
+                        <div className="mt-3">Not Registered? <Link to="/SignUp" style={{color: "#45A29E"}}>Register Here</Link></div>
                     </Form>
                 </Col>
-                <Col sm={3}></Col>
+                <Col sm={2}></Col>
             </Row>
         </Container>
         </React.Fragment>

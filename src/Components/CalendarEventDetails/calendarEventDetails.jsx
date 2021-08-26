@@ -18,11 +18,11 @@ const CalendarEventDetails = ({ show, handleClose, filteredEvents, getAllEvents,
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Calendar Events</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {filteredEvents.length !== 0 && (
-            <Table striped bordered hover>
+            <Table responsive striped bordered hover>
               <thead>
                 <tr>
                   <th>Event Title</th>
@@ -54,11 +54,8 @@ const CalendarEventDetails = ({ show, handleClose, filteredEvents, getAllEvents,
           {filteredEvents.length === 0 && <h3 className="text-center">No Events For The Day</h3>}
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
           <Button variant="primary" onClick={handleClose}>
-            Save Changes
+            Close
           </Button>
         </Modal.Footer>
       </Modal>
