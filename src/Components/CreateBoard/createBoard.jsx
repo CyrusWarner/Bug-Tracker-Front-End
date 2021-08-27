@@ -62,11 +62,11 @@ const CreateBoard = ({ currentUser, getUsersBoards, currentBoard }) => {
               placeholder="Board Description..."
               type="text"
               className="form-control mt-2"
-              {...register("description", {required: "Board Description Is Required", minLength: {value: 25, message: "Minimum Description Length Is 25 Characters"}})}
+              {...register("description", {required: true})}
             ></textarea>
             <label className="floating-input">Board Description...</label>
             </div>
-            {errors.description && <p className="ms-1" style={{color: "crimson"}}>{errors.description.message}</p>}
+            {errors.description && <p className="ms-1" style={{color: "crimson"}}>Board Description Is Required</p>}
             <div className="text-center">
             <Button
               type="submit"

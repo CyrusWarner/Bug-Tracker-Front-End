@@ -14,7 +14,9 @@ const CalendarTableView = ({ events }) => {
         <Row>
           <Col sm={2}></Col>
           <Col sm={8}>
+            <div className="m-1">
           <input onChange={(event) => setSearch(event.target.value)} placeholder="Search..." className="form-control mb-2"></input>
+            </div>
           </Col>
           <Col sm={2}></Col>
         </Row>
@@ -23,7 +25,7 @@ const CalendarTableView = ({ events }) => {
       <Row>
           <Col sm={1}></Col>
         <Col sm={10}>
-            <div>
+            <div className="m-1">
           <Table className="text-center" style={{borderColor: "#45A29E"}} responsive striped bordered hover>
             <thead>
               <tr>

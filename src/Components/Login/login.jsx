@@ -17,17 +17,16 @@ const Login = (props) => {
             Email: data.email,
             Password: data.password,
         }
-         await axios.post(`http://localhost:27029/api/User/Login`, user).then((res => {
+        await axios.post(`http://localhost:27029/api/User/Login`, user).then((res) => {
             if(res.status === 200) {
                 createCurrentUser(res.data);
                 toast.success(`Welcome Back ${res.data.firstName}`)
                 history.push("/");
             }
-        }))
+        })
         .catch((err) => {
             if(err){
-                console.log(err)
-                toast.error("Invalid Email Or Password")
+                toast.error("Invalid Email Or Password");
             }
         })
         reset();
@@ -55,12 +54,12 @@ const Login = (props) => {
                         <input className="form-control"  type="text" placeholder="Email..."  {...register("email", {required: "Please Enter Your Email"})}></input>
                         <label className="floatingInputGrid fs-5">Email...</label>
                         </div>
-                        {errors.email && <p className="errorDisplay ms-1" >{errors.email.message}</p>}
+                        {errors.email && <p className="errorColor ms-1" >{errors.email.message}</p>}
                         <div className="form-floating">
                         <input className="form-control mt-2" type="password" placeholder="Password..."  {...register("password", {required: "Please Enter Your Password"})}></input>
                         <label className="floatingInputGrid fs-5">Password...</label>
                         </div>
-                        {errors.password && <p className="errorDisplay ms-1" >{errors.password.message}</p>}
+                        {errors.password && <p className="errorColor ms-1" >{errors.password.message}</p>}
                         <Button className="inputButton mt-2" type="submit">Submit</Button>
                         <div className="mt-3">Not Registered? <Link to="/SignUp" style={{color: "#45A29E"}}>Register Here</Link></div>
                     </Form>

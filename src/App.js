@@ -66,12 +66,6 @@ const App = () => {
           setUsers(res.data);
         }
       })
-      .catch((err) => {
-        if (err) {
-          console.log(err);
-          //COME BACK AND ADD TOASTIFY
-        }
-      });
   };
 
   const getUsersBoards = async () => {
@@ -83,11 +77,6 @@ const App = () => {
           setUsersBoards(res.data);
         }
       })
-      .catch((err) => {
-        if (err) {
-          console.log(err);
-        }
-      });
   };
 
   const createCurrentUser = (user) => {
@@ -102,12 +91,6 @@ const App = () => {
           setCurrentBoard(res.data[0]);
         }
       })
-      .catch((err) => {
-        if (err) {
-          //ADD TOASTIFY NOTIFICATION HERE
-          console.log(err);
-        }
-      });
   };
 
   const getCurrentUserRole = async () => {
@@ -115,7 +98,6 @@ const App = () => {
     const boardId = currentBoard.boardId
     await axios.get(`http://localhost:27029/api/User/GetUserRole/Board/${boardId}/User/${userId}`).then((res) => {
       if(res.status === 200){
-        // console.log(res.data)
         setUserRole(res.data[0].roles.roleName)
       }
     })

@@ -44,11 +44,6 @@ const Calendar = ({ currentBoard, userRole, boardUsers, displayBoardUsers }) => 
           setEvents(res.data);
         }
       })
-      .catch((err) => {
-        if (err) {
-          console.log(err);
-        }
-      });
   };
   useEffect(() => {
     getAllEvents();

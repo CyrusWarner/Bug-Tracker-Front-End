@@ -1,6 +1,7 @@
 import React from "react";
 import { Button, Container, Row, Col, Card } from "react-bootstrap";
 import emailjs from "emailjs-com";
+import { toast } from "react-toastify";
 
 const EmailContactForm = ({ currentUser, boardUsers }) => {
   const { email } = currentUser;
@@ -19,7 +20,7 @@ const EmailContactForm = ({ currentUser, boardUsers }) => {
           console.log(result.text);
         },
         (error) => {
-          console.log(error.text);
+          toast.error("Please Enter A Recipient Email and Message");
         }
       );
     e.target.reset();

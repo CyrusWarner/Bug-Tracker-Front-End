@@ -59,12 +59,7 @@ const IssueForm = ({ currentUser, currentBoard, getAllIssues }) => {
                 placeholder="Bug Description.."
                 className="form-control mt-2"
                 {...register("description", {
-                  required: "Bug Description Is Required",
-                  minLength: {
-                    value: "25",
-                    message: "Board Description Required Atleast 25 Characters",
-                  },
-                })}
+                  required: "Bug Description Is Required"})}
               ></textarea>
               <label className="floatingInput">New Bug Description...</label>
               </div>

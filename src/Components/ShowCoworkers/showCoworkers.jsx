@@ -12,7 +12,7 @@ const ShowCoworkers = ({ boardUsers, removeUser, currentUser }) => {
     <React.Fragment>
       <Container>
         <Row>
-          <input aria-label="search" type="search" className="form-control" placeholder="Search For Board User By Email..." onChange={(event) => setSearch(event.target.value)}></input>
+          <input aria-label="search" type="search" className="form-control mt-2" placeholder="Search For Board User By Email..." onChange={(event) => setSearch(event.target.value)}></input>
           <div className="wrapper">
       {filterUsers.map((user) => {
         return (

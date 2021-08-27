@@ -8,6 +8,10 @@
     font-family: 'Lato', sans-serif;
 } 
 
-.font-description {
+.Roboto-font {
     font-family: 'Roboto', sans-serif;
+}
+
+.errorColor {
+    color: crimson;
 }

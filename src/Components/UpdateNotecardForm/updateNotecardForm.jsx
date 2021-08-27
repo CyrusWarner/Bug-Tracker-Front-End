@@ -44,11 +44,11 @@ const UpdateNotecardForm = ({note, currentBoard, currentUser, getAllNotes}) => {
         <Modal.Body>
           <div>
           <label  className="fs-3">Title:</label>
-          <input defaultValue={title} type="text" {...register("title")} className="form-control"></input>
+          <input defaultValue={title} type="text" {...register("title", {required: true})} className="form-control"></input>
           </div>
           <div>
             <label  className="fs-3">Description:</label>
-            <textarea defaultValue={description} type="text" {...register("description")} className="form-control"></textarea>
+            <textarea defaultValue={description} type="text" {...register("description", {required: true})} className="form-control"></textarea>
           </div>
           </Modal.Body>
         <Modal.Footer>

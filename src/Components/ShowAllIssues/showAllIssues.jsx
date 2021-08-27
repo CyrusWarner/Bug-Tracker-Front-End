@@ -47,7 +47,7 @@ const ShowAllIssues = ({ allIssues, getAllIssues, currentUser, userRole }) => {
                       <AiIcons.AiFillCheckCircle size="1.5rem" color="green" />
                     </div>
                   )}
-                  <Card.Header style={{backgroundColor: "white"}} className="cardText fs-5">
+                  <Card.Header style={{backgroundColor: "white"}} className="Roboto-font cardText fs-5">
                     {issue.title}
                   </Card.Header>
                   <Card.Body>

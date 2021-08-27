@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import ApiKey from '../../ApiKey/apiKey';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 const Signup = () => {
     const {register, handleSubmit, formState: {errors}} = useForm();
     const history = useHistory();
@@ -31,6 +32,11 @@ const Signup = () => {
                 history.push("/Login")
             }
         })
+        .catch((err) => {
+            if(err){
+                toast.error("Email Already Taken")
+            }
+        })
     }
     return (
         <React.Fragment>
@@ -49,25 +55,25 @@ const Signup = () => {
                         <div className="form-floating"> 
                         <input placeholder="First Name..." style={{borderColor: "#060b26"}} className="form-control" {...register("firstName", {required: "First Name Is Required"})} id="firstName"></input>
                         <label className="floatingInputGrid fs-5">First Name...</label>
-                        {errors.firstName && <p className="ms-1" style={{ color: "crimson" }}>{errors.firstName.message}</p>}
+                        {errors.firstName && <p className="errorColor ms-1" >{errors.firstName.message}</p>}
                         </div> 
 
                         <div className="form-floating mt-2">
                         <input placeholder="Last Name..." style={{borderColor: "#060b26"}} className="form-control" {...register("lastName", {required: "Last Name Is Required"})} id="lastName"></input>
                         <label className="floatingInputGrid fs-5">Last Name...</label>
-                        {errors.lastName && <p className="ms-1" style={{ color: "crimson" }}>{errors.lastName.message}</p>}
+                        {errors.lastName && <p className="errorColor ms-1" >{errors.lastName.message}</p>}
                         </div>
 
                         <div className="form-floating mt-2">
                         <input placeholder="Email..." style={{borderColor: "#060b26"}} className="form-control" {...register("email", {required: "Email Is Required"})} id="email"></input>
                         <label className="floatingInputGrid fs-5" >Email...</label>
-                        {errors.email && <p className="ms-1" style={{ color: "crimson" }}>{errors.email.message}</p>}
+                        {errors.email && <p className="errorColor ms-1" >{errors.email.message}</p>}
                         </div>
 
                         <div className="form-floating mt-2">
                         <input placeholder="Password..." style={{borderColor: "#060b26"}} type="password" className="form-control" {...register("password", {required: "Password Is Required"})} id="password"></input>
                         <label className="floatingInputGrid fs-5">Password...</label>
-                        {errors.password && <p className="ms-1" style={{ color: "crimson" }}>{errors.password.message}</p>}
+                        {errors.password && <p className="errorColor ms-1" >{errors.password.message}</p>}
                         </div>
                         <div>
                         <Button className="mt-2" type="submit">Complete Signup</Button>
