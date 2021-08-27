@@ -32,21 +32,23 @@ const EmailContactForm = ({ currentUser, boardUsers }) => {
           <Col sm={6}>
             <form onSubmit={sendEmail}>
               <div>
-                <div>
-                  <label>From Email:</label>
+                <div className="form-floating">
                   <input
                     defaultValue={email}
                     className="form-control"
                     name="from_email"
                     readOnly
                   ></input>
+                  <label className="floatingInput">From Email:</label>
                 </div>
-                <label>To Board User:</label>
-                <input name="to_email" className="form-control"></input>
+                <div className="form-floating mt-2">
+                <input name="to_email" className="form-control" placeholder="Enter Board Users Email..."></input>
+                <label className="floatingInput">Enter Board Users Email...</label>
+                </div>
               </div>
-              <div>
-                <label>Message:</label>
-                <input name="message" className="form-control "></input>
+              <div className="form-floating mt-2">
+                <input name="message" className="form-control" placeholder="Enter A Message For Your Email..."></input>
+                <label className="floatingInput">Enter A Message For Your Email...</label>
               </div>
               <Button className="mt-2" type="submit">
                 Send Email
