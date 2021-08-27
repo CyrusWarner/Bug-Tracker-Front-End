@@ -3,6 +3,7 @@ import React from 'react';
 import IssueForm from '../IssueForm/issueForm';
 import { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import ShowMoreText from "react-show-more-text";
 import ShowAllIssues from '../ShowAllIssues/showAllIssues';
 const ShowBoard = ({currentBoard, currentUser, userRole, displayBoardUsers}) => {
     const {title, description, boardId} = currentBoard
@@ -35,7 +36,15 @@ const ShowBoard = ({currentBoard, currentUser, userRole, displayBoardUsers}) => 
                         <h1 className="title">
                         {title}
                         </h1>
+                        <ShowMoreText
+                        lines={3}
+                        className="Roboto-font fs-5"
+                        more="Show More"
+                        less="Show Less"
+                        expanded={false}
+                        >
                         <p style={{color: "#212529"}} className="Roboto-font fs-5">{description}</p>
+                        </ShowMoreText> 
                         {userRole === "Admin" &&
                         <IssueForm currentUser={currentUser} currentBoard={currentBoard} getAllIssues={getAllIssues}/>
                         }

@@ -15,7 +15,9 @@ const DisplayNoteCards = ({allNotes, currentBoard, currentUser, getAllNotes}) =>
                 <Row>
                     <Col sm={2}></Col>
                     <Col sm={8}>
+                        {allNotes.length !== 0 &&
                         <input placeholder="Search For Notecard..." onChange={(e) => setSearch(e.target.value)} className="form-control" type="search"></input>
+                         }
                     </Col>
                     <Col sm={2}></Col>
                 </Row>
