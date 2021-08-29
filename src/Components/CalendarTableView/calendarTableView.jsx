@@ -29,9 +29,9 @@ const CalendarTableView = ({ events }) => {
           <Table className="text-center" style={{borderColor: "#45A29E"}} responsive striped bordered hover>
             <thead>
               <tr>
-                <th>Event Title</th>
-                <th>Event Assignee</th>
-                <th>Event Date</th>
+                <th className="col-sm-4">Event Title</th>
+                <th className="col-sm-4">Event Assignee</th>
+                <th className="col-sm-4">Event Date</th>
               </tr>
             </thead>
             <tbody>
