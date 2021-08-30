@@ -5,6 +5,7 @@ import "./inviteCoworker.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { motion } from "framer-motion";
 const InviteCoworker = ({ users, currentBoard, boardUsers, displayBoardUsers, currentUser }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [text, setText] = useState("");
@@ -79,6 +80,11 @@ const InviteCoworker = ({ users, currentBoard, boardUsers, displayBoardUsers, cu
       });
   };
   return (
+    <motion.div
+    initial={{opacity: 0}}
+    animate={{opacity: 1}}
+    exit={{opacity: 0}}
+    >
     <React.Fragment>
       <Container>
         <h1 className="title">Board Users<IoIcons.IoMdPeople color="#45A29E" className="ms-1" size="3rem"/>
@@ -105,6 +111,7 @@ const InviteCoworker = ({ users, currentBoard, boardUsers, displayBoardUsers, cu
         </Row>
       </Container>
     </React.Fragment>
+    </motion.div>
   );
 };
 

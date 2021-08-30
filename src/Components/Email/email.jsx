@@ -2,12 +2,18 @@ import React, {useEffect} from 'react';
 import * as AiIcons from "react-icons/ai";
 import EmailContactForm from '../EmailContactForm/emailContactForm';
 import { Container, Row, Col } from 'react-bootstrap';
+import { motion } from 'framer-motion';
 const Email = ({currentUser, boardUsers, displayBoardUsers, currentBoard}) => {
     const {boardId} = currentBoard;
     useEffect(() => {
         displayBoardUsers(boardId)
     },[])
     return (
+        <motion.div
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}
+        >
         <React.Fragment>
            <Container>
                <Row>
@@ -19,6 +25,7 @@ const Email = ({currentUser, boardUsers, displayBoardUsers, currentBoard}) => {
            </Container>
            <EmailContactForm currentUser={currentUser} boardUsers={boardUsers} />
         </React.Fragment>
+        </motion.div>
     )
 }
 

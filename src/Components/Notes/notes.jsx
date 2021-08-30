@@ -4,6 +4,7 @@ import DisplayNoteCards from '../DisplayNoteCards/displayNoteCards';
 import * as BsIcons from "react-icons/bs";
 import NoteCardForm from '../NoteCardForm/noteCardForm';
 import axios from 'axios';
+import { motion } from 'framer-motion';
 const Notes = ({currentBoard, currentUser}) => {
     const [allNotes, setAllNotes] = useState([]);
     const {title} = currentBoard;
@@ -28,6 +29,11 @@ const Notes = ({currentBoard, currentUser}) => {
     }
 
     return (
+        <motion.div
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}
+        >
         <React.Fragment>
             <Container>
                 <Row>
@@ -47,6 +53,7 @@ const Notes = ({currentBoard, currentUser}) => {
                 </div>
             }
         </React.Fragment>
+        </motion.div>
     )
 }
 

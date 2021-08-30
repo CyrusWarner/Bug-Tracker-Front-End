@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+import { motion } from 'framer-motion';
 import IssueForm from '../IssueForm/issueForm';
 import { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
@@ -28,9 +29,14 @@ const ShowBoard = ({currentBoard, currentUser, userRole, displayBoardUsers}) => 
         }
     }
     return (
+        <motion.div
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}
+        >
         <React.Fragment>
             {currentBoard.length !== 0 &&
-            <Container>
+            <Container >
                 <Row>
                     <Col sm={6}>
                         <h1 className="title">
@@ -56,6 +62,7 @@ const ShowBoard = ({currentBoard, currentUser, userRole, displayBoardUsers}) => 
             </Container>
             }
         </React.Fragment>
+        </motion.div>
         
     )
 }

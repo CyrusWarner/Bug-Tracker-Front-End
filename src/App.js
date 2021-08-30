@@ -4,7 +4,9 @@ import {
   Switch,
   Route,
   Redirect,
+  useLocation
 } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import Signup from "./Components/Signup/signup";
 import Login from "./Components/Login/login";
 import Home from "./Components/Home/home";
@@ -24,7 +26,7 @@ const App = () => {
   const [userBoards, setUsersBoards] = useState([]);
   const [currentBoard, setCurrentBoard] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
-  const [userRole, setUserRole] = useState("")
+  const [userRole, setUserRole] = useState("");
   const [boardUsers, setBoardUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -40,7 +42,7 @@ const App = () => {
     }
   }, []);
   useEffect(() => {
-    if(currentBoard.length !== 0){
+    if (currentBoard.length !== 0) {
       getCurrentUserRole();
     }
     let user = currentUser;
@@ -59,13 +61,11 @@ const App = () => {
   };
 
   const getUsers = async () => {
-    await axios
-      .get("http://localhost:27029/api/User")
-      .then((res) => {
-        if (res.status === 200) {
-          setUsers(res.data);
-        }
-      })
+    await axios.get("http://localhost:27029/api/User").then((res) => {
+      if (res.status === 200) {
+        setUsers(res.data);
+      }
+    });
   };
 
   const getUsersBoards = async () => {
@@ -76,7 +76,7 @@ const App = () => {
         if (res.status === 200) {
           setUsersBoards(res.data);
         }
-      })
+      });
   };
 
   const createCurrentUser = (user) => {
@@ -90,18 +90,22 @@ const App = () => {
         if (res.status === 200) {
           setCurrentBoard(res.data[0]);
         }
-      })
+      });
   };
 
   const getCurrentUserRole = async () => {
     const userId = currentUser.userId;
-    const boardId = currentBoard.boardId
-    await axios.get(`http://localhost:27029/api/User/GetUserRole/Board/${boardId}/User/${userId}`).then((res) => {
-      if(res.status === 200){
-        setUserRole(res.data[0].roles.roleName)
-      }
-    })
-  }
+    const boardId = currentBoard.boardId;
+    await axios
+      .get(
+        `http://localhost:27029/api/User/GetUserRole/Board/${boardId}/User/${userId}`
+      )
+      .then((res) => {
+        if (res.status === 200) {
+          setUserRole(res.data[0].roles.roleName);
+        }
+      });
+  };
 
   const displayBoardUsers = async (boardId) => {
     await axios
@@ -112,10 +116,10 @@ const App = () => {
         }
       });
   };
+  let location = useLocation();
   return (
     <React.Fragment>
       <ToastContainer autoClose={3000} />
-      <Router>
         {!loading && (
           <div>
             <NavBar
@@ -124,131 +128,142 @@ const App = () => {
               userRole={userRole}
               logout={logout}
             />
-            <Switch>
-              <Route
-                path="/"
-                exact
-                render={(props) => {
-                  if (currentUser.length === 0) {
-                    return <Redirect to="/Login" />;
-                  } else {
-                    return (
-                      <Home
-                        {...props}
-                        currentUser={currentUser}
-                        userBoards={userBoards}
-                        getUsersBoards={getUsersBoards}
-                        getCurrentBoard={getCurrentBoard}
-                        currentBoard={currentBoard}
-                        setCurrentBoard={setCurrentBoard}
-                      />
-                    );
-                  }
-                }}
-              />
-              <Route
-                path="/Login"
-                render={(props) => (
-                  <Login {...props} createCurrentUser={createCurrentUser} />
-                )}
-              />
-              <Route path="/Signup" render={(props) => <Signup {...props} />} />
-              <Route
-                path="/Notes"
-                render={(props) => (
-                  <Notes
-                    {...props}
-                    currentUser={currentUser}
-                    currentBoard={currentBoard}
-                  />
-                )}
-              />
-              <Route
-                exact
-                path="/ShowBoard/:id"
-                render={(props) => {
-                  if (currentUser.length === 0) {
-                    return <Redirect to="/Login" />;
-                  } else {
-                    return (
-                      <ShowBoard
-                        {...props}
-                        currentBoard={currentBoard}
-                        currentUser={currentUser}
-                        userRole={userRole}
-                        displayBoardUsers={displayBoardUsers}
-                      />
-                    );
-                  }
-                }}
-              />
-              <Route
-                path="/Chat"
-                render={(props) => <Chat {...props} currentUser={currentUser} />}
-              ></Route>
-              <Route
-                path="/Invite"
-                render={(props) => {
-                  if(currentUser.length === 0){
-                    return <Redirect to="/Login" />
-                  }
-                  else if(currentBoard.length === 0){
-                    return <Redirect to="/" />
-                  }
-                  else if(userRole !== "Admin" ){
-                    const boardId = currentBoard.boardId
-                    return <Redirect to={`/ShowBoard/${boardId}`}/>
-                  }
-                  else{
-                    return(
-                  <InviteCoworker
-                    {...props}
-                    users={users}
-                    currentBoard={currentBoard}
-                    currentUser={currentUser}
-                    displayBoardUsers={displayBoardUsers}
-                    boardUsers={boardUsers}
-                  />
-                );
-                  }
-                }}
-              />
-              <Route
-                path="/ViewCalendar"
-                render={(props) => {
-                  if(currentUser.length === 0){
-                    return <Redirect to="/Login" />
-                  }
-                  else if(currentBoard.length === 0){
-                    return <Redirect to="/" />
-                  }
-                  else {
-                    return (
-                  <Calendar {...props} currentBoard={currentBoard} userRole={userRole} boardUsers={boardUsers} displayBoardUsers={displayBoardUsers}/>
-                    )
-                  }
-              }}
-              />
-              <Route
-                path="/Email"
-                render={(props) => {
-                  if(currentUser.length === 0){
-                    return <Redirect to="/Login" />
-                  }
-                  else if(currentBoard.length === 0){
-                    return <Redirect to="/" />
-                  }
-                  else {
-                    return(
-                  <Email {...props} currentBoard={currentBoard} currentUser={currentUser} boardUsers={boardUsers} displayBoardUsers={displayBoardUsers}/>
-                    )
-                  }
-                }}
-              />
-            </Switch>
+            <AnimatePresence exitBeforeEnter>
+              <Switch location={location} key={location.pathname}>
+                <Route
+                  path="/"
+                  exact
+                  render={(props) => {
+                    if (currentUser.length === 0) {
+                      return <Redirect to="/Login" />;
+                    } else {
+                      return (
+                        <Home
+                          {...props}
+                          currentUser={currentUser}
+                          userBoards={userBoards}
+                          getUsersBoards={getUsersBoards}
+                          getCurrentBoard={getCurrentBoard}
+                          currentBoard={currentBoard}
+                          setCurrentBoard={setCurrentBoard}
+                        />
+                      );
+                    }
+                  }}
+                />
+                <Route
+                  path="/Login"
+                  render={(props) => (
+                    <Login {...props} createCurrentUser={createCurrentUser} />
+                  )}
+                />
+                <Route
+                  path="/Signup"
+                  render={(props) => <Signup {...props} />}
+                />
+                <Route
+                  path="/Notes"
+                  render={(props) => (
+                    <Notes
+                      {...props}
+                      currentUser={currentUser}
+                      currentBoard={currentBoard}
+                    />
+                  )}
+                />
+                <Route
+                  exact
+                  path="/ShowBoard/:id"
+                  render={(props) => {
+                    if (currentUser.length === 0) {
+                      return <Redirect to="/Login" />;
+                    } else {
+                      return (
+                        <ShowBoard
+                          {...props}
+                          currentBoard={currentBoard}
+                          currentUser={currentUser}
+                          userRole={userRole}
+                          displayBoardUsers={displayBoardUsers}
+                        />
+                      );
+                    }
+                  }}
+                />
+                <Route
+                  path="/Chat"
+                  render={(props) => (
+                    <Chat {...props} currentUser={currentUser} />
+                  )}
+                ></Route>
+                <Route
+                  path="/Invite"
+                  render={(props) => {
+                    if (currentUser.length === 0) {
+                      return <Redirect to="/Login" />;
+                    } else if (currentBoard.length === 0) {
+                      return <Redirect to="/" />;
+                    } else if (userRole !== "Admin") {
+                      const boardId = currentBoard.boardId;
+                      return <Redirect to={`/ShowBoard/${boardId}`} />;
+                    } else {
+                      return (
+                        <InviteCoworker
+                          {...props}
+                          users={users}
+                          currentBoard={currentBoard}
+                          currentUser={currentUser}
+                          displayBoardUsers={displayBoardUsers}
+                          boardUsers={boardUsers}
+                        />
+                      );
+                    }
+                  }}
+                />
+                <Route
+                  path="/ViewCalendar"
+                  render={(props) => {
+                    if (currentUser.length === 0) {
+                      return <Redirect to="/Login" />;
+                    } else if (currentBoard.length === 0) {
+                      return <Redirect to="/" />;
+                    } else {
+                      return (
+                        <Calendar
+                          {...props}
+                          currentBoard={currentBoard}
+                          userRole={userRole}
+                          boardUsers={boardUsers}
+                          displayBoardUsers={displayBoardUsers}
+                        />
+                      );
+                    }
+                  }}
+                />
+                <Route
+                  path="/Email"
+                  render={(props) => {
+                    if (currentUser.length === 0) {
+                      return <Redirect to="/Login" />;
+                    } else if (currentBoard.length === 0) {
+                      return <Redirect to="/" />;
+                    } else {
+                      return (
+                        <Email
+                          {...props}
+                          currentBoard={currentBoard}
+                          currentUser={currentUser}
+                          boardUsers={boardUsers}
+                          displayBoardUsers={displayBoardUsers}
+                        />
+                      );
+                    }
+                  }}
+                />
+              </Switch>
+            </AnimatePresence>
           </div>
         )}
-      </Router>
     </React.Fragment>
   );
 };
