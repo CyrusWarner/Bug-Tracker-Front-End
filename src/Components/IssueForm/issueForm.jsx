@@ -53,7 +53,6 @@ const IssueForm = ({ currentUser, currentBoard, getAllIssues }) => {
                   {errors.title.message}
                 </p>
               )}
-              <div className="form-floating">
               <textarea
                 style={{ borderColor: "#060b26" }}
                 placeholder="Bug Description.."
@@ -61,8 +60,6 @@ const IssueForm = ({ currentUser, currentBoard, getAllIssues }) => {
                 {...register("description", {
                   required: "Bug Description Is Required"})}
               ></textarea>
-              <label className="floatingInput">New Bug Description...</label>
-              </div>
               {errors.description && (
                 <p className="ms-1" style={{ color: "crimson" }}>
                   {errors.description.message}
@@ -72,7 +69,7 @@ const IssueForm = ({ currentUser, currentBoard, getAllIssues }) => {
                 className="mt-2"
                 type="submit"
               >
-                Add Issue
+                Add Bug
               </Button>
             </Form>
         </Row>

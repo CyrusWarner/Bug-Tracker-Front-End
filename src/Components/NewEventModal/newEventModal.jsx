@@ -75,12 +75,12 @@ const NewEventModal = ({onEventAdded, boardUsers, currentBoard, displayBoardUser
           <Form onSubmit={handleSubmit(onSubmit)}>
           <Modal.Body>
               <div>
-              <label>Event Title:</label>
+              <label>Bug Title:</label>
               <input {...register("title", {required: "Please Enter A Title For The Event"})} className="form-control"></input>
               {errors.title && <p className="ms-1" style={{ color: "crimson" }}>{errors.title.message}</p>}
               </div>
               <div>
-              <label className="mt-2">Assignee:</label>
+              <label className="mt-2">Bug Assignee:</label>
               <div className="eventAutoCompleteText ">
               <input
                 aria-label="search"
@@ -93,7 +93,7 @@ const NewEventModal = ({onEventAdded, boardUsers, currentBoard, displayBoardUser
             </div>
               </div>
               <div>
-                  <label className="mt-2">Event Date:</label>
+                  <label className="mt-2">Bug Date:</label>
                   <input {...register("date", {required: "Please Enter A Date For The Event"})} type="date" className="form-control"></input>
                   {errors.date && <p className="ms-1" style={{ color: "crimson" }}>{errors.date.message}</p>}
               </div>

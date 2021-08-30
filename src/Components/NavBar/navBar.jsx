@@ -24,7 +24,7 @@ const NavBar = ({ currentUser, currentBoard, logout, userRole }) => {
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
         {currentUser.length !== 0 &&
-        <NavLink className="nav-link customNavLink" exact activeStyle={{backgroundColor: "#45A29E"}} as={Link} to="/"> <FiIcons.FiClipboard /><span className="ms-2" style={{color: "#fff"}}>All Boards</span></NavLink>
+        <NavLink className="nav-link customNavLink" exact as={Link} to="/"> <FiIcons.FiClipboard /><span className="ms-2" style={{color: "#fff"}}>All Boards</span></NavLink>
         }
       {currentBoard.length !== 0 && 
       <React.Fragment>

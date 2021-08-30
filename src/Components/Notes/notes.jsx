@@ -13,8 +13,9 @@ const Notes = ({currentBoard, currentUser}) => {
     }, [])
 
     const getAllNotes = async () => {
-        const boardId = currentBoard.boardId
-        await axios.get(`http://localhost:27029/api/Notes/BoardNotes/${boardId}`).then((res) => {
+        const boardId = currentBoard.boardId;
+        const userId = currentUser.userId;
+        await axios.get(`http://localhost:27029/api/Notes/BoardNotes/board/${boardId}/user/${userId}`).then((res) => {
             if(res.status === 200){
                 setAllNotes(res.data)
             }

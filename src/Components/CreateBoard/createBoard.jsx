@@ -57,15 +57,12 @@ const CreateBoard = ({ currentUser, getUsersBoards, currentBoard }) => {
             <label className="floatingInput">Board Title...</label>
             </div>
             {errors.title && <p className="ms-1" style={{color: "crimson"}}>Board Title Is Required</p>}
-            <div className="form-floating">
             <textarea
               placeholder="Board Description..."
               type="text"
               className="form-control mt-2"
               {...register("description", {required: true})}
             ></textarea>
-            <label className="floating-input">Board Description...</label>
-            </div>
             {errors.description && <p className="ms-1" style={{color: "crimson"}}>Board Description Is Required</p>}
             <div className="text-center">
             <Button

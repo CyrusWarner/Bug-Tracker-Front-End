@@ -13,10 +13,17 @@ const DisplayBoards = ({ userBoards, getCurrentBoard, getUsersBoards }) => {
         <Row>
           <Col sm={3}></Col>
           <Col sm={6}>
-            <div className="form-floating">
-          <input type="search" onChange={(event) => setSearch(event.target.value)} placeholder="Search By Board Name..." className="form-control mt-4"></input>
-          <label className="floating-input">Search By Board Name...</label>
-          </div>
+            {
+              (userBoards.length !== 0)
+              ? <div className="form-floating">
+              <input type="search" onChange={(event) => setSearch(event.target.value)} placeholder="Search By Board Name..." className="form-control mt-4"></input>
+              <label className="floating-input">Search By Board Name...</label>
+              </div>
+              : <div className="text-center">
+              <h1 className="title">You Have No Boards Currently</h1>
+              </div>
+            }
+
           </Col>
           <Col sm={3}></Col>
         </Row>
