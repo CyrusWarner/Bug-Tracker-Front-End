@@ -55,7 +55,7 @@ const IssueForm = ({ currentUser, currentBoard, getAllIssues }) => {
               )}
               <textarea
                 style={{ borderColor: "#060b26" }}
-                placeholder="Bug Description.."
+                placeholder="New Bug Description.."
                 className="form-control mt-2"
                 {...register("description", {
                   required: "Bug Description Is Required"})}

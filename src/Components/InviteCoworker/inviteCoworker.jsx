@@ -59,6 +59,11 @@ const InviteCoworker = ({ users, currentBoard, boardUsers, displayBoardUsers, cu
             setText("")
             setUserToAdd([])
           }
+        })
+        .catch((err) => {
+          if(err){
+            toast.error("User Is Already Attached To This Board");
+          }
         });
     }
   };

@@ -35,12 +35,12 @@ const NoteCardForm = ({currentBoard, currentUser, getAllNotes}) => {
     return (
       <React.Fragment>
                 <Button variant="primary" onClick={handleShow}>
-        Add New Note Card
+        Add Notecard
       </Button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Add New Note</Modal.Title>
+          <Modal.Title>Add Notecard</Modal.Title>
         </Modal.Header>
         <Form onSubmit={handleSubmit(onSubmit)}>
         <Modal.Body>

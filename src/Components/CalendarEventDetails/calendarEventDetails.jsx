@@ -24,9 +24,9 @@ const CalendarEventDetails = ({ show, handleClose, filteredEvents, getAllEvents,
             <Table responsive striped bordered hover>
               <thead>
                 <tr>
-                  <th>Event Title</th>
-                  <th>Event Assignee</th>
-                  <th>Event Date</th>
+                  <th>Bug Title</th>
+                  <th>Bug Assignee</th>
+                  <th>Bug Date</th>
                   {userRole === "Admin" &&
                   <th>Actions</th>
                   }
@@ -50,7 +50,7 @@ const CalendarEventDetails = ({ show, handleClose, filteredEvents, getAllEvents,
               </tbody>
             </Table>
           )}
-          {filteredEvents.length === 0 && <h3 className="text-center">No Events For The Day</h3>}
+          {filteredEvents.length === 0 && <h3 className="text-center">No Bugs Currently For This Day</h3>}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={handleClose}>
