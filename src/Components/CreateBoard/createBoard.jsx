@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { Form, Container, Row, Col, Button} from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import axios from "axios";
@@ -18,7 +18,7 @@ const CreateBoard = ({ currentUser, getUsersBoards, currentBoard }) => {
     await axios
       .post("http://localhost:27029/api/Board", board)
       .then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           addRelationshipToUserBoardTable(res.data);
           toast.success("Board Added Successfully")
         }

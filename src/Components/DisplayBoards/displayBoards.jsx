@@ -21,12 +21,10 @@ const DisplayBoards = ({ userBoards, getCurrentBoard, getUsersBoards }) => {
           <Col sm={3}></Col>
         </Row>
       </Container>
-      <Container  >
+      <Container  fluid>
         <Row className="d-flex justify-content-center">
-          <div className="d-flex justify-content-center board-wrapper">
               {filterBoards.map((board) => {
                 return (
-                  <div className="board-item">
                     <Card  className="cardContainer mt-4" style={{ width: "18rem", margin: "1rem" }}>
                       <Card.Body className="text-center">
                         <Card.Title>{board.title}</Card.Title>
@@ -39,10 +37,8 @@ const DisplayBoards = ({ userBoards, getCurrentBoard, getUsersBoards }) => {
                         </Link>
                       </Card.Body>
                     </Card>
-                    </div>
                 );
               })}
-              </div>
         </Row>
       </Container>
     </React.Fragment>

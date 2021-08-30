@@ -11,7 +11,7 @@ const DeleteNotecardForm = ({note, getAllNotes}) => {
 
     const deleteNotecard = async () => {
         await axios.delete(`http://localhost:27029/api/Notes/${notesId}`).then((res) => {
-            if(res.status == 200){
+            if(res.status === 200){
                 getAllNotes();
                 toast.success("Note Deleted Successfully")
             }

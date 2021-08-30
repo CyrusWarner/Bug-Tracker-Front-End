@@ -1,6 +1,5 @@
 import axios from "axios";
 import React from "react";
-import { useEffect } from "react";
 import { Modal, Button, Table } from "react-bootstrap";
 import * as AiIcons from 'react-icons/ai'
 import { toast } from "react-toastify";

@@ -15,7 +15,7 @@ import Calendar from "./Components/Calendar/calendar";
 import Email from "./Components/Email/email";
 import Chat from "./Components/Chat/chat";
 import NavBar from "./Components/NavBar/navBar";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./app.css";
 import axios from "axios";
@@ -73,7 +73,7 @@ const App = () => {
     await axios
       .get(`http://localhost:27029/api/Board/${userId}`)
       .then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           setUsersBoards(res.data);
         }
       })
@@ -87,7 +87,7 @@ const App = () => {
     await axios
       .get(`http://localhost:27029/api/Board/CurrentBoard/${boardId}`)
       .then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           setCurrentBoard(res.data[0]);
         }
       })
@@ -167,7 +167,7 @@ const App = () => {
                 exact
                 path="/ShowBoard/:id"
                 render={(props) => {
-                  if (!currentUser) {
+                  if (currentUser.length === 0) {
                     return <Redirect to="/Login" />;
                   } else {
                     return (
@@ -189,10 +189,13 @@ const App = () => {
               <Route
                 path="/Invite"
                 render={(props) => {
-                  if(currentBoard.length === 0){
+                  if(currentUser.length === 0){
+                    return <Redirect to="/Login" />
+                  }
+                  else if(currentBoard.length === 0){
                     return <Redirect to="/" />
                   }
-                  if(userRole !== "Admin" ){
+                  else if(userRole !== "Admin" ){
                     const boardId = currentBoard.boardId
                     return <Redirect to={`/ShowBoard/${boardId}`}/>
                   }
@@ -212,15 +215,35 @@ const App = () => {
               />
               <Route
                 path="/ViewCalendar"
-                render={(props) => (
+                render={(props) => {
+                  if(currentUser.length === 0){
+                    return <Redirect to="/Login" />
+                  }
+                  else if(currentBoard.length === 0){
+                    return <Redirect to="/" />
+                  }
+                  else {
+                    return (
                   <Calendar {...props} currentBoard={currentBoard} userRole={userRole} boardUsers={boardUsers} displayBoardUsers={displayBoardUsers}/>
-                )}
+                    )
+                  }
+              }}
               />
               <Route
                 path="/Email"
-                render={(props) => (
+                render={(props) => {
+                  if(currentUser.length === 0){
+                    return <Redirect to="/Login" />
+                  }
+                  else if(currentBoard.length === 0){
+                    return <Redirect to="/" />
+                  }
+                  else {
+                    return(
                   <Email {...props} currentBoard={currentBoard} currentUser={currentUser} boardUsers={boardUsers} displayBoardUsers={displayBoardUsers}/>
-                )}
+                    )
+                  }
+                }}
               />
             </Switch>
           </div>

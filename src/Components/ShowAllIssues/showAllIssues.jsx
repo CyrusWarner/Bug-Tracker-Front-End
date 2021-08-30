@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Card } from "react-bootstrap";
 import UpdateIssueModal from "../UpdateIssueModal/updateIssueModal";
 import DeleteIssueModal from "../DeleteIssueModal/deleteIssueModal";
 import * as FaIcons from "react-icons/fa";

@@ -24,7 +24,7 @@ const Calendar = ({ currentBoard, userRole, boardUsers, displayBoardUsers }) => 
     await axios
       .post("http://localhost:27029/api/Events", eventData)
       .then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           getAllEvents();
           toast.success("Event Added Succesffuly");
         }
@@ -40,7 +40,7 @@ const Calendar = ({ currentBoard, userRole, boardUsers, displayBoardUsers }) => 
     await axios
       .get(`http://localhost:27029/api/Events/${boardId}`)
       .then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           setEvents(res.data);
         }
       })
