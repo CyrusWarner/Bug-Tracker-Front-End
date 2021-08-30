@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { IconContext } from "react-icons/lib";
 import './navbar.css'
 import * as AiIcons from "react-icons/ai";
@@ -24,24 +24,24 @@ const NavBar = ({ currentUser, currentBoard, logout, userRole }) => {
     <Navbar.Collapse id="basic-navbar-nav">
       <Nav className="me-auto">
         {currentUser.length !== 0 &&
-        <Nav.Link className="customNavLink" as={Link} to="/"> <FiIcons.FiClipboard /><span className="ms-2" style={{color: "#fff"}}>All Boards</span></Nav.Link>
+        <NavLink className="nav-link customNavLink" exact activeStyle={{backgroundColor: "#45A29E"}} as={Link} to="/"> <FiIcons.FiClipboard /><span className="ms-2" style={{color: "#fff"}}>All Boards</span></NavLink>
         }
       {currentBoard.length !== 0 && 
       <React.Fragment>
-        <Nav.Link className="customNavLink" as={Link} to={`/ShowBoard/${boardId}`}> <AiIcons.AiFillHome /><span className="ms-2" style={{color: "#fff"}}>Board Home</span></Nav.Link>
+        <NavLink className="nav-link customNavLink" activeStyle={{backgroundColor: "#45A29E"}} as={Link} to={`/ShowBoard/${boardId}`}> <AiIcons.AiFillHome /><span className="ms-2" style={{color: "#fff"}}>Board Home</span></NavLink>
         {userRole === "Admin" &&
-        <Nav.Link  className="customNavLink" as={Link} to="/Invite"><IoIcons.IoMdPeople /><span className="ms-2" style={{color: "#fff"}}>Invite Coworkers</span></Nav.Link>
+        <NavLink  className="nav-link customNavLink" activeStyle={{backgroundColor: "#45A29E"}} as={Link} to="/Invite"><IoIcons.IoMdPeople /><span className="ms-2" style={{color: "#fff"}}>Invite Coworkers</span></NavLink>
         }
-        <Nav.Link className="customNavLink" as={Link} to="/Notes"><BsIcons.BsPencilSquare /><span className="ms-2" style={{color: "#fff"}}>Notes</span></Nav.Link>
-        <Nav.Link className="customNavLink" as={Link} to="/ViewCalendar"><AiIcons.AiOutlineCalendar /><span className="ms-2" style={{color: "#fff"}}>View Calendar</span></Nav.Link>
-        <Nav.Link className="customNavLink" as={Link} to="/Chat"><AiIcons.AiOutlineMessage /><span className="ms-2" style={{color: "#fff"}}>Chat</span></Nav.Link>
-        <Nav.Link className="customNavLink" as={Link} to="/Email"><AiIcons.AiOutlineMail /><span className="ms-2" style={{color: "#fff"}}>Email</span></Nav.Link>
+        <NavLink className="nav-link customNavLink" activeStyle={{backgroundColor: "#45A29E"}} as={Link} to="/Notes"><BsIcons.BsPencilSquare /><span className="ms-2" style={{color: "#fff"}}>Notes</span></NavLink>
+        <NavLink className="nav-link customNavLink" activeStyle={{backgroundColor: "#45A29E"}} as={Link} to="/ViewCalendar"><AiIcons.AiOutlineCalendar /><span className="ms-2" style={{color: "#fff"}}>View Calendar</span></NavLink>
+        <NavLink className="nav-link customNavLink" activeStyle={{backgroundColor: "#45A29E"}} as={Link} to="/Chat"><AiIcons.AiOutlineMessage /><span className="ms-2" style={{color: "#fff"}}>Chat</span></NavLink>
+        <NavLink className="nav-link customNavLink" activeStyle={{backgroundColor: "#45A29E"}} as={Link} to="/Email"><AiIcons.AiOutlineMail /><span className="ms-2" style={{color: "#fff"}}>Email</span></NavLink>
         </React.Fragment>
       }
       {currentUser.length === 0 && 
       <React.Fragment>
-        <Nav.Link className="customNavLink" as={Link} to="/Login"><AiIcons.AiOutlineLogin /><span className="ms-2" style={{color: "#fff"}}>Login</span></Nav.Link>
-      <Nav.Link className="customNavLink" as={Link} to="/Signup"><BsIcons.BsPencilSquare /><span className="ms-2" style={{color: "#fff"}}>Signup</span></Nav.Link>
+        <NavLink className="nav-link customNavLink" as={Link} to="/Login"><AiIcons.AiOutlineLogin /><span className="ms-2" style={{color: "#fff"}}>Login</span></NavLink>
+      <NavLink className="nav-link customNavLink" as={Link} to="/Signup"><BsIcons.BsPencilSquare /><span className="ms-2" style={{color: "#fff"}}>Signup</span></NavLink>
       </React.Fragment>
       } 
       {currentUser.length !== 0 &&
