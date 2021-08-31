@@ -33,7 +33,7 @@ const DeleteIssueModal = ({currentIssue, getAllIssues}) => {
         <Form >
         <Modal.Body>
             <h3 className="text-center">
-            Are you sure you wanna delete this Issue?
+            Are you sure you wanna delete this Bug?
             </h3>
           </Modal.Body>
         <Modal.Footer>
@@ -41,7 +41,7 @@ const DeleteIssueModal = ({currentIssue, getAllIssues}) => {
             Close
           </Button>
           <Button  variant="danger" onClick={() => {handleClose(); deleteIssue()}}>
-            Delete Note
+            Delete Bug
           </Button>
         </Modal.Footer>
         </Form>

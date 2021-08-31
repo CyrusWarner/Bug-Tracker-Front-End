@@ -60,7 +60,7 @@ const Login = (props) => {
                         <label className="floatingInputGrid fs-5">Password...</label>
                         </div>
                         {errors.password && <p className="errorColor ms-1" >{errors.password.message}</p>}
-                        <Button className="inputButton mt-2" type="submit">Submit</Button>
+                        <Button className="inputButton mt-2" type="submit">Login</Button>
                         <div className="mt-3">Not Registered? <Link to="/SignUp" style={{color: "#45A29E"}}>Register Here</Link></div>
                     </Form>
                 </Col>

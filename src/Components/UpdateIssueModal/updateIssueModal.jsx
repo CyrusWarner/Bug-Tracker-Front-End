@@ -44,7 +44,7 @@ const UpdateIssueModal = ({ currentIssue, getAllIssues, currentUser }) => {
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Update Issue</Modal.Title>
+          <Modal.Title>Update Bug</Modal.Title>
         </Modal.Header>
         <Form onSubmit={handleSubmit(onSubmit)}>
           <Modal.Body>
@@ -85,7 +85,7 @@ const UpdateIssueModal = ({ currentIssue, getAllIssues, currentUser }) => {
               Close
             </Button>
             <Button variant="primary" type="submit" onClick={handleClose}>
-              Update Issue
+              Update Bug
             </Button>
           </Modal.Footer>
         </Form>
