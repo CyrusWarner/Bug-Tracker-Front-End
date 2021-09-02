@@ -69,7 +69,7 @@ const UpdateIssueModal = ({ currentIssue, getAllIssues, currentUser }) => {
             <div class="form-check mt-2">
               <input
                 class="form-check-input fs-4 ms-1"
-                defaultValue={isCompleted}
+                defaultChecked={isCompleted}
                 type="checkbox"
                 {...register("isCompleted")}
                 value=""
