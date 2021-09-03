@@ -40,7 +40,7 @@ const CalendarEventDetails = ({ show, handleClose, filteredEvents, getAllEvents,
                         <td>{event.title}</td>
                         <td>{event.assignee}</td>
                         <td>{event.date}</td>
-                        {userRole === "Admin" &&
+                        {(userRole === "Admin" || userRole === "Board Owner") &&
                         <td><AiIcons.AiFillDelete onClick={() => [removeEvent(event.eventsId), handleClose()]} style={{cursor: "pointer", color: "red"}} size="1.5rem" /></td>
                         }
                       </tr>

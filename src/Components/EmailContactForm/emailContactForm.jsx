@@ -61,7 +61,7 @@ const EmailContactForm = ({ currentUser, boardUsers }) => {
                   return (
                     <div className="item">
                     <Card className="cardContainer mt-2 mb-2"> 
-                      <Card.Body><div className="fs-5">{boardUser.email}</div>
+                      <Card.Body><div className="fs-5">{boardUser.user.email}</div>
                       </Card.Body>
                     </Card>
                     </div>
