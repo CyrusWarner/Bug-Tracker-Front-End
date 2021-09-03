@@ -1,0 +1,16 @@
+.coworkerRole {
+    display: inline-block;
+    position: relative;
+    color: #212529;
+    font-family: 'Hina Mincho', serif;
+}
+
+.coworkerRole:after {
+    content: '';
+    height: 2px;
+    width: 100%;
+    background: #45A29E;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+}
