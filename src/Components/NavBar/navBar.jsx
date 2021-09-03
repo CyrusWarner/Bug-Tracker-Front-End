@@ -29,7 +29,7 @@ const NavBar = ({ currentUser, currentBoard, logout, userRole }) => {
       {currentBoard.length !== 0 && 
       <React.Fragment>
         <NavLink className="nav-link customNavLink" activeStyle={{backgroundColor: "#45A29E"}} as={Link} to={`/ShowBoard/${boardId}`}> <AiIcons.AiFillHome /><span className="ms-2" style={{color: "#fff"}}>Board Home</span></NavLink>
-        {userRole === "Admin" &&
+        {(userRole === "Admin" || userRole==="Board Owner") &&
         <NavLink  className="nav-link customNavLink" activeStyle={{backgroundColor: "#45A29E"}} as={Link} to="/Invite"><IoIcons.IoMdPeople /><span className="ms-2" style={{color: "#fff"}}>Invite Coworkers</span></NavLink>
         }
         <NavLink className="nav-link customNavLink" activeStyle={{backgroundColor: "#45A29E"}} as={Link} to="/Notes"><BsIcons.BsPencilSquare /><span className="ms-2" style={{color: "#fff"}}>Notes</span></NavLink>

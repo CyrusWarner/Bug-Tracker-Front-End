@@ -51,7 +51,7 @@ const ShowBoard = ({currentBoard, currentUser, userRole, displayBoardUsers}) => 
                         >
                         <p style={{color: "#212529"}} className="Roboto-font fs-5">{description}</p>
                         </ShowMoreText> 
-                        {userRole === "Admin" &&
+                        {(userRole === "Admin" || userRole === "Board Owner") &&
                         <IssueForm currentUser={currentUser} currentBoard={currentBoard} getAllIssues={getAllIssues}/>
                         }
                         </Col>

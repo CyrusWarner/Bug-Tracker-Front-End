@@ -203,10 +203,8 @@ const App = () => {
                       return <Redirect to="/Login" />;
                     } else if (currentBoard.length === 0) {
                       return <Redirect to="/" />;
-                    } else if (userRole !== "Admin") {
-                      const boardId = currentBoard.boardId;
-                      return <Redirect to={`/ShowBoard/${boardId}`} />;
-                    } else {
+                    
+                    } else if((userRole === "Admin" || userRole === "Board Owner")) {
                       return (
                         <InviteCoworker
                           {...props}
@@ -217,6 +215,9 @@ const App = () => {
                           boardUsers={boardUsers}
                         />
                       );
+                    } else if (userRole !== "Admin" || userRole !== "Board Owner") {
+                      const boardId = currentBoard.boardId;
+                      return <Redirect to={`/ShowBoard/${boardId}`} />;
                     }
                   }}
                 />
