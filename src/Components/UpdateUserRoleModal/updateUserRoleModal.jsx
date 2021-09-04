@@ -4,17 +4,19 @@ import { Modal, Button, FloatingLabel, Form } from "react-bootstrap";
 import * as BsIcons from "react-icons/bs";
 import { toast } from "react-toastify";
 
-const UpdateUserRoleModal = ({userData}) => {
-  const currentUserRoleId = userData.rolesId
-  const [newRoleId, setNewRoleId] = useState(currentUserRoleId)
-    const {email, userId} = userData.user;
-    const userRole = "User"
-    const adminRole = "Admin"
-    const boardOwnerRole = "Board Owner"
-    const currentUserRoleName = userData.roles.roleName
+const UpdateUserRoleModal = ({userData, displayBoardUsers}) => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const currentUserRoleId = userData.rolesId;
+  const [newRoleId, setNewRoleId] = useState(currentUserRoleId);
+  const {email} = userData.user;
+  const currentUserRoleName = userData.roles.roleName;
+  const {boardId} = userData;
+  const userRole = "User";
+  const adminRole = "Admin";
+  const boardOwnerRole = "Board Owner";
+
 
   const handleChange = (event) => {
     let intRoleId = Number(event.target.value);
@@ -26,6 +28,7 @@ const UpdateUserRoleModal = ({userData}) => {
       await axios.post(`http://localhost:27029/api/User/EditRole/${newRoleId}`, userData).then((res) => {
         if(res.status === 200){
         toast.success("Successfully Updated User Role")
+        displayBoardUsers(boardId)
         }
       })
     }

@@ -6,7 +6,7 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
-const InviteCoworker = ({ users, currentBoard, boardUsers, displayBoardUsers, currentUser }) => {
+const InviteCoworker = ({ users, currentBoard, boardUsers, displayBoardUsers, currentUser, userRole}) => {
   const [suggestions, setSuggestions] = useState([]);
   const [text, setText] = useState("");
   const [userToAdd, setUserToAdd] = useState([]);
@@ -106,7 +106,7 @@ const InviteCoworker = ({ users, currentBoard, boardUsers, displayBoardUsers, cu
             </div>
           </Col>
           <Col sm={6}>
-            <ShowCoworkers boardUsers={boardUsers} removeUser={removeUser} currentUser={currentUser} />
+            <ShowCoworkers boardUsers={boardUsers} removeUser={removeUser} currentUser={currentUser} displayBoardUsers={displayBoardUsers} userRole={userRole} />
           </Col>
         </Row>
       </Container>

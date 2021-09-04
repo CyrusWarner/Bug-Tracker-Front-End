@@ -213,6 +213,7 @@ const App = () => {
                           currentUser={currentUser}
                           displayBoardUsers={displayBoardUsers}
                           boardUsers={boardUsers}
+                          userRole={userRole}
                         />
                       );
                     } else if (userRole !== "Admin" || userRole !== "Board Owner") {

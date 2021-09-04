@@ -4,7 +4,7 @@ import UpdateUserRoleModal from "../UpdateUserRoleModal/updateUserRoleModal";
 import * as AiIcons from "react-icons/ai";
 import "./showCoworker.css";
 
-const ShowCoworkers = ({ boardUsers, removeUser, currentUser }) => {
+const ShowCoworkers = ({ boardUsers, removeUser, currentUser, displayBoardUsers, userRole }) => {
   const [search, setSearch] = useState("");
   const { userId } = currentUser;
   const filterUsers = boardUsers.filter((userData) =>
@@ -41,7 +41,9 @@ const ShowCoworkers = ({ boardUsers, removeUser, currentUser }) => {
                         {userData.roles.roleName}
                       </h3>
                       <span className="ms-2">
-                      <UpdateUserRoleModal userData={userData}/>
+                        {(userId !== userData.userId) && (userRole === "Board Owner")  &&
+                      <UpdateUserRoleModal userData={userData} displayBoardUsers={displayBoardUsers}/>
+                        }
                       </span>
                       <div className="fs-5 mt-1">{userData.user.email}</div>
                     </Card.Body>
