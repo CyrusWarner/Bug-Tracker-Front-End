@@ -1,0 +1,8 @@
+.invitationWrapper {
+    max-height: 450px !important;
+    overflow-y: auto !important;
+}
+
+.invitationItem {
+    margin: 0.25rem;
+}

@@ -2,10 +2,11 @@ import React, {useState} from "react";
 import './displayBoards.css'
 import { Link } from "react-router-dom";
 import { Container, Row, Card, Col, Button } from "react-bootstrap";
-const DisplayBoards = ({ userBoards, getCurrentBoard, getUsersBoards }) => {
+import ReactShowMoreText from "react-show-more-text";
+const DisplayBoards = ({ userBoards, getCurrentBoard }) => {
   const [search, setSearch] = useState("")
-  const filterBoards = userBoards.filter((board) => 
-    board.title.toLowerCase().includes(search.toLowerCase())
+  const filterBoards = userBoards.filter((boardData) => 
+  boardData.board.title.toLowerCase().includes(search.toLowerCase())
   );
   return (
     <React.Fragment>
@@ -30,20 +31,23 @@ const DisplayBoards = ({ userBoards, getCurrentBoard, getUsersBoards }) => {
       </Container>
       <Container  fluid>
         <Row className="d-flex justify-content-center">
-              {filterBoards.map((board) => {
+              {filterBoards.map((boardData) => {
                 return (
+                  <React.Fragment>
+                  {boardData.inviteAccepted &&
                     <Card  className="cardContainer mt-4" style={{ width: "18rem", margin: "1rem" }}>
                       <Card.Body className="text-center">
-                        <Card.Title>{board.title}</Card.Title>
+                        <Card.Title>{boardData.board.title}</Card.Title>
                         <hr></hr>
-                        {/* <Card.Text>{board.description}</Card.Text> */}
                         <Link
-                          to={`/ShowBoard/${board.boardId}`}
+                          to={`/ShowBoard/${boardData.board.boardId}`}
                         >
-                          <Button className="boardButton" onClick={() => getCurrentBoard(board.boardId)}>View Board</Button>
+                          <Button className="boardButton" onClick={() => getCurrentBoard(boardData.boardId)}>View Board</Button>
                         </Link>
                       </Card.Body>
                     </Card>
+                    }
+                    </React.Fragment>
                 );
               })}
         </Row>

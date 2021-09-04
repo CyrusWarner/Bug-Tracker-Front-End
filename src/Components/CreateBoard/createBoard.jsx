@@ -39,13 +39,9 @@ const CreateBoard = ({ currentUser, getUsersBoards, currentBoard }) => {
 
   return (
     <React.Fragment>
-      <Container className="mt-5">
-        <Row>
           <div className="text-center">
             <h1 className="title">Add New Board</h1>
           </div>
-          <Col sm={3}></Col>
-          <Col sm={6}>
           <Form onSubmit={handleSubmit(onSubmit)}>
             <div className="form-floating">
             <input
@@ -73,10 +69,6 @@ const CreateBoard = ({ currentUser, getUsersBoards, currentBoard }) => {
             </Button>
             </div>
           </Form>
-          </Col>
-          <Col sm={3}></Col>
-        </Row>
-      </Container>
     </React.Fragment>
   );
 };
