@@ -3,14 +3,23 @@ import {Card, Button} from 'react-bootstrap'
 import axios from 'axios';
 import './invitedBoards.css'
 import { toast } from 'react-toastify';
+import * as AiIcons from 'react-icons/ai'
 const InvitedBoards = ({userBoards, currentUser, getUsersBoards}) => {
-
+    const {userId} = currentUser;
     const acceptBoardInvite = async (boardData) => {
-        const {userId} = currentUser;
         await axios.post(`http://localhost:27029/api/Board/acceptBoardInvitation/${userId}`, boardData).then((res) => {
             if (res.status === 200){
-                getUsersBoards();
                 toast.success(`${boardData.title}'s invitation accepted'`)
+                getUsersBoards();
+            }
+        })
+    }
+
+    const declineBoardInvite = async (boardData) => {
+        await axios.delete(`http://localhost:27029/api/Board/removeBoard/${boardData.boardId}/User/${userId}`, boardData).then((res) => {
+            if (res.status === 200){
+                toast.success(`${boardData.title}'s invitation declined'`)
+                getUsersBoards();
             }
         })
     }
@@ -29,10 +38,12 @@ const InvitedBoards = ({userBoards, currentUser, getUsersBoards}) => {
                         <Card.Title>{boardData.board.title}</Card.Title>
                         <hr></hr>
                         <Card.Text>{boardData.board.description}</Card.Text>
-                        <div className="d-flex justify-content-around">
-                          <Button className="boardButton m-3" onClick={() => acceptBoardInvite(boardData.board)} >Accept Invitation</Button>
-                          <Button className="boardButton m-3">Deny Invitation</Button>
-                          </div>
+                        <div className="d-flex justify-content-center">
+                            <Button className="boardButton me-1" onClick={() => acceptBoardInvite(boardData.board)} >Accept Invitation</Button>
+                        </div>
+                        <div className="position-absolute top-0 end-0">
+                            <AiIcons.AiFillDelete color="red" size="1.5rem" cursor="pointer" onClick={() => declineBoardInvite(boardData.board)}/>
+                        </div>
                       </Card.Body>
                     </Card>
                     }
