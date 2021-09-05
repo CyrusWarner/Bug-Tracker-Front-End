@@ -6,7 +6,7 @@ import {
   Redirect,
   useLocation
 } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import Signup from "./Components/Signup/signup";
 import Login from "./Components/Login/login";
 import Home from "./Components/Home/home";
@@ -84,11 +84,12 @@ const App = () => {
   };
 
   const getCurrentBoard = async (boardId) => {
+    const {userId} = currentUser;
     await axios
-      .get(`http://localhost:27029/api/Board/CurrentBoard/${boardId}`)
+      .get(`http://localhost:27029/api/Board/CurrentBoard/${boardId}/${userId}`)
       .then((res) => {
         if (res.status === 200) {
-          setCurrentBoard(res.data[0]);
+          setCurrentBoard(res.data[0].board);
         }
       });
   };

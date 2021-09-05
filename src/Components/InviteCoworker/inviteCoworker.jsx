@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ShowCoworkers from "../ShowCoworkers/showCoworkers";
 import * as IoIcons from "react-icons/io";
 import "./inviteCoworker.css";
@@ -87,7 +87,7 @@ const InviteCoworker = ({ users, currentBoard, boardUsers, displayBoardUsers, cu
     >
     <React.Fragment>
       <Container>
-        <h1 className="title">Board Users<IoIcons.IoMdPeople color="#45A29E" className="ms-1" size="3rem"/>
+        <h1 className="title">Invite Users<IoIcons.IoMdPeople color="#45A29E" className="ms-1" size="3rem"/>
         </h1>
       </Container>
       <Container>

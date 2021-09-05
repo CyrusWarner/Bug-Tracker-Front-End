@@ -40,13 +40,13 @@ const Home = (props) => {
                   />
               </Col>
               <Col sm={6}>
-                <div className="d-flex justify-content-center">
+                {/* <div className="d-flex justify-content-center"> */}
                   <InvitedBoards
                     userBoards={userBoards}
                     currentUser={currentUser}
                     getUsersBoards={getUsersBoards}
                   />
-                </div>
+                {/* </div> */}
               </Col>
             </Row>
           </Container>

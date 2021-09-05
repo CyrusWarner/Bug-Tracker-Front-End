@@ -34,7 +34,7 @@ const NoteCardForm = ({currentBoard, currentUser, getAllNotes}) => {
     
     return (
       <React.Fragment>
-                <Button variant="primary" onClick={handleShow}>
+                <Button className="mb-3" variant="primary" onClick={handleShow}>
         Add Notecard
       </Button>
 

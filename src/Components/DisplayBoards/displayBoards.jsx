@@ -1,8 +1,7 @@
 import React, {useState} from "react";
 import './displayBoards.css'
 import { Link } from "react-router-dom";
-import { Container, Row, Card, Col, Button } from "react-bootstrap";
-import ReactShowMoreText from "react-show-more-text";
+import { Container, Row, Card, Button } from "react-bootstrap";
 const DisplayBoards = ({ userBoards, getCurrentBoard }) => {
   const [search, setSearch] = useState("")
   const filterBoards = userBoards.filter((boardData) => 
@@ -36,7 +35,7 @@ const DisplayBoards = ({ userBoards, getCurrentBoard }) => {
                         <Link
                           to={`/ShowBoard/${boardData.board.boardId}`}
                         >
-                          <Button className="boardButton" onClick={() => getCurrentBoard(boardData.boardId)}>View Board</Button>
+                          <Button className="boardButton mt-2" onClick={() => getCurrentBoard(boardData.boardId)}>View Board</Button>
                         </Link>
                       </Card.Body>
                     </Card>

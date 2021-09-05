@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Modal, Button, FloatingLabel, Form } from "react-bootstrap";
 import * as BsIcons from "react-icons/bs";
 import { toast } from "react-toastify";

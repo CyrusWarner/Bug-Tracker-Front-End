@@ -23,10 +23,10 @@ const DisplayNoteCards = ({allNotes, currentBoard, currentUser, getAllNotes}) =>
                 </Row>
             </Container>
             <Container fluid>
-                <Row className="d-flex justify-content-center mt-3">
+                <Row className="d-flex justify-content-center m-1 mt-2">
             {filterNotes.map((note) => {
                 return(
-                    <Card className="cardContainer text-center m-3 " style={{ width: '24rem' }}>
+                    <Card className="cardContainer text-center m-2" style={{ width: '24rem' }}>
                     <Card.Body>
                       <Card.Title className="Roboto-font">{note.title}</Card.Title>
                       <hr></hr>
