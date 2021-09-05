@@ -12,7 +12,7 @@ const Chat = ({ currentUser }) => {
     <React.Fragment>
           <ChatEngine
           height="100vh"
-      projectID="3bbece5e-9153-4f6e-b476-7f10c32f18a0"
+      projectID="77b5a68f-3892-4e26-96b1-6400dd453029"
       userName={firstName}
       userSecret={password}
     />

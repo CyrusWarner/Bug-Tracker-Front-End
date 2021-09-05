@@ -10,32 +10,26 @@ const DisplayBoards = ({ userBoards, getCurrentBoard }) => {
   );
   return (
     <React.Fragment>
-      <Container>
-        <Row>
-          <Col sm={3}></Col>
-          <Col sm={6}>
+      <div className="text-center">
+        <h1 className="title">Your Boards</h1>
+      </div>
             {
-              (userBoards.length !== 0)
-              ? <div className="form-floating">
-              <input type="search" onChange={(event) => setSearch(event.target.value)} placeholder="Search By Board Name..." className="form-control mt-4"></input>
+              (userBoards.length !== 0 &&
+              <div className="form-floating">
+              <input type="search" onChange={(event) => setSearch(event.target.value)} placeholder="Search By Board Name..." className="form-control "></input>
               <label className="floating-input">Search By Board Name...</label>
               </div>
-              : <div className="text-center">
-              <h1 className="title">You Have No Boards Currently</h1>
-              </div>
-            }
+              )}
 
-          </Col>
-          <Col sm={3}></Col>
-        </Row>
-      </Container>
-      <Container  fluid>
+      <Container >
         <Row className="d-flex justify-content-center">
+        <div className="scrolling-wrapper">
               {filterBoards.map((boardData) => {
                 return (
+                  <div className="card-item">
                   <React.Fragment>
                   {boardData.inviteAccepted &&
-                    <Card  className="cardContainer mt-4" style={{ width: "18rem", margin: "1rem" }}>
+                    <Card  className="cardContainer mt-4" style={{ width: "16rem", margin: "1rem" }}>
                       <Card.Body className="text-center">
                         <Card.Title>{boardData.board.title}</Card.Title>
                         <hr></hr>
@@ -48,8 +42,10 @@ const DisplayBoards = ({ userBoards, getCurrentBoard }) => {
                     </Card>
                     }
                     </React.Fragment>
+                    </div>
                 );
               })}
+              </div>
         </Row>
       </Container>
     </React.Fragment>

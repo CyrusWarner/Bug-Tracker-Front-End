@@ -15,7 +15,6 @@ const UpdateUserRoleModal = ({userData, displayBoardUsers}) => {
   const {boardId} = userData;
   const userRole = "User";
   const adminRole = "Admin";
-  const boardOwnerRole = "Board Owner";
 
 
   const handleChange = (event) => {
@@ -54,9 +53,6 @@ const UpdateUserRoleModal = ({userData, displayBoardUsers}) => {
                 }
                 {currentUserRoleName !== adminRole &&
               <option value="1">{adminRole}</option>
-                }
-                {currentUserRoleName !== boardOwnerRole &&
-              <option value="3">{boardOwnerRole}</option>
                 }
             </Form.Select>
           </FloatingLabel>

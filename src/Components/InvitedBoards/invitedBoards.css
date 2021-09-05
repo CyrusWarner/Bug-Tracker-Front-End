@@ -1,6 +1,7 @@
 .invitationWrapper {
     max-height: 450px !important;
     overflow-y: auto !important;
+    overflow-x: hidden !important;
 }
 
 .invitationItem {
