@@ -10,7 +10,10 @@ const DisplayBoards = ({ userBoards, getCurrentBoard }) => {
   return (
     <React.Fragment>
       <div className="text-center">
-        <h1 className="title">Your Boards</h1>
+        {userBoards.length === 0 
+          ?<h1 className="title">You currently have no boards</h1>
+          :<h1 className="title">Your Boards</h1>
+        }
       </div>
             {
               (userBoards.length !== 0 &&

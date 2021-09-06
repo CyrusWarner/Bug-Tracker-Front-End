@@ -187,6 +187,7 @@ const App = () => {
                           currentBoard={currentBoard}
                           setCurrentBoard={setCurrentBoard}
                           invitedBoards={invitedBoards}
+                          displayInvitedBoards={displayInvitedBoards}
                         />
                       );
                     }

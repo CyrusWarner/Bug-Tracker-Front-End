@@ -5,9 +5,6 @@ import "@testing-library/jest-dom/extend-expect";
 import { BrowserRouter } from "react-router-dom";
 import { act } from "react-dom/test-utils";
 
-afterEach(() => {
-  cleanup();
-});
 
 test("Login form should be in the document", () => {
   const component = render(

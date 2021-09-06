@@ -4,7 +4,7 @@ import CreateBoard from "../CreateBoard/createBoard";
 import InvitedBoards from "../InvitedBoards/invitedBoards";
 import { motion } from "framer-motion";
 import { Container, Row, Col } from "react-bootstrap";
-const Home = ({currentUser, userBoards, getUsersBoards, getCurrentBoard, setCurrentBoard, currentBoard, invitedBoards}) => {
+const Home = ({currentUser, userBoards, getUsersBoards, getCurrentBoard, setCurrentBoard, currentBoard, invitedBoards, displayInvitedBoards}) => {
   useEffect(() => {
     setCurrentBoard([]);
   }, []);
@@ -35,8 +35,8 @@ const Home = ({currentUser, userBoards, getUsersBoards, getCurrentBoard, setCurr
                 {/* <div className="d-flex justify-content-center"> */}
                   <InvitedBoards
                     currentUser={currentUser}
-                    getUsersBoards={getUsersBoards}
                     invitedBoards={invitedBoards}
+                    displayInvitedBoards={displayInvitedBoards}
                   />
                 {/* </div> */}
               </Col>

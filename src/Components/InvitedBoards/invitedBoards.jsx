@@ -4,14 +4,14 @@ import axios from 'axios';
 import './invitedBoards.css'
 import { toast } from 'react-toastify';
 import * as AiIcons from 'react-icons/ai'
-const InvitedBoards = ({invitedBoards, currentUser, getUsersBoards}) => {
+const InvitedBoards = ({invitedBoards, currentUser, displayInvitedBoards}) => {
     console.log(invitedBoards)
     const {userId} = currentUser;
     const acceptBoardInvite = async (boardData) => {
         await axios.post(`http://localhost:27029/api/Board/acceptBoardInvitation/${userId}`, boardData).then((res) => {
             if (res.status === 200){
                 toast.success(`${boardData.title}'s invitation accepted'`)
-                getUsersBoards();
+                displayInvitedBoards();
             }
         })
     }
@@ -20,14 +20,17 @@ const InvitedBoards = ({invitedBoards, currentUser, getUsersBoards}) => {
         await axios.delete(`http://localhost:27029/api/Board/removeBoard/${boardData.boardId}/User/${userId}`, boardData).then((res) => {
             if (res.status === 200){
                 toast.success(`${boardData.title}'s invitation declined'`)
-                getUsersBoards();
+                displayInvitedBoards();
             }
         })
     }
     return (
         <React.Fragment>
-        <div className="text-center">
-            <h1 className="title">Board Invitations</h1>
+        <div data-testid="invitedBoards-1" className="text-center">
+            {invitedBoards.length === 0
+            ?<h1 className="title">You Have No Board Invitations</h1>
+            :<h1 className="title">Board Invitations</h1>
+            }
             <div className="invitationWrapper">
             {invitedBoards.map((boardData) => {
                 return (
