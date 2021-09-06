@@ -28,7 +28,6 @@ const UpdateIssueModal = ({ currentIssue, getAllIssues, currentUser }) => {
       })
       .catch((err) => {
         if (err) {
-          console.log(err);
           toast.error("Error Occured While Updating Bug");
         }
       });

@@ -3,37 +3,13 @@ import {  useForm } from "react-hook-form";
 import { Container, Row, Form, Button } from "react-bootstrap";
 import axios from "axios";
 import { toast } from "react-toastify";
-const IssueForm = ({ currentUser, currentBoard, getAllIssues }) => {
+const IssueForm = ({onSubmit }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm();
-  const { boardId } = currentBoard;
-  const { userId } = currentUser;
-  const onSubmit = async (issueData) => {
-    const data = {
-      title: issueData.title,
-      description: issueData.description,
-      userId: userId,
-      boardId: boardId,
-    };
-    await axios
-      .post("http://localhost:27029/api/Issues", data)
-      .then((res) => {
-        if (res.status === 200) {
-          getAllIssues();
-          toast.success("Bug Added Successfully");
-        }
-      })
-      .catch((err) => {
-        if (err) {
-          toast.error("Error Occured While Adding Bug");
-        }
-      });
-      reset();
-  };
+
   return (
     <React.Fragment>
       <Container className="g-0">
@@ -41,28 +17,30 @@ const IssueForm = ({ currentUser, currentBoard, getAllIssues }) => {
             <Form onSubmit={handleSubmit(onSubmit)}>
               <div className="form-floating">
               <input
+              id="bug-title-input"
                 style={{ borderColor: "#060b26" }}
                 placeholder="Bug Title.."
                 className="form-control"
-                {...register("title", { required: "Bug Title Is Required" })}
+                {...register("title", { required: true })}
               ></input>
-              <label className="floatingInput">New Bug Title..</label>
+              <label for="bug-title-input" className="floatingInput">New Bug Title...</label>
               </div>
               {errors.title && (
                 <p className="ms-1" style={{ color: "crimson" }}>
-                  {errors.title.message}
+                  Bug Title Is Required
                 </p>
               )}
               <textarea
+                data-testid="issueForm-1"
                 style={{ borderColor: "#060b26" }}
                 placeholder="New Bug Description.."
                 className="form-control mt-2"
                 {...register("description", {
-                  required: "Bug Description Is Required"})}
+                  required: true})}
               ></textarea>
               {errors.description && (
-                <p className="ms-1" style={{ color: "crimson" }}>
-                  {errors.description.message}
+                <p  className="ms-1" style={{ color: "crimson" }}>
+                  Bug Description Is Required
                 </p>
               )}
               <Button

@@ -13,12 +13,15 @@ const ShowAllIssues = ({ allIssues, getAllIssues, currentUser, userRole }) => {
   return (
       <Container >
         <Row>
+          {allIssues.length !== 0 &&
           <input
+          data-testid="allIssues-search"
             type="search"
             className="form-control mt-4"
             placeholder="Search Issues By Title..."
             onChange={(event) => setSearch(event.target.value)}
           ></input>
+          }
           {allIssues.length === 0 && (
             <div className="text-center">
               <h1 className="title">No Issues Currently</h1>

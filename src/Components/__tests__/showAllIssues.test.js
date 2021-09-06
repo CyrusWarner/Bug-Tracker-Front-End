@@ -16,7 +16,7 @@ const testIssue = [
 
 ]
 describe("Show all issues title", () => {
-    it("with no issues passed tot he component the title should display no issues currently", () => {
+    it("with no issues passed to the component the title should display no issues currently", () => {
         render(<ShowAllIssues allIssues={[]} />)
         const issuesTitleElement = screen.queryByText("No Issues Currently");
         expect(issuesTitleElement).toBeInTheDocument();
@@ -25,5 +25,18 @@ describe("Show all issues title", () => {
         render(<ShowAllIssues allIssues={testIssue} />)
         const issuesTitleElement = screen.queryByText("No Issues Currently")
         expect(issuesTitleElement).toBeNull();
+    })
+})
+
+describe("Show all issues search bar", () => {
+    it("with no issues search bar should not be rendered",() => {
+        render(<ShowAllIssues allIssues={[]}/>)
+        const searchBarElement = screen.queryByTestId("allIssues-search")
+        expect(searchBarElement).not.toBeInTheDocument();
+    })
+    it("with issues search bar should be rendered", () => {
+        render(<ShowAllIssues allIssues={testIssue}/>)
+        const searchBarElement = screen.queryByTestId("allIssues-search")
+        expect(searchBarElement).toBeInTheDocument();
     })
 })

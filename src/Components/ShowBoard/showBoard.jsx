@@ -6,8 +6,10 @@ import { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import ShowMoreText from "react-show-more-text";
 import ShowAllIssues from '../ShowAllIssues/showAllIssues';
+import { toast } from 'react-toastify';
 const ShowBoard = ({currentBoard, currentUser, userRole, displayBoardUsers}) => {
     const {title, description, boardId} = currentBoard
+    const { userId } = currentUser;
     const [allIssues, setAllIssues] = useState([]);
     useEffect(() => {
         getAllIssues();
@@ -23,6 +25,30 @@ const ShowBoard = ({currentBoard, currentUser, userRole, displayBoardUsers}) => 
             })
         }
     }
+
+    const onSubmit = async (issueData, e) => {
+        
+      const data = {
+        title: issueData.title,
+        description: issueData.description,
+        userId: userId,
+        boardId: boardId,
+      };
+      await axios
+        .post("http://localhost:27029/api/Issues", data)
+        .then((res) => {
+          if (res.status === 200) {
+            getAllIssues();
+            toast.success("Bug Added Successfully");
+          }
+        })
+        .catch((err) => {
+          if (err) {
+            toast.error("Error Occured While Adding Bug");
+          }
+        });
+        e.target.reset();
+    };
     return (
         <div data-testid="showBoard-1">
         <motion.div
