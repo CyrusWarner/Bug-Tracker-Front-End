@@ -28,6 +28,7 @@ import { useForm } from "react-hook-form";
 const App = () => {
   const [users, setUsers] = useState([]);
   const [userBoards, setUsersBoards] = useState([]);
+  const [invitedBoards, setInvitedBoards] = useState([]);
   const [currentBoard, setCurrentBoard] = useState([]);
   const [currentUser, setCurrentUser] = useState([]);
   const [userRole, setUserRole] = useState("");
@@ -59,6 +60,7 @@ const App = () => {
     if (currentUser.length !== 0) {
       getUsers();
       getUsersBoards();
+      displayInvitedBoards();
     }
   }, [currentUser, currentBoard]);
 
@@ -125,6 +127,16 @@ const App = () => {
       });
   };
 
+  const displayInvitedBoards = async () => {
+    const {userId} = currentUser;
+    await axios.get(`http://localhost:27029/api/Board/InvitedBoards/${userId}`).then((res) => {
+      if (res.status === 200){
+        setInvitedBoards(res.data)
+      }
+    })
+  }
+
+
   const onSubmit =  async (data) => {
     let user = {
         Email: data.email,
@@ -174,6 +186,7 @@ const App = () => {
                           getCurrentBoard={getCurrentBoard}
                           currentBoard={currentBoard}
                           setCurrentBoard={setCurrentBoard}
+                          invitedBoards={invitedBoards}
                         />
                       );
                     }

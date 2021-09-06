@@ -4,7 +4,8 @@ import axios from 'axios';
 import './invitedBoards.css'
 import { toast } from 'react-toastify';
 import * as AiIcons from 'react-icons/ai'
-const InvitedBoards = ({userBoards, currentUser, getUsersBoards}) => {
+const InvitedBoards = ({invitedBoards, currentUser, getUsersBoards}) => {
+    console.log(invitedBoards)
     const {userId} = currentUser;
     const acceptBoardInvite = async (boardData) => {
         await axios.post(`http://localhost:27029/api/Board/acceptBoardInvitation/${userId}`, boardData).then((res) => {
@@ -28,7 +29,7 @@ const InvitedBoards = ({userBoards, currentUser, getUsersBoards}) => {
         <div className="text-center">
             <h1 className="title">Board Invitations</h1>
             <div className="invitationWrapper">
-            {userBoards.map((boardData) => {
+            {invitedBoards.map((boardData) => {
                 return (
                   <React.Fragment>
                       <div className="InvitationItem">

@@ -21,14 +21,10 @@ const ShowBoard = ({currentBoard, currentUser, userRole, displayBoardUsers}) => 
                     setAllIssues(res.data);
                 }
             })
-            .catch((err) => {
-                if(err){
-                    console.log(err);
-                }
-            })
         }
     }
     return (
+        <div data-testid="showBoard-1">
         <motion.div
         initial={{opacity: 0}}
         animate={{opacity: 1}}
@@ -52,7 +48,9 @@ const ShowBoard = ({currentBoard, currentUser, userRole, displayBoardUsers}) => 
                         <p style={{color: "#212529"}} className="Roboto-font fs-5">{description}</p>
                         </ShowMoreText> 
                         {(userRole === "Admin" || userRole === "Board Owner") &&
+                        <div data-testid="showBoard-2">
                         <IssueForm currentUser={currentUser} currentBoard={currentBoard} getAllIssues={getAllIssues}/>
+                        </div>
                         }
                         </Col>
                     <Col sm={6}>
@@ -63,6 +61,7 @@ const ShowBoard = ({currentBoard, currentUser, userRole, displayBoardUsers}) => 
             }
         </React.Fragment>
         </motion.div>
+        </div>
         
     )
 }
