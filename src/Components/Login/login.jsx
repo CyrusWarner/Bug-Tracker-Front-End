@@ -3,7 +3,6 @@ import {useForm} from "react-hook-form";
 import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import './login.css'
 import { Link } from 'react-router-dom';
-import { waitForDomChange } from '@testing-library/dom';
 
 const Login = ({onSubmit}) => {
     const {register, handleSubmit, formState: {errors}, reset} = useForm()
@@ -31,7 +30,7 @@ const Login = ({onSubmit}) => {
                         </div>
                         {errors.email && <p data-testid='error-text-1' className="errorColor ms-1" >Please enter a valid email</p>}
                         <div className="form-floating">
-                        <input data-testid='login-2' className="form-control mt-2" type="password" placeholder="Password..."  {...register("password", {required: false})}></input>
+                        <input data-testid='login-2' className="form-control mt-2" type="password" placeholder="Password..."  {...register("password", {required: true})}></input>
                         <label className="floatingInputGrid fs-5">Password...</label>
                         </div>
                         {errors.password && <p className="errorColor ms-1" >Please enter a valid password</p>}

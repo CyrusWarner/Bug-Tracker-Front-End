@@ -5,7 +5,6 @@ import "@testing-library/jest-dom/extend-expect";
 import { BrowserRouter } from "react-router-dom";
 import { act } from "react-dom/test-utils";
 
-
 test("Login form should be in the document", () => {
   const component = render(
     <BrowserRouter>
@@ -60,6 +59,32 @@ describe("Login", () => {
         fireEvent.click(submitBtn);
       });
       expect(mockOnSubmit).toHaveBeenCalled();
+    });
+  });
+  describe("with invalid inputs", () => {
+    it("with invalid email", async () => {
+      const { getByTestId, getByText } = render(
+        <BrowserRouter>
+          <Login></Login>
+        </BrowserRouter>
+      );
+      const submitBtn = getByTestId("login-3");
+      await act(async () => {
+        fireEvent.click(submitBtn);
+      });
+      expect(getByText("Please enter a valid email")).toBeInTheDocument();
+    });
+    it("with invalid passwords", async () => {
+      const { getByTestId, getByText } = render(
+        <BrowserRouter>
+          <Login></Login>
+        </BrowserRouter>
+      );
+      const submitBtn = getByTestId("login-3");
+      await act(async () => {
+        fireEvent.click(submitBtn);
+      });
+      expect(getByText("Please enter a valid password")).toBeInTheDocument();
     });
   });
 });

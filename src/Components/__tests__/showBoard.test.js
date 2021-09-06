@@ -2,9 +2,6 @@ import { render, screen, cleanup } from "@testing-library/react";
 import ShowBoard from "../ShowBoard/showBoard";
 import "@testing-library/jest-dom/extend-expect";
 
-afterEach(() => {
-  cleanup();
-});
 
 const displayBoardUsers = jest.fn();
 
@@ -24,7 +21,7 @@ test("Should render ShowBoard component", () => {
 });
 
 describe("Board Role Check", () => {
-  it("As a user", async () => {
+  it("As an user I cannot create a new bug", async () => {
     const component = render(
       <ShowBoard
         userRole="User"
@@ -40,7 +37,7 @@ describe("Board Role Check", () => {
     const roleElement = screen.queryByTestId("showBoard-2");
     expect(roleElement).toBe(null);
   });
-  it("As a admin", async () => {
+  it("As an admin I can create a new bug", async () => {
       const component = render(
         <ShowBoard
         userRole="Admin"
@@ -56,7 +53,7 @@ describe("Board Role Check", () => {
       const roleElement = screen.getByTestId("showBoard-2")
       expect(roleElement).toBeInTheDocument();
   })
-  it("As a Board Owner", async () => {
+  it("As an Board Owner I can create a new bug", async () => {
     const component = render(
       <ShowBoard
       userRole="Board Owner"

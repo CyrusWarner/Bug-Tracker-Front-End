@@ -45,7 +45,7 @@ const ShowBoard = ({currentBoard, currentUser, userRole, displayBoardUsers}) => 
                         less="Show Less"
                         expanded={false}
                         >
-                        <p style={{color: "#212529"}} className="Roboto-font fs-5">{description}</p>
+                        <p className="Roboto-font fs-5">{description}</p>
                         </ShowMoreText> 
                         {(userRole === "Admin" || userRole === "Board Owner") &&
                         <div data-testid="showBoard-2">
