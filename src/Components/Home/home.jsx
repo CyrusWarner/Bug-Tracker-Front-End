@@ -4,19 +4,11 @@ import CreateBoard from "../CreateBoard/createBoard";
 import InvitedBoards from "../InvitedBoards/invitedBoards";
 import { motion } from "framer-motion";
 import { Container, Row, Col } from "react-bootstrap";
-const Home = (props) => {
+const Home = ({currentUser, userBoards, getUsersBoards, getCurrentBoard, setCurrentBoard, currentBoard}) => {
   useEffect(() => {
     setCurrentBoard([]);
   }, []);
 
-  const {
-    currentUser,
-    userBoards,
-    getUsersBoards,
-    getCurrentBoard,
-    setCurrentBoard,
-    currentBoard,
-  } = props;
   return (
     <motion.div
       initial={{ opacity: 0 }}

@@ -5,7 +5,7 @@ import axios from "axios";
 import "./createBoard.css";
 import { toast } from "react-toastify";
 //CLEAR USER INPUT WITH USEFORM HOOK DO RESEARCH ON THIS
-const CreateBoard = ({ currentUser, getUsersBoards, currentBoard }) => {
+const CreateBoard = ({ currentUser, getUsersBoards }) => {
   const { register, reset, handleSubmit, formState: {errors} } = useForm();
   const {userId} = currentUser;
   const onSubmit = async (data) => {
@@ -39,6 +39,7 @@ const CreateBoard = ({ currentUser, getUsersBoards, currentBoard }) => {
 
   return (
     <React.Fragment>
+      <div data-testid='createBoard-1'>
           <div className="text-center">
             <h1 className="title">Add New Board</h1>
           </div>
@@ -69,6 +70,7 @@ const CreateBoard = ({ currentUser, getUsersBoards, currentBoard }) => {
             </Button>
             </div>
           </Form>
+          </div>
     </React.Fragment>
   );
 };

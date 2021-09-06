@@ -21,6 +21,10 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./app.css";
 import axios from "axios";
+import { useHistory } from 'react-router';
+import { toast } from 'react-toastify';
+import { useForm } from "react-hook-form";
+
 const App = () => {
   const [users, setUsers] = useState([]);
   const [userBoards, setUsersBoards] = useState([]);
@@ -29,6 +33,9 @@ const App = () => {
   const [userRole, setUserRole] = useState("");
   const [boardUsers, setBoardUsers] = useState([]);
   const [loading, setLoading] = useState(true);
+  const history = useHistory();
+  const {reset} = useForm();
+
 
   useEffect(() => {
     const currentInfo = window.localStorage.getItem("saved-info");
@@ -117,6 +124,26 @@ const App = () => {
         }
       });
   };
+
+  const onSubmit =  async (data) => {
+    let user = {
+        Email: data.email,
+        Password: data.password,
+    }
+    await axios.post(`http://localhost:27029/api/User/Login`, user).then((res) => {
+        if(res.status === 200) {
+            createCurrentUser(res.data);
+            toast.success(`Welcome Back ${res.data.firstName}`)
+            history.push("/");
+        }
+    })
+    .catch((err) => {
+        if(err){
+            toast.error("Invalid Email Or Password");
+        }
+    })
+    reset();
+}
   let location = useLocation();
   return (
     <React.Fragment>
@@ -155,7 +182,7 @@ const App = () => {
                 <Route
                   path="/Login"
                   render={(props) => (
-                    <Login {...props} createCurrentUser={createCurrentUser} />
+                    <Login {...props} createCurrentUser={createCurrentUser} onSubmit={onSubmit} />
                   )}
                 />
                 <Route
