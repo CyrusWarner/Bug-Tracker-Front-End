@@ -35,7 +35,6 @@ const App = () => {
   const [boardUsers, setBoardUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const history = useHistory();
-  const {reset} = useForm();
 
 
   useEffect(() => {
@@ -137,7 +136,7 @@ const App = () => {
   }
 
 
-  const onSubmit =  async (data) => {
+  const onSubmit =  async (data, e) => {
     let user = {
         Email: data.email,
         Password: data.password,
@@ -154,7 +153,7 @@ const App = () => {
             toast.error("Invalid Email Or Password");
         }
     })
-    reset();
+    e.target.reset();
 }
   let location = useLocation();
   return (

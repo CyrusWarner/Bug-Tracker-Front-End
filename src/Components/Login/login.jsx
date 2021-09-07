@@ -5,7 +5,7 @@ import './login.css'
 import { Link } from 'react-router-dom';
 
 const Login = ({onSubmit}) => {
-    const {register, handleSubmit, formState: {errors}, reset} = useForm()
+    const {register, handleSubmit, formState: {errors}} = useForm()
     return (
         <React.Fragment>
             <Container>
