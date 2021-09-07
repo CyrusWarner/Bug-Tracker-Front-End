@@ -4,7 +4,7 @@ import axios from 'axios';
 import './invitedBoards.css'
 import { toast } from 'react-toastify';
 import * as AiIcons from 'react-icons/ai'
-const InvitedBoards = ({invitedBoards, currentUser, displayInvitedBoards}) => {
+const InvitedBoards = ({invitedBoards, currentUser, displayInvitedBoards, getUsersBoards}) => {
     console.log(invitedBoards)
     const {userId} = currentUser;
     const acceptBoardInvite = async (boardData) => {
@@ -12,6 +12,7 @@ const InvitedBoards = ({invitedBoards, currentUser, displayInvitedBoards}) => {
             if (res.status === 200){
                 toast.success(`${boardData.title}'s invitation accepted'`)
                 displayInvitedBoards();
+                getUsersBoards();
             }
         })
     }

@@ -24,6 +24,8 @@ const ShowCoworkers = ({ boardUsers, removeUser, currentUser, displayBoardUsers,
           <div className="wrapper">
             {filterUsers.map((userData) => {
               return (
+                <React.Fragment>
+                  {/* {userData.inviteAccepted && */}
                 <div className="item">
                   <Card className="cardContainer mt-2 mb-2">
                     {userId !== userData.userId && (
@@ -42,13 +44,17 @@ const ShowCoworkers = ({ boardUsers, removeUser, currentUser, displayBoardUsers,
                       </h3>
                       <span className="ms-2">
                         {(userId !== userData.userId) && (userRole === "Board Owner")  &&
+                        <div data-testid="userRole-1">
                       <UpdateUserRoleModal userData={userData} displayBoardUsers={displayBoardUsers}/>
+                      </div>
                         }
                       </span>
                       <div className="fs-5 mt-1">{userData.user.email}</div>
                     </Card.Body>
                   </Card>
                 </div>
+              {/* } */}
+                </React.Fragment>
               );
             })}
           </div>

@@ -55,7 +55,7 @@ const ShowAllIssues = ({ allIssues, getAllIssues, currentUser, userRole }) => {
                   </Card.Header>
                   <Card.Body>
                     <Card.Text>{issue.description}</Card.Text>
-                    {(userRole === "Admin" ||userRole === "Board Owner") && (
+                    {(userRole === "Admin" || userRole === "Board Owner") && (
                       <div className="d-flex justify-content-end">
                         <UpdateIssueModal
                           currentIssue={issue}

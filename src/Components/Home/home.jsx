@@ -37,6 +37,7 @@ const Home = ({currentUser, userBoards, getUsersBoards, getCurrentBoard, setCurr
                     currentUser={currentUser}
                     invitedBoards={invitedBoards}
                     displayInvitedBoards={displayInvitedBoards}
+                    getUsersBoards={getUsersBoards}
                   />
                 {/* </div> */}
               </Col>
