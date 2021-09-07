@@ -11,7 +11,6 @@ const testCurrentUser = [
     email: "cyruswarner27@gmail.com",
   },
 ];
-const userRole = "Board Owner"
 
 const testUser = [
   {

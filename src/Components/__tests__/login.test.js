@@ -11,12 +11,12 @@ test("Login form should be in the document", () => {
       <Login />
     </BrowserRouter>
   );
-  const loginFormElement = component.getByText("Email...");
+  const loginFormElement = component.getByTestId("login-component");
   expect(loginFormElement).toBeInTheDocument();
 });
 
 test("email input should accept text", () => {
-  const component = render(
+  render(
     <BrowserRouter>
       <Login />
     </BrowserRouter>
@@ -28,7 +28,7 @@ test("email input should accept text", () => {
 });
 
 test("password input should accept text", () => {
-  const component = render(
+  render(
     <BrowserRouter>
       <Login />
     </BrowserRouter>
@@ -43,7 +43,7 @@ describe("Login", () => {
   describe("With valid inputs", () => {
     it("calls the onSubmit function", async () => {
       const mockOnSubmit = jest.fn();
-      const { getByTestId, getByText } = render(
+      const { getByTestId } = render(
         <BrowserRouter>
           <Login onSubmit={mockOnSubmit} />
         </BrowserRouter>

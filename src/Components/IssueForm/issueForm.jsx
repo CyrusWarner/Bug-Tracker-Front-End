@@ -1,8 +1,6 @@
 import React from "react";
 import {  useForm } from "react-hook-form";
 import { Container, Row, Form, Button } from "react-bootstrap";
-import axios from "axios";
-import { toast } from "react-toastify";
 const IssueForm = ({onSubmit }) => {
   const {
     register,

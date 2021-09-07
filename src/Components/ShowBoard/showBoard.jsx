@@ -75,7 +75,7 @@ const ShowBoard = ({currentBoard, currentUser, userRole, displayBoardUsers}) => 
                         </ShowMoreText> 
                         {(userRole === "Admin" || userRole === "Board Owner") &&
                         <div data-testid="showBoard-2">
-                        <IssueForm currentUser={currentUser} currentBoard={currentBoard} getAllIssues={getAllIssues}/>
+                        <IssueForm currentUser={currentUser} currentBoard={currentBoard} getAllIssues={getAllIssues} onSubmit={onSubmit}/>
                         </div>
                         }
                         </Col>

@@ -8,7 +8,8 @@ const Login = ({onSubmit}) => {
     const {register, handleSubmit, formState: {errors}} = useForm()
     return (
         <React.Fragment>
-            <Container>
+            <div data-testid="login-component">
+            <Container >
                 <Row>
                     <Col sm={3}></Col>
                     <Col sm={6}>
@@ -41,6 +42,7 @@ const Login = ({onSubmit}) => {
                 <Col sm={2}></Col>
             </Row>
         </Container>
+        </div>
         </React.Fragment>
     )
 
