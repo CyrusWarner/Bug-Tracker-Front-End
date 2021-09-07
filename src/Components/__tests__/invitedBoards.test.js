@@ -1,17 +1,17 @@
-import { render, screen, cleanup } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import InvitedBoards from "../InvitedBoards/invitedBoards";
 import "@testing-library/jest-dom/extend-expect";
 
 const testBoard = [
     {
-        "userId": 1029,
-        "user": null,
-        "boardId": 1065,
-        "board": {
-            "boardId": 1065,
-            "title": "Rhenium DevCodeCamp",
-            "description": "This is a board for software developers to organize their current bugs and assign bugs to developers to work on.",
-            "users": []
+        userId: 1029,
+        user: null,
+        boardId: 1065,
+        board: {
+            boardId: 1065,
+            title: "Rhenium DevCodeCamp",
+            description: "This is a board for software developers to organize their current bugs and assign bugs to developers to work on.",
+            users: []
         }
     }
 ]

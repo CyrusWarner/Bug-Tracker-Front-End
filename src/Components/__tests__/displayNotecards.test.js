@@ -1,13 +1,13 @@
-import { render, screen, cleanup } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import DisplayNotecards from "../DisplayNotecards/displayNotecards";
 import "@testing-library/jest-dom/extend-expect";
 
 const testNote = [
     {
-        "title": "This is a note",
-        "description": "This is a description",
-        "userId": 1,
-        "boardId": 2
+        title: "This is a note",
+        description: "This is a description",
+        userId: 1,
+        boardId: 2
     }
 ]
 

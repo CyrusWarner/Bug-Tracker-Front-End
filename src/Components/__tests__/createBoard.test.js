@@ -1,10 +1,6 @@
-import {render, screen, cleanup} from '@testing-library/react'
+import {render, screen} from '@testing-library/react'
 import CreateBoard from '../CreateBoard/createBoard';
 import "@testing-library/jest-dom/extend-expect"
-
-afterEach(() => {
-    cleanup();
-})
 
 test('Should render CreateBoard component', () => {
     render(<CreateBoard currentUser={{userId: 1029}}/>);

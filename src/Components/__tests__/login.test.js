@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent, screen, cleanup } from "@testing-library/react";
+import { render, fireEvent, screen } from "@testing-library/react";
 import Login from "../Login/login";
 import "@testing-library/jest-dom/extend-expect";
 import { BrowserRouter } from "react-router-dom";

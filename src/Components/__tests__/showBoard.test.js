@@ -1,4 +1,4 @@
-import { render, screen, cleanup } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import ShowBoard from "../ShowBoard/showBoard";
 import "@testing-library/jest-dom/extend-expect";
 
