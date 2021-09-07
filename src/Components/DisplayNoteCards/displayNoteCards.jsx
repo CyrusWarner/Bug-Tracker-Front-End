@@ -11,12 +11,25 @@ const DisplayNoteCards = ({allNotes, currentBoard, currentUser, getAllNotes}) =>
     );
     return (
         <React.Fragment>
+              {allNotes.length === 0 &&
+            <Container>
+                <Row>
+                    <Col sm={4}></Col>
+                    <Col sm={4}>
+                        <div  className="text-center">
+                            <h1 className="title">You have no notes currently</h1>
+                        </div>
+                    </Col>
+                    <Col sm={4}></Col>
+                </Row>
+            </Container>
+            }
             <Container>
                 <Row>
                     <Col sm={2}></Col>
                     <Col sm={8}>
                         {allNotes.length !== 0 &&
-                        <input placeholder="Search For Notecard..." onChange={(e) => setSearch(e.target.value)} className="form-control" type="search"></input>
+                        <input data-testid="notecards-search" placeholder="Search For Notecard..." onChange={(e) => setSearch(e.target.value)} className="form-control" type="search"></input>
                          }
                     </Col>
                     <Col sm={2}></Col>

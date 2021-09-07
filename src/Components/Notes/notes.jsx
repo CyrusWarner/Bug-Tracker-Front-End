@@ -5,6 +5,7 @@ import * as BsIcons from "react-icons/bs";
 import NoteCardForm from '../NoteCardForm/noteCardForm';
 import axios from 'axios';
 import { motion } from 'framer-motion';
+import { toast } from 'react-toastify';
 const Notes = ({currentBoard, currentUser}) => {
     const [allNotes, setAllNotes] = useState([]);
     const {title} = currentBoard;
@@ -23,7 +24,7 @@ const Notes = ({currentBoard, currentUser}) => {
         })
         .catch((err) => {
             if(err){
-                console.log(err)
+                toast.error("Error getting users notes")
             }
         })
     }
@@ -47,6 +48,7 @@ const Notes = ({currentBoard, currentUser}) => {
                     <Col sm={6}></Col>
                 </Row>
             </Container>
+          
             {currentBoard.length !== 0 &&
             <div>
                 <DisplayNoteCards allNotes={allNotes} currentBoard={currentBoard} currentUser={currentUser} getAllNotes={getAllNotes}/>

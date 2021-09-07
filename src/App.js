@@ -23,7 +23,8 @@ import "./app.css";
 import axios from "axios";
 import { useHistory } from 'react-router';
 import { toast } from 'react-toastify';
-import { useForm } from "react-hook-form";
+import ApiKey from './ApiKey/apiKey';
+
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -35,7 +36,6 @@ const App = () => {
   const [boardUsers, setBoardUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const history = useHistory();
-  const {reset} = useForm();
 
 
   useEffect(() => {
@@ -137,7 +137,7 @@ const App = () => {
   }
 
 
-  const onSubmit =  async (data) => {
+  const onSubmit =  async (data, e) => {
     let user = {
         Email: data.email,
         Password: data.password,
@@ -154,8 +154,37 @@ const App = () => {
             toast.error("Invalid Email Or Password");
         }
     })
-    reset();
+    e.target.reset();
 }
+
+const onSignupSubmit = async (values, e) => {
+  await axios.post("http://localhost:27029/api/User", values).then((res) => {
+      if(res.status === 200) {
+          var data = {
+              "username": res.data.firstName,
+              "secret": res.data.password,
+              "email": res.data.email
+          }
+          var config = {
+              method: 'post',
+              url: 'https://api.chatengine.io/users/',
+              headers: {
+                  'PRIVATE-KEY': `${ApiKey}`
+              },
+              data : data
+          };
+          axios(config)
+          history.push("/Login")
+      }
+  })
+  .catch((err) => {
+      if(err){
+          toast.error("Email Already Taken")
+      }
+  })
+  e.target.reset();
+}
+
   let location = useLocation();
   return (
     <React.Fragment>
@@ -187,6 +216,7 @@ const App = () => {
                           currentBoard={currentBoard}
                           setCurrentBoard={setCurrentBoard}
                           invitedBoards={invitedBoards}
+                          displayInvitedBoards={displayInvitedBoards}
                         />
                       );
                     }
@@ -200,7 +230,7 @@ const App = () => {
                 />
                 <Route
                   path="/Signup"
-                  render={(props) => <Signup {...props} />}
+                  render={(props) => <Signup onSignupSubmit={onSignupSubmit} {...props} />}
                 />
                 <Route
                   path="/Notes"

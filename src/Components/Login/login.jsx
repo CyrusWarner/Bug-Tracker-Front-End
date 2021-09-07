@@ -5,13 +5,11 @@ import './login.css'
 import { Link } from 'react-router-dom';
 
 const Login = ({onSubmit}) => {
-    const {register, handleSubmit, formState: {errors}, reset} = useForm()
-
-
-
+    const {register, handleSubmit, formState: {errors}} = useForm()
     return (
         <React.Fragment>
-            <Container>
+            <div data-testid="login-component">
+            <Container >
                 <Row>
                     <Col sm={3}></Col>
                     <Col sm={6}>
@@ -31,9 +29,9 @@ const Login = ({onSubmit}) => {
                         <input data-testid='login-1' className="form-control"  type="text" placeholder="Email..."  {...register("email", {required: true})}></input>
                         <label className="floatingInputGrid fs-5">Email...</label>
                         </div>
-                        {errors.email && <p className="errorColor ms-1" >Please enter a valid email</p>}
+                        {errors.email && <p data-testid='error-text-1' className="errorColor ms-1" >Please enter a valid email</p>}
                         <div className="form-floating">
-                        <input data-testid='login-2' className="form-control mt-2" type="password" placeholder="Password..."  {...register("password", {required: false})}></input>
+                        <input data-testid='login-2' className="form-control mt-2" type="password" placeholder="Password..."  {...register("password", {required: true})}></input>
                         <label className="floatingInputGrid fs-5">Password...</label>
                         </div>
                         {errors.password && <p className="errorColor ms-1" >Please enter a valid password</p>}
@@ -44,6 +42,7 @@ const Login = ({onSubmit}) => {
                 <Col sm={2}></Col>
             </Row>
         </Container>
+        </div>
         </React.Fragment>
     )
 

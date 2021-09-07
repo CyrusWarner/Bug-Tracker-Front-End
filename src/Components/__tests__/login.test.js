@@ -1,13 +1,9 @@
 import React from "react";
-import { render, fireEvent, screen, cleanup } from "@testing-library/react";
+import { render, fireEvent, screen } from "@testing-library/react";
 import Login from "../Login/login";
 import "@testing-library/jest-dom/extend-expect";
 import { BrowserRouter } from "react-router-dom";
 import { act } from "react-dom/test-utils";
-
-afterEach(() => {
-  cleanup();
-});
 
 test("Login form should be in the document", () => {
   const component = render(
@@ -15,12 +11,12 @@ test("Login form should be in the document", () => {
       <Login />
     </BrowserRouter>
   );
-  const loginFormElement = component.getByText("Email...");
+  const loginFormElement = component.getByTestId("login-component");
   expect(loginFormElement).toBeInTheDocument();
 });
 
 test("email input should accept text", () => {
-  const component = render(
+  render(
     <BrowserRouter>
       <Login />
     </BrowserRouter>
@@ -32,7 +28,7 @@ test("email input should accept text", () => {
 });
 
 test("password input should accept text", () => {
-  const component = render(
+  render(
     <BrowserRouter>
       <Login />
     </BrowserRouter>
@@ -47,7 +43,7 @@ describe("Login", () => {
   describe("With valid inputs", () => {
     it("calls the onSubmit function", async () => {
       const mockOnSubmit = jest.fn();
-      const { getByTestId, getByText } = render(
+      const { getByTestId } = render(
         <BrowserRouter>
           <Login onSubmit={mockOnSubmit} />
         </BrowserRouter>
@@ -63,6 +59,32 @@ describe("Login", () => {
         fireEvent.click(submitBtn);
       });
       expect(mockOnSubmit).toHaveBeenCalled();
+    });
+  });
+  describe("with invalid inputs", () => {
+    it("with invalid email", async () => {
+      const { getByTestId, getByText } = render(
+        <BrowserRouter>
+          <Login></Login>
+        </BrowserRouter>
+      );
+      const submitBtn = getByTestId("login-3");
+      await act(async () => {
+        fireEvent.click(submitBtn);
+      });
+      expect(getByText("Please enter a valid email")).toBeInTheDocument();
+    });
+    it("with invalid passwords", async () => {
+      const { getByTestId, getByText } = render(
+        <BrowserRouter>
+          <Login></Login>
+        </BrowserRouter>
+      );
+      const submitBtn = getByTestId("login-3");
+      await act(async () => {
+        fireEvent.click(submitBtn);
+      });
+      expect(getByText("Please enter a valid password")).toBeInTheDocument();
     });
   });
 });
