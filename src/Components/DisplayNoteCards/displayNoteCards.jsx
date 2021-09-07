@@ -17,7 +17,7 @@ const DisplayNoteCards = ({allNotes, currentBoard, currentUser, getAllNotes}) =>
                     <Col sm={4}></Col>
                     <Col sm={4}>
                         <div  className="text-center">
-                            <h1 className="title">You have no notes currently</h1>
+                            <h1 className="title">You Have No Notes Currently</h1>
                         </div>
                     </Col>
                     <Col sm={4}></Col>

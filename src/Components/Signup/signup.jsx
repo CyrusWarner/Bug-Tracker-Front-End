@@ -20,27 +20,27 @@ const Signup = ({onSignupSubmit}) => {
                     <Col sm={8}>
                         <Form className="text-center" onSubmit={handleSubmit(onSignupSubmit)}>   
                         <div className="form-floating"> 
-                        <input data-testid="firstName-input"  placeholder="First Name..." style={{borderColor: "#060b26"}} className="form-control" {...register("firstName", {required: "First Name Is Required"})} id="firstName"></input>
+                        <input data-testid="firstName-input"  placeholder="First Name..." style={{borderColor: "#060b26"}} className="form-control" {...register("firstName", {required: true})} id="firstName"></input>
                         <label for="firstName" className="floatingInputGrid fs-5">First Name...</label>
-                        {errors.firstName && <p className="errorColor ms-1" >{errors.firstName.message}</p>}
+                        {errors.firstName && <p className="errorColor ms-1" >First Name Is Required</p>}
                         </div> 
 
                         <div className="form-floating mt-2">
-                        <input data-testid="lastName-input" placeholder="Last Name..." style={{borderColor: "#060b26"}} className="form-control" {...register("lastName", {required: "Last Name Is Required"})} id="lastName"></input>
+                        <input data-testid="lastName-input" placeholder="Last Name..." style={{borderColor: "#060b26"}} className="form-control" {...register("lastName", {required: true})} id="lastName"></input>
                         <label for="lastName" className="floatingInputGrid fs-5">Last Name...</label>
-                        {errors.lastName && <p className="errorColor ms-1" >{errors.lastName.message}</p>}
+                        {errors.lastName && <p className="errorColor ms-1" >Last Name Is Required</p>}
                         </div>
 
                         <div className="form-floating mt-2">
-                        <input data-testid="email-input" placeholder="Email..." style={{borderColor: "#060b26"}} className="form-control" {...register("email", {required: "Email Is Required"})} id="email"></input>
+                        <input data-testid="email-input" placeholder="Email..." style={{borderColor: "#060b26"}} className="form-control" {...register("email", {required: true})} id="email"></input>
                         <label for="email" className="floatingInputGrid fs-5" >Email...</label>
-                        {errors.email && <p className="errorColor ms-1" >{errors.email.message}</p>}
+                        {errors.email && <p className="errorColor ms-1" >Email Is Required</p>}
                         </div>
 
                         <div className="form-floating mt-2">
-                        <input data-testid="password-input" placeholder="Password..." style={{borderColor: "#060b26"}} type="password" className="form-control" {...register("password", {required: "Password Is Required"})} id="password"></input>
+                        <input data-testid="password-input" placeholder="Password..." style={{borderColor: "#060b26"}} type="password" className="form-control" {...register("password", {required: true})} id="password"></input>
                         <label for="password" className="floatingInputGrid fs-5">Password...</label>
-                        {errors.password && <p className="errorColor ms-1" >{errors.password.message}</p>}
+                        {errors.password && <p className="errorColor ms-1" >Password Is Required</p>}
                         </div>
                         <div>
                         <Button data-testid="signup-button" className="mt-2" type="submit">Complete Signup</Button>

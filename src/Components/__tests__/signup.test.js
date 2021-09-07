@@ -73,29 +73,28 @@ test("Password input should accept text", () => {
 describe("signup", () => {
   describe("with valid inputs", () => {
     it("calls the onsubmit button", async () => {
-        const mockOnSubmit = jest.fn();
-        const {getByTestId, getByText} = 
-      render(
+      const mockOnSubmit = jest.fn();
+      const { getByTestId, getByText } = render(
         <BrowserRouter>
           <Signup onSignupSubmit={mockOnSubmit} />
         </BrowserRouter>
       );
       await act(async () => {
-          const firstNameElement = getByTestId("firstName-input")
+        const firstNameElement = getByTestId("firstName-input");
         fireEvent.change(firstNameElement, {
-          target: { value: "Greg" }
+          target: { value: "Greg" },
         });
-        const lastNameElement = getByTestId("lastName-input")
+        const lastNameElement = getByTestId("lastName-input");
         fireEvent.change(lastNameElement, {
-          target: { value: "double" }
+          target: { value: "double" },
         });
-        const emailElement = getByTestId("email-input")
+        const emailElement = getByTestId("email-input");
         fireEvent.change(emailElement, {
-          target: { value: "gregdouble@gmail.com" }
+          target: { value: "gregdouble@gmail.com" },
         });
-        const passwordElement = getByTestId("password-input")
+        const passwordElement = getByTestId("password-input");
         fireEvent.change(passwordElement, {
-          target: { value: "gregDouble123" }
+          target: { value: "gregDouble123" },
         });
         await act(async () => {
           const submitBtn = getByText("Complete Signup");
@@ -103,7 +102,52 @@ describe("signup", () => {
         });
       });
       expect(mockOnSubmit).toHaveBeenCalled();
-
     });
+  });
+  describe("with invalid inputs", () => {
+    it("with invalid first name", async () => {
+      render(
+        <BrowserRouter>
+          <Signup />
+        </BrowserRouter>
+      );
+      const submitBtn = screen.getByText("Complete Signup");
+      await act(async () => {
+        fireEvent.click(submitBtn);
+      });
+      expect(screen.getByText("First Name Is Required")).toBeInTheDocument();
+    });
+    it("with invalid last name validation should render", async () => {
+      render(
+        <BrowserRouter>
+          <Signup />
+        </BrowserRouter>
+      );
+      const submitBtn = screen.getByText("Complete Signup");
+      await act(async () => {
+        fireEvent.click(submitBtn);
+      });
+      expect(screen.getByText("Last Name Is Required")).toBeInTheDocument();
+    });
+    it("with invalid email validation should render", async () => {
+      render(<BrowserRouter>
+      <Signup />
+      </BrowserRouter>)
+      const submitBtn = screen.getByText("Complete Signup");
+      await act(async () => {
+        fireEvent.click(submitBtn);
+      })
+      expect(screen.getByText("Email Is Required")).toBeInTheDocument();
+    })
+    it("with invalid password input password validation render", async () => {
+      render(<BrowserRouter>
+      <Signup />
+      </BrowserRouter>)
+      const submitBtn = screen.getByText("Complete Signup");
+      await act(async () => {
+        fireEvent.click(submitBtn);
+      })
+      expect(screen.getByText("Password Is Required")).toBeInTheDocument();
+    })
   });
 });

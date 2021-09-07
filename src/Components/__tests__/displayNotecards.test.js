@@ -14,7 +14,7 @@ const testNote = [
 describe("note card title", () => {
     it("displayNoteCards component has no notes title should display you have no notes currently", async () => {
         render(<DisplayNotecards allNotes={[]} />)
-        const titleElement = screen.getByText("You have no notes currently");
+        const titleElement = screen.getByText("You Have No Notes Currently");
         expect(titleElement).toBeInTheDocument();
     })
     it("display Notecards component has no notes title should not display you have no notes currently", async () => {

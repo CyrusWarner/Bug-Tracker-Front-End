@@ -43,7 +43,7 @@ const ShowCoworkers = ({ boardUsers, removeUser, currentUser, displayBoardUsers,
                         {userData.roles.roleName}
                       </h3>
                       <span className="ms-2">
-                        {(userId !== userData.userId) && (userRole === "Board Owner")  &&
+                        {(userId !== userData.userId) && (userRole === "Board Owner") && (userData.inviteAccepted)  &&
                         <div data-testid="userRole-1">
                       <UpdateUserRoleModal userData={userData} displayBoardUsers={displayBoardUsers}/>
                       </div>
