@@ -15,6 +15,19 @@ const testIssue = [
     },
 
 ]
+
+const completedTestIssue = [
+    {
+        issuesId: 1029,
+        title: "Login Form  Line 55 Not Displaying Notification After Successful Login.",
+        description: "This Bug happens after a user tries to log in to the website. The login form is working, but the welcome back notification does not display after a user successfully logs in.",
+        isCompleted: true,
+        boardId: 1065,
+        board: null,
+        userId: 1029,
+        user: null
+    },
+]
 describe("Show all issues title", () => {
     it("with no issues passed to the component the title should display no issues currently", () => {
         render(<ShowAllIssues allIssues={[]} />)
@@ -39,4 +52,16 @@ describe("Show all issues search bar", () => {
         const searchBarElement = screen.queryByTestId("allIssues-search")
         expect(searchBarElement).toBeInTheDocument();
     })
+})
+
+test("Says bug in progress when the bug is not completed", () => {
+    render(<ShowAllIssues allIssues={testIssue}/>)
+    const bugNotCompletedElement = screen.getByText("Bug In Progress");
+    expect(bugNotCompletedElement).toBeInTheDocument();
+})
+
+test("Says bug completed when the bug is checked as complete", () => {
+    render(<ShowAllIssues allIssues={completedTestIssue}/>)
+    const bugCompletedElement = screen.getByText("Bug Completed");
+    expect(bugCompletedElement).toBeInTheDocument();
 })
