@@ -1,6 +1,11 @@
 .fc-toolbar-chunk {
     display: flex;
-    margin-right: 0.5rem;
+    text-align: center;
+}
+
+.fc .fc-toolbar-title {
+    font-size: 1.5rem;
+    margin-right: 0.25rem;
 }
 
 .fc-daygrid {

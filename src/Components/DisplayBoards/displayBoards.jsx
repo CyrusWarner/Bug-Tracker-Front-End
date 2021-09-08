@@ -23,7 +23,7 @@ const DisplayBoards = ({ userBoards, getCurrentBoard }) => {
               </div>
               )}
 
-      <Container >
+      <Container className="mb-2" >
         <Row className="d-flex justify-content-center">
         <div className="scrolling-wrapper">
               {filterBoards.map((boardData) => {

@@ -11,6 +11,7 @@ const InviteCoworker = ({ users, currentBoard, boardUsers, displayBoardUsers, cu
   const [text, setText] = useState("");
   const [userToAdd, setUserToAdd] = useState([]);
   const { boardId } = currentBoard;
+
   const handleChange = (event) => {
     const value = event.target.value;
     let suggestions = [];

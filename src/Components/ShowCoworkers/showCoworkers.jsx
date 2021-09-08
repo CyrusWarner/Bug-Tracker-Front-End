@@ -25,7 +25,6 @@ const ShowCoworkers = ({ boardUsers, removeUser, currentUser, displayBoardUsers,
             {filterUsers.map((userData) => {
               return (
                 <React.Fragment>
-                  {/* {userData.inviteAccepted && */}
                 <div className="item">
                   <Card className="cardContainer mt-2 mb-2">
                     {userId !== userData.userId && (
@@ -53,7 +52,6 @@ const ShowCoworkers = ({ boardUsers, removeUser, currentUser, displayBoardUsers,
                     </Card.Body>
                   </Card>
                 </div>
-              {/* } */}
                 </React.Fragment>
               );
             })}

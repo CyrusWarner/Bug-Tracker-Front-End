@@ -5,18 +5,18 @@ const Chat = ({ currentUser }) => {
   const { firstName, password } = currentUser;
   return (
     <motion.div
-    initial={{opacity: 0}}
-    animate={{opacity: 1}}
-    exit={{opacity: 0}}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
     >
-    <React.Fragment>
-          <ChatEngine
+      <React.Fragment>
+        <ChatEngine
           height="100vh"
-      projectID="77b5a68f-3892-4e26-96b1-6400dd453029"
-      userName={firstName}
-      userSecret={password}
-    />
-    </React.Fragment>
+          projectID="bab3647a-8f5d-416c-a551-37d5bb2d5aab"
+          userName={firstName}
+          userSecret={password}
+        />
+      </React.Fragment>
     </motion.div>
   );
 };
