@@ -33,16 +33,16 @@ const NewEventModal = ({onEventAdded, boardUsers, currentBoard, displayBoardUser
       let suggestions = [];
       if (value.length > 0) {
         const regex = new RegExp(`^${value}`, "i");
-        suggestions = boardUsers.sort().filter((user) => regex.test(user.email));
+        suggestions = boardUsers.sort().filter((userData) => regex.test(userData.user.email));
       }
       setSuggestions(suggestions);
       setText(value);
     };
   
     const userSelected = (value) => {
-      boardUsers.filter((user) => {
-        if (user.email.toLowerCase() === value.toLowerCase()) {
-          setUserEmail(user.email);
+      boardUsers.filter((userData) => {
+        if (userData.user.email.toLowerCase() === value.toLowerCase()) {
+          setUserEmail(userData.user.email);
           return;
         }
       });
@@ -56,8 +56,8 @@ const NewEventModal = ({onEventAdded, boardUsers, currentBoard, displayBoardUser
       }
       return (
         <ul>
-          {suggestions.map((user) => {
-            return <li onClick={() => userSelected(user.email)}>{user.email}</li>;
+          {suggestions.map((userData) => {
+            return <li onClick={() => userSelected(userData.user.email)}>{userData.user.email}</li>;
           })}
         </ul>
       );
