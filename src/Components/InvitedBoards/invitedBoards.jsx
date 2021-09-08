@@ -5,7 +5,6 @@ import './invitedBoards.css'
 import { toast } from 'react-toastify';
 import * as AiIcons from 'react-icons/ai'
 const InvitedBoards = ({invitedBoards, currentUser, displayInvitedBoards, getUsersBoards}) => {
-    console.log(invitedBoards)
     const {userId} = currentUser;
     const acceptBoardInvite = async (boardData) => {
         await axios.post(`http://localhost:27029/api/Board/acceptBoardInvitation/${userId}`, boardData).then((res) => {
@@ -35,8 +34,7 @@ const InvitedBoards = ({invitedBoards, currentUser, displayInvitedBoards, getUse
             <div className="invitationWrapper">
             {invitedBoards.map((boardData) => {
                 return (
-                  <React.Fragment>
-                      <div className="InvitationItem">
+                      <div key={boardData.boardId} className="InvitationItem">
                   {!boardData.inviteAccepted &&
                     <Card  className="cardContainer " style={{ margin: "1rem" }}>
                       <Card.Body className="text-center">
@@ -53,7 +51,6 @@ const InvitedBoards = ({invitedBoards, currentUser, displayInvitedBoards, getUse
                     </Card>
                     }
                     </div>
-                    </React.Fragment>
                 );
               })}
               </div>

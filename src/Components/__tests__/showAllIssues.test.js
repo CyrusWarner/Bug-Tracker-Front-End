@@ -65,3 +65,27 @@ test("Says bug completed when the bug is checked as complete", () => {
     const bugCompletedElement = screen.getByText("Bug Completed");
     expect(bugCompletedElement).toBeInTheDocument();
 })
+
+test("update bug component does not display when userRole is User", () => {
+    render(<ShowAllIssues allIssues={testIssue} userRole="User"/>)
+    const updateBugElement = screen.queryByTestId("update-bug-modal")
+    expect(updateBugElement).not.toBeInTheDocument();
+})
+
+test("delete bug component does not display when userRole is User", () => {
+    render(<ShowAllIssues allIssues={testIssue} userRole="User"/>)
+    const deleteBugElement = screen.queryByTestId("delete-bug-modal")
+    expect(deleteBugElement).not.toBeInTheDocument();
+})
+
+test("update bug component displays when userRole is Admin", () => {
+    render(<ShowAllIssues allIssues={testIssue} userRole="Admin" currentUser={{userId: 1}}/>)
+    const updateBugElement = screen.queryByTestId("update-bug-modal")
+    expect(updateBugElement).toBeInTheDocument();
+})
+
+test("delete bug component displays when userRole is Admin", () => {
+    render(<ShowAllIssues allIssues={testIssue} userRole="Admin" currentUser={{userId: 1}}/>)
+    const deleteBugElement = screen.queryByTestId("delete-bug-modal")
+    expect(deleteBugElement).toBeInTheDocument();
+})

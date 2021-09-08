@@ -74,7 +74,7 @@ describe("Login", () => {
       });
       expect(getByText("Please enter a valid email")).toBeInTheDocument();
     });
-    it("with invalid passwords", async () => {
+    it("with invalid password", async () => {
       const { getByTestId, getByText } = render(
         <BrowserRouter>
           <Login></Login>

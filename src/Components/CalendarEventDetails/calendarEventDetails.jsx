@@ -24,9 +24,9 @@ const CalendarEventDetails = ({ show, handleClose, filteredEvents, getAllEvents,
             <Table responsive striped bordered hover>
               <thead>
                 <tr>
-                  <th>Bug Title</th>
-                  <th>Bug Assignee</th>
-                  <th>Bug Date</th>
+                  <th>Event Title</th>
+                  <th>Event Assignee</th>
+                  <th>Event Date</th>
                   {userRole === "Admin" &&
                   <th>Actions</th>
                   }
@@ -36,7 +36,7 @@ const CalendarEventDetails = ({ show, handleClose, filteredEvents, getAllEvents,
                 {filteredEvents.map((event) => {
                   return (
                     <React.Fragment>
-                      <tr>
+                      <tr key={event.eventId}>
                         <td>{event.title}</td>
                         <td>{event.assignee}</td>
                         <td>{event.date}</td>

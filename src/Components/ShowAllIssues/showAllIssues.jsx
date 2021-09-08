@@ -30,7 +30,7 @@ const ShowAllIssues = ({ allIssues, getAllIssues, currentUser, userRole }) => {
           <div className="wrapper">
             {filterIssues.map((issue) => {
               return (
-                <div className="item"> 
+                <div key={issue.issuesId} className="item"> 
                 <Card className="cardContainer mt-3">
                   {!issue.isCompleted && (
                     <div
@@ -57,12 +57,14 @@ const ShowAllIssues = ({ allIssues, getAllIssues, currentUser, userRole }) => {
                     <Card.Text>{issue.description}</Card.Text>
                     {(userRole === "Admin" || userRole === "Board Owner") && (
                       <div className="d-flex justify-content-end">
+                        <span data-testid="update-bug-modal">
                         <UpdateIssueModal
                           currentIssue={issue}
                           getAllIssues={getAllIssues}
                           currentUser={currentUser}
                         />
-                        <span className="ms-3"></span>
+                        </span>
+                        <span data-testid="delete-bug-modal" className="ms-3"></span>
                         <DeleteIssueModal
                           currentIssue={issue}
                           getAllIssues={getAllIssues}

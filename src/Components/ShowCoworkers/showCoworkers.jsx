@@ -24,8 +24,7 @@ const ShowCoworkers = ({ boardUsers, removeUser, currentUser, displayBoardUsers,
           <div className="wrapper">
             {filterUsers.map((userData) => {
               return (
-                <React.Fragment>
-                <div className="item">
+                <div key={userData.userId} className="item">
                   <Card className="cardContainer mt-2 mb-2">
                     {userId !== userData.userId && (
                       <div className="position-absolute top-0 end-0">
@@ -52,7 +51,6 @@ const ShowCoworkers = ({ boardUsers, removeUser, currentUser, displayBoardUsers,
                     </Card.Body>
                   </Card>
                 </div>
-                </React.Fragment>
               );
             })}
           </div>

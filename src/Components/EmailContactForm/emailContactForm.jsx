@@ -59,7 +59,7 @@ const EmailContactForm = ({ currentUser, boardUsers }) => {
               <div className="wrapper">
               {boardUsers.map((boardUser) => {
                   return (
-                    <div className="item">
+                    <div key={boardUser.userId} className="item">
                     <Card className="cardContainer mt-2 mb-2"> 
                       <Card.Body><div className="fs-5">{boardUser.user.email}</div>
                       </Card.Body>

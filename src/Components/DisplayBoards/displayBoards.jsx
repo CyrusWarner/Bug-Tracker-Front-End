@@ -28,7 +28,7 @@ const DisplayBoards = ({ userBoards, getCurrentBoard }) => {
         <div className="scrolling-wrapper">
               {filterBoards.map((boardData) => {
                 return (
-                  <div className="card-item">
+                  <div key={boardData.boardId} className="card-item">
                   <React.Fragment>
                   {boardData.inviteAccepted &&
                     <Card  className="cardContainer mt-4" style={{ width: "16rem", margin: "1rem" }}>
