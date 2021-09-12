@@ -5,6 +5,7 @@ import interactionPlugin from "@fullcalendar/interaction";
 import { Container, Row, Col } from "react-bootstrap";
 import NewEventModal from "../NewEventModal/newEventModal";
 import CalendarTableView from "../CalendarTableView/calendarTableView";
+import EventsBulkAdd from "../EventsBulkAdd/eventsBulkAdd";
 import * as AiIcons from "react-icons/ai";
 import * as BsIcons from "react-icons/bs"
 import "./calendar.css";
@@ -81,18 +82,12 @@ const Calendar = ({ currentBoard, userRole, boardUsers, displayBoardUsers }) => 
       if(event.eventsId === id)
       {
         event.date = dateToStore;
-        axios.patch(`http://localhost:27029/api/Events/`, event).then((res) => {
-          if(res.status === 200)
-          {
-          }
-        })
-        .catch((err) => {
-          if(err)
-          {
-          }
-        })
+        axios.patch(`http://localhost:27029/api/Events/`, event)
       }
     })
+  }
+  const bulkAdd = () => {
+
   }
   return (
     <React.Fragment>
@@ -111,6 +106,7 @@ const Calendar = ({ currentBoard, userRole, boardUsers, displayBoardUsers }) => 
               {(userRole === "Admin" || userRole === "Board Owner") && (
                 <div data-testid="newEventModal">
                 <NewEventModal onEventAdded={onEventAdded} boardUsers={boardUsers} currentBoard={currentBoard} displayBoardUsers={displayBoardUsers}/>
+                <EventsBulkAdd />
                 </div>
               )}
             </div>
