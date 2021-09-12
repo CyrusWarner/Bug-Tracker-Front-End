@@ -50,7 +50,7 @@ const CalendarEventDetails = ({ show, handleClose, filteredEvents, getAllEvents,
               </tbody>
             </Table>
           )}
-          {filteredEvents.length === 0 && <h3 className="text-center">No Bugs Currently For This Day</h3>}
+          {filteredEvents.length === 0 && <h3 className="text-center">No Events Or Bugs Scheduled For This Day</h3>}
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={handleClose}>

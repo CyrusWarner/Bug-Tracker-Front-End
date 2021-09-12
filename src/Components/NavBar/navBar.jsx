@@ -13,7 +13,7 @@ const NavBar = ({ currentUser, currentBoard, logout, userRole }) => {
   return (
     <React.Fragment>
       <IconContext.Provider value={{ color: "white" }}>
-      <Navbar bg="dark" expand="lg">
+      <Navbar className="custom-navbar" bg="dark" expand="lg">
   <Container>
     <Navbar.Brand style={{color: "#45A29E"}} ><AiIcons.AiOutlineBug color="#45A29E" size="2rem"/> Bug Tracker</Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav">

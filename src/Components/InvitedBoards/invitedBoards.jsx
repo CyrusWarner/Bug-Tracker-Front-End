@@ -9,7 +9,7 @@ const InvitedBoards = ({invitedBoards, currentUser, displayInvitedBoards, getUse
     const acceptBoardInvite = async (boardData) => {
         await axios.post(`http://localhost:27029/api/Board/acceptBoardInvitation/${userId}`, boardData).then((res) => {
             if (res.status === 200){
-                toast.success(`${boardData.title}'s invitation accepted'`)
+                toast.success(`${boardData.title}'s invitation accepted`)
                 displayInvitedBoards();
                 getUsersBoards();
             }
@@ -19,7 +19,7 @@ const InvitedBoards = ({invitedBoards, currentUser, displayInvitedBoards, getUse
     const declineBoardInvite = async (boardData) => {
         await axios.delete(`http://localhost:27029/api/Board/removeBoard/${boardData.boardId}/User/${userId}`, boardData).then((res) => {
             if (res.status === 200){
-                toast.success(`${boardData.title}'s invitation declined'`)
+                toast.success(`${boardData.title}'s invitation declined`)
                 displayInvitedBoards();
             }
         })

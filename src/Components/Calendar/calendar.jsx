@@ -59,6 +59,41 @@ const Calendar = ({ currentBoard, userRole, boardUsers, displayBoardUsers }) => 
     setFilteredEvents(filterEvents);
     handleShow();
   };
+
+  const calendarEventDrop = (event) => {
+    let id = event._def.extendedProps.eventsId;
+    let dateObj = new Date(event.start);
+    let year = dateObj.getFullYear();
+    let month = dateObj.getMonth() + 1;
+    let date = dateObj.getDate();
+    let paddedMonth = month.toString();
+    if(paddedMonth.length < 2)
+    {
+      paddedMonth = "0" + paddedMonth;
+    }
+    let paddedDate = date.toString();
+    if(paddedDate.length < 2)
+    {
+      paddedDate = "0" + paddedDate;
+    }
+    let dateToStore = `${year}-${paddedMonth}-${paddedDate}`
+    events.forEach(event => {
+      if(event.eventsId === id)
+      {
+        event.date = dateToStore;
+        axios.patch(`http://localhost:27029/api/Events/`, event).then((res) => {
+          if(res.status === 200)
+          {
+          }
+        })
+        .catch((err) => {
+          if(err)
+          {
+          }
+        })
+      }
+    })
+  }
   return (
     <React.Fragment>
       <Container>
@@ -106,6 +141,8 @@ const Calendar = ({ currentBoard, userRole, boardUsers, displayBoardUsers }) => 
                           initialView="dayGridMonth"
                           weekends={false}
                           events={events}
+                          editable={true}
+                          eventDrop= {(info) => calendarEventDrop(info.event)}
                         ></FullCalendar>
             }
             </div>
