@@ -10,21 +10,17 @@ const CalendarTableView = ({ events }) => {
 
   return (
     <React.Fragment>
-      <Container className="g-0">
+      <Container >
         <Row>
           <Col sm={2}></Col>
           <Col sm={8}>
             <div className="m-1">
-          <input onChange={(event) => setSearch(event.target.value)} placeholder="Search..." className="form-control mb-2"></input>
+          <input onChange={(event) => setSearch(event.target.value)} placeholder="Search By Title, Assignee, Or Date" className="form-control mb-2"></input>
             </div>
           </Col>
           <Col sm={2}></Col>
         </Row>
       </Container>
-    <Container fluid className="g-0">
-      <Row>
-          <Col sm={1}></Col>
-        <Col sm={10}>
             <div className="m-1">
           <Table className="text-center" style={{borderColor: "#45A29E"}} responsive striped bordered hover>
             <thead>
@@ -47,10 +43,6 @@ const CalendarTableView = ({ events }) => {
             </tbody>
           </Table>
           </div>
-        </Col>
-        <Col sm={1}></Col>
-      </Row>
-    </Container>
     </React.Fragment>
   );
 };

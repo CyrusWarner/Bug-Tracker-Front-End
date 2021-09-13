@@ -153,6 +153,8 @@ const Calendar = ({
                   eventDrop={(info) => calendarEventDrop(info.event)}
                 ></FullCalendar>
               )}
+              {tableView && <CalendarTableView events={events} />}
+
             </div>
           </Col>
         </Row>
@@ -174,7 +176,6 @@ const Calendar = ({
           <Col sm={1}></Col>
         </Row>
       </Container>
-      {tableView && <CalendarTableView events={events} />}
       <CalendarEventDetails
         filteredEvents={filteredEvents}
         show={show}
