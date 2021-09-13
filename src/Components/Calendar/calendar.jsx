@@ -106,7 +106,7 @@ const Calendar = ({ currentBoard, userRole, boardUsers, displayBoardUsers }) => 
               {(userRole === "Admin" || userRole === "Board Owner") && (
                 <div data-testid="newEventModal">
                 <NewEventModal onEventAdded={onEventAdded} boardUsers={boardUsers} currentBoard={currentBoard} displayBoardUsers={displayBoardUsers}/>
-                <EventsBulkAdd currentBoard={currentBoard}/>
+                <EventsBulkAdd currentBoard={currentBoard} getAllEvents={getAllEvents}/>
                 </div>
               )}
             </div>

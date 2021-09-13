@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
 import { toast } from "react-toastify";
 
-const EventsBulkAdd = ({ currentBoard }) => {
+const EventsBulkAdd = ({ currentBoard, getAllEvents }) => {
   const { boardId } = currentBoard;
   const [csvFile, setCsvFile] = useState();
   const handleSubmit = async (e) => {
@@ -19,12 +19,13 @@ const EventsBulkAdd = ({ currentBoard }) => {
       .then((res) => {
         if (res.status === 200) {
           toast.success("Csv Uploaded");
+          getAllEvents();
           e.target.reset();
         }
       })
       .catch((err) => {
         if (err) {
-          console.log(err);
+          toast.error("Error uploading csv file")
         }
       });
   };
