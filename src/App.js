@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import {
-  BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
@@ -224,7 +223,7 @@ const onSignupSubmit = async (values, e) => {
                 <Route
                   path="/Login"
                   render={(props) => (
-                    <Login {...props} createCurrentUser={createCurrentUser} onSubmit={onSubmit} />
+                    <Login {...props} onSubmit={onSubmit} />
                   )}
                 />
                 <Route
