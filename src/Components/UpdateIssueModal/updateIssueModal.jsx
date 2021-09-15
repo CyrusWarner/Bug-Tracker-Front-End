@@ -4,8 +4,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { toast } from "react-toastify";
-const UpdateIssueModal = ({ currentIssue, getAllIssues, currentUser }) => {
-  const { userId } = currentUser;
+const UpdateIssueModal = ({ currentIssue, getAllIssues, userId }) => {
   const { title, description, issuesId, isCompleted } = currentIssue;
   const { register, handleSubmit } = useForm();
   const [show, setShow] = useState(false);

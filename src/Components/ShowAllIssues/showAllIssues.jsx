@@ -5,7 +5,7 @@ import DeleteIssueModal from "../DeleteIssueModal/deleteIssueModal";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import './showAllIssues.css'
-const ShowAllIssues = ({ allIssues, getAllIssues, currentUser, userRole }) => {
+const ShowAllIssues = ({ allIssues, getAllIssues, userId, userRole }) => {
   const [search, setSearch] = useState("");
   const filterIssues = allIssues.filter((issue) =>
     issue.title.toLowerCase().includes(search.toLowerCase())
@@ -61,7 +61,7 @@ const ShowAllIssues = ({ allIssues, getAllIssues, currentUser, userRole }) => {
                         <UpdateIssueModal
                           currentIssue={issue}
                           getAllIssues={getAllIssues}
-                          currentUser={currentUser}
+                          userId={userId}
                         />
                         </span>
                         <span data-testid="delete-bug-modal" className="ms-3"></span>
