@@ -45,7 +45,7 @@ const NavBar = ({ currentUser, currentBoard, logout, userRole }) => {
       </React.Fragment>
       } 
       {currentUser.length !== 0 &&
-      <Nav.Link className="customNavLink" as={Link} onClick={logout}><FiIcons.FiLogOut /><span className="ms-2" style={{color: "#fff"}}>Logout</span></Nav.Link>
+      <Nav.Link className="customNavLink" to="/Login" as={Link} onClick={logout}><FiIcons.FiLogOut /><span className="ms-2" style={{color: "#fff"}}>Logout</span></Nav.Link>
       }
       </Nav>
     </Navbar.Collapse>

@@ -4,8 +4,7 @@ import axios from 'axios';
 import './invitedBoards.css'
 import { toast } from 'react-toastify';
 import * as AiIcons from 'react-icons/ai'
-const InvitedBoards = ({invitedBoards, currentUser, displayInvitedBoards, getUsersBoards}) => {
-    const {userId} = currentUser;
+const InvitedBoards = ({invitedBoards, userId, displayInvitedBoards, getUsersBoards}) => {
     const acceptBoardInvite = async (boardData) => {
         await axios.post(`http://localhost:27029/api/Board/acceptBoardInvitation/${userId}`, boardData).then((res) => {
             if (res.status === 200){
