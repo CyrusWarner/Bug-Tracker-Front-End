@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import "./createBoard.css";
 import { toast } from "react-toastify";
-//CLEAR USER INPUT WITH USEFORM HOOK DO RESEARCH ON THIS
 const CreateBoard = ({ userId, getUsersBoards }) => {
   const { register, reset, handleSubmit, formState: {errors} } = useForm();
   const onSubmit = async (data) => {
