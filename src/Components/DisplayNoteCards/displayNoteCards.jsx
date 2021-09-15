@@ -3,7 +3,7 @@ import { Card, Container, Row, Col } from 'react-bootstrap';
 import UpdateNotecardForm from '../UpdateNotecardForm/updateNotecardForm';
 import DeleteNotecardForm from '../DeleteNotecardForm/deleteNotecardForm';
 import './displayNoteCards.css'
-const DisplayNoteCards = ({allNotes, currentBoard, currentUser, getAllNotes}) => {
+const DisplayNoteCards = ({allNotes, boardId, userId, getAllNotes}) => {
     const [search, setSearch] = useState("");
     const filterNotes = allNotes.filter((note) => 
     note.title.toLowerCase().includes(search.toLowerCase()) ||
@@ -45,7 +45,7 @@ const DisplayNoteCards = ({allNotes, currentBoard, currentUser, getAllNotes}) =>
                       <hr></hr>
                       <Card.Text>{note.description}</Card.Text>
                       <div className="d-flex justify-content-around">
-                      <UpdateNotecardForm note={note} currentBoard={currentBoard} currentUser={currentUser} getAllNotes={getAllNotes}/>
+                      <UpdateNotecardForm note={note} boardId={boardId} userId={userId} getAllNotes={getAllNotes}/>
                       <DeleteNotecardForm note={note} getAllNotes={getAllNotes}/>
                       </div>
                     </Card.Body>

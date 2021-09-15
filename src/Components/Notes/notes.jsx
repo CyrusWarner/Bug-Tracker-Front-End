@@ -8,7 +8,8 @@ import { motion } from 'framer-motion';
 import { toast } from 'react-toastify';
 const Notes = ({currentBoard, currentUser}) => {
     const [allNotes, setAllNotes] = useState([]);
-    const {title} = currentBoard;
+    const {title, boardId} = currentBoard;
+    const {userId} = currentUser;
 
     useEffect(() => {
         getAllNotes();
@@ -42,7 +43,7 @@ const Notes = ({currentBoard, currentUser}) => {
                         <h1 className="title mt-4 mb-5">{title}'s notes<BsIcons.BsPencilSquare color="#45A29E" className="ms-1" size="3rem" />
                         </h1>
                         <div>
-                        <NoteCardForm currentBoard={currentBoard} currentUser={currentUser} getAllNotes={getAllNotes}/>
+                        <NoteCardForm boardId={boardId} userId={userId} getAllNotes={getAllNotes}/>
                         </div>
                         </Col>
                     <Col sm={6}></Col>
@@ -51,7 +52,7 @@ const Notes = ({currentBoard, currentUser}) => {
           
             {currentBoard.length !== 0 &&
             <div>
-                <DisplayNoteCards allNotes={allNotes} currentBoard={currentBoard} currentUser={currentUser} getAllNotes={getAllNotes}/>
+                <DisplayNoteCards allNotes={allNotes} boardId={boardId} userId={userId} getAllNotes={getAllNotes}/>
                 </div>
             }
         </React.Fragment>

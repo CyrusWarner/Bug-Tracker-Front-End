@@ -4,9 +4,7 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import axios from 'axios';
 import * as FiIcons from 'react-icons/fi'
 import { toast } from 'react-toastify';
-const UpdateNotecardForm = ({note, currentBoard, currentUser, getAllNotes}) => {
-    const {boardId} = currentBoard;
-    const {userId} = currentUser;
+const UpdateNotecardForm = ({note, userId, boardId, getAllNotes}) => {
     const {title, description} = note;
     const {register, handleSubmit} = useForm();
     const [show, setShow] = useState(false);

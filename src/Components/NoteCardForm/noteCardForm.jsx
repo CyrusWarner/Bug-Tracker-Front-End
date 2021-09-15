@@ -4,7 +4,7 @@ import {  Modal, Button, Form } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 
-const NoteCardForm = ({currentBoard, currentUser, getAllNotes}) => {
+const NoteCardForm = ({boardId, userId, getAllNotes}) => {
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -14,8 +14,8 @@ const NoteCardForm = ({currentBoard, currentUser, getAllNotes}) => {
       const notecard = {
         title: data.title,
         description: data.description,
-        boardId: currentBoard.boardId,
-        userId: currentUser.userId
+        boardId: boardId,
+        userId: userId
       }
        await axios.post("http://localhost:27029/api/Notes/New", notecard).then((res) => {
          if(res.status === 200){
