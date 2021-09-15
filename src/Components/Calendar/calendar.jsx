@@ -57,9 +57,7 @@ const Calendar = ({
 
   const handleDateClick = (dateClick) => {
     const filterEvents = events.filter((event) => {
-      if (event.date === dateClick.dateStr) {
-        return event;
-      }
+      return event.date === dateClick.dateStr
     });
     setFilteredEvents(filterEvents);
     handleShow();
@@ -87,7 +85,6 @@ const Calendar = ({
       }
     });
   };
-  const bulkAdd = () => {};
   return (
     <React.Fragment>
       <Container>

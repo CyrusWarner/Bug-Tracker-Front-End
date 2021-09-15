@@ -11,6 +11,11 @@ const EventsBulkAdd = ({ currentBoard, getAllEvents }) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append("inputFile", csvFile);
+    debugger
+    if(csvFile === undefined){
+      toast.error("Please Select A .csv File")
+      return;
+    }
     if (csvFile.type === "application/vnd.ms-excel") {
       await axios
         .post(
@@ -46,7 +51,7 @@ const EventsBulkAdd = ({ currentBoard, getAllEvents }) => {
           onChange={(e) => setCsvFile(e.target.files[0])}
         ></input>
         <Button type="submit" className="me-2 mt-3">
-          Bulk Add Events (.csv)
+          Bulk Add
         </Button>
       </Form>
     </div>
