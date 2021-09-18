@@ -10,6 +10,7 @@ Creates a pleasing user interface for Software Developers looking to track what 
    - [Future Tasks](#future-tasks)
 - [Technologies](#technologies)
 - [Bugs](#bugs)
+- [Images](#Images)
 
 ---
 ## Project Status :green_circle:
@@ -96,3 +97,8 @@ BUGGED =    :warning:
    - Currently a user can upload a .csv file and if in the wrong order will cause a bug to occur and return an error message notification for a user .
 
 ---
+## Images
+![](src/Images/BoardHome.PNG)
+![](src/Images/Calendar.PNG)
+![](src/Images/Chat.PNG)
+![](src/Images/Notes.PNG)
