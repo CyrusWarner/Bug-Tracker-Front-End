@@ -65,6 +65,7 @@ const App = () => {
 
   const logout = () => {
     localStorage.clear();
+    window.location.href = "/login";
   };
 
   const getUsers = async () => {
