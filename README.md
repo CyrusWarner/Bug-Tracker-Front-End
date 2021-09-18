@@ -99,6 +99,6 @@ BUGGED =    :warning:
 ---
 ## Images
 ![](src/Images/BoardHome.PNG)
-![](src/Images/Calendar.PNG)
+![](src/Images/FullCalendar.PNG)
 ![](src/Images/Chat.PNG)
 ![](src/Images/Notes.PNG)
