@@ -1,19 +1,104 @@
-This app was created using React for the front-end and ASP.NET Core for the back-end of this application.
+# Bug Tracker
+## Implementation of a bug tracking web application
 
-This application consists of multiple APIs to make me even more comfortable with using APIS while programming. I made this application for Software Developers looking for a way to track the bugs in their applications. The app comes with a system for emailing other users, chatting with other users, taking notes, and keeping track of your bugs to work on with a clickable calendar that displays the bugs to work on for the day with the assignees.
+Creates a pleasing user interface for Software Developers looking to track what bugs they have completed and not completed.
 
-The Board Home consists of showing the bugs and if you are an admin of the board you can create a new bug or mark a bug as complete or in progress.
+## Table of Contents
+- [Project Status](#project-status)
+   - [Goals](#goals)
+   - [Task List](#task-list)
+   - [Future Tasks](#future-tasks)
+- [Technologies](#technologies)
+- [Bugs](#bugs)
+- [Images](#Images)
 
+---
+## Project Status :green_circle:
+### Goals
+- Create a pleasing User Interface
+- Enable a user to chat within the web application
+- Enable a user to email another application user
+- Enable a user to view their tasks displayed on a calendar or a table view
+- Enable a user to add a new member to their board, Change a users role, and remove a member from a board
+- Enable a user to upload a .csv file to bulk update their events and bugs
+- Enable a user to mark a bug as complete or in complete
+- Enable a user to take notes within the application
+
+### Task List: 
+:heavy_check_mark: Create a pleasing User Interface 
+
+:heavy_check_mark: Enable a user to chat within the web application
+
+:heavy_check_mark: Enable a user to email another application user
+
+:heavy_check_mark: Enable a user to view their tasks displayed on a calendar or a table view
+
+:heavy_check_mark: Enable a user to add a new member to their board, Change a users role, and remove a member from a board
+
+:heavy_check_mark: Enable a user to upload a .csv file to bulk update their events and bugs
+
+:heavy_check_mark: Enable a user to mark a bug as complete or in complete
+
+:heavy_check_mark: Enable a user to take notes within the application
+
+<!--- 
+Emojis for the Task List:
+DONE =      :heavy_check_mark:
+NOT DONE =  :x:
+WIP =       :recycle:
+BUGGED =    :warning:
+ --->
+
+### Future Tasks  
+:x: Add ability to change between light and dark mode 
+
+:x: Add a settings option to allow users to change their password or remove a board
+
+---
+## Technologies
+- Visual Studio Code
+- ASP.NET Core Web API
+- React
+- Framer Motion API
+- EmailJS API
+- Chat Engine IO Api
+- React Testing Library API
+- Full Calendar API
+- Toastify API
+- React Bootstrap
+- Bootstrap
+- Git / GitHub
+
+## Knowledge Used
+- CSS
+- Bootstrap
+- React
+- Framer Motion API
+- Toastify API
+- EmailJS API
+- C#
+- ASP.NET Core Web API
+
+---
+## Design
+### Home
+- Implemented a main home that displays a users boards, invited boards and the add board form.
+- Implemented a board home that displays a new bug form and all of a users bugs in a scrollable container
+### Calendar
+- Implemented a Modal for adding a new event or bug
+- Implemented a file upload for a .csv file
+- Implemented a calendar with clickable days
+- Implemented functionality for moving an event by dragging it to another day on the calendar
+- Implemented a form for sending an email to another user and displaying a boards user for a visual reference
+
+---
+## Bugs
+- Uploading .csv file with information in the wrong order:
+   - Currently a user can upload a .csv file and if in the wrong order will cause a bug to occur and return an error message notification for a user .
+
+---
+## Images
 ![](src/Images/BoardHome.PNG)
-
-The Board Calendar consists of a calendar view and a table view with a display for users to show them bugs they are assgned to and has clickable days to give a good idea of what tasks a user has for the day. The admin has access to the delete and create functionality of the calendar shown in the image.
-
 ![](src/Images/Calendar.PNG)
-
-The Board Chat is for developers who want to chat with any other user in the site. Any user can create a new chat and add a user to it. If a user wanted to chat with the head developer board their is a search bar for ease of use to start a chat with that user.
-
 ![](src/Images/Chat.PNG)
-
-The Board Notes section is independent to who the user is and which board it is. A user can create notes for seperate boards and keep track of those notes for each board with a built in searchbar. Any user also has access to the CRUD functionality of the notes section.
-
 ![](src/Images/Notes.PNG)
