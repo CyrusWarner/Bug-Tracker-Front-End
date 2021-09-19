@@ -41,6 +41,8 @@ Creates a pleasing user interface for Software Developers looking to track what 
 
 :heavy_check_mark: Enable a user to take notes within the application
 
+:heavy_check_mark: Added copy functionality for a users email in email section of a board
+
 <!--- 
 Emojis for the Task List:
 DONE =      :heavy_check_mark:
