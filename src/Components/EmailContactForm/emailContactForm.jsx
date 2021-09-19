@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Container, Row, Col, Card } from "react-bootstrap";
+import { Button, Container, Row, Col, Card, OverlayTrigger, Tooltip } from "react-bootstrap";
 import emailjs from "emailjs-com";
 import { toast } from "react-toastify";
 import * as AiIcons from "react-icons/ai";
@@ -75,16 +75,34 @@ const EmailContactForm = ({ currentUser, boardUsers }) => {
                 return (
                   <div key={boardUser.userId} className="item">
                     <Card className="cardContainer mt-2 mb-2">
-                      <Card.Body className="d-flex justify-content-between">
-                        <div className="fs-5">{boardUser.user.email}</div>
-                        <CopyToClipboard
+                      <div className="position-absolute top-0 end-0">
+                     
+                          <OverlayTrigger
+                          placement="top"
+                          overlay={
+                            <Tooltip
+                            id="tooltip"
+                            classNam="show"
+                            >
+                             <div>Copy To Clipboard</div>
+                              
+                            </Tooltip>
+                          }
+                          >
+                            <div>
+                            <CopyToClipboard
                           text={boardUser.user.email}
                           onCopy={() => {
                             setCopied(true);
                           }}
                         >
-                          <AiIcons.AiFillCopy  size="1.5rem" />
+                          <AiIcons.AiFillCopy color="#45A29E" cursor="pointer" size="1.75rem" />
                         </CopyToClipboard>
+                          </div>
+                          </OverlayTrigger>
+                      </div>
+                      <Card.Body >
+                        <div className="fs-5">{boardUser.user.email}</div>
                       </Card.Body>
                     </Card>
                   </div>
