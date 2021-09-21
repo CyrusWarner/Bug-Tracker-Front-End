@@ -1,6 +1,8 @@
 # Bug Tracker
 ## Implementation of a bug tracking web application
 
+![](src/Images/BoardHome.PNG)
+
 Creates a pleasing user interface for Software Developers looking to track what bugs they have completed and not completed.
 
 ## Table of Contents
@@ -10,7 +12,7 @@ Creates a pleasing user interface for Software Developers looking to track what 
    - [Future Tasks](#future-tasks)
 - [Technologies](#technologies)
 - [Bugs](#bugs)
-- [Images](#Images)
+- [Images](#images)
 
 ---
 ## Project Status :green_circle:
@@ -40,6 +42,8 @@ Creates a pleasing user interface for Software Developers looking to track what 
 :heavy_check_mark: Enable a user to mark a bug as complete or in complete
 
 :heavy_check_mark: Enable a user to take notes within the application
+
+:heavy_check_mark: Added copy functionality for a users email in email section of a board
 
 <!--- 
 Emojis for the Task List:
@@ -84,12 +88,27 @@ BUGGED =    :warning:
 ### Home
 - Implemented a main home that displays a users boards, invited boards and the add board form.
 - Implemented a board home that displays a new bug form and all of a users bugs in a scrollable container
+### Board Home
+- Implemented a form so a user can create a new bug 
+- Implemented a search bar to allow a user to search through bugs
+- Implemented a checkbox to allow a user to mark a bug as complete
+- Implemented a modal to allow a user to update a bug
+- Implemented a delete icon for a bug
 ### Calendar
 - Implemented a Modal for adding a new event or bug
 - Implemented a file upload for a .csv file
 - Implemented a calendar with clickable days
 - Implemented functionality for moving an event by dragging it to another day on the calendar
 - Implemented a form for sending an email to another user and displaying a boards user for a visual reference
+### Notes
+- Implented a modal for creating a new notecard
+- Implemented a modal for updating a notecard
+- Implmented a modal to check if a user wants to remove a notecard
+- Implemented React Bootstrap Card for styling
+- Implemented a search bar for the Notecards section
+### Chat 
+- Implemented functionality for a user to access the chat using the password they used to sign up for the website
+- Implemented Chat Engine API to allow a user to be able to easily communicate with each other
 
 ---
 ## Bugs
@@ -97,8 +116,13 @@ BUGGED =    :warning:
    - Currently a user can upload a .csv file and if in the wrong order will cause a bug to occur and return an error message notification for a user .
 
 ---
-## Images
-![](src/Images/BoardHome.PNG)
+### Images
 ![](src/Images/FullCalendar.PNG)
+
+---
+
 ![](src/Images/Chat.PNG)
+
+---
+
 ![](src/Images/Notes.PNG)
