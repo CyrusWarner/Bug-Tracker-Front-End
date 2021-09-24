@@ -6,7 +6,6 @@ import { toast } from "react-toastify";
 const EventsBulkAdd = ({ currentBoard, getAllEvents }) => {
   const { boardId } = currentBoard;
   const [csvFile, setCsvFile] = useState();
-  console.log(csvFile);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
