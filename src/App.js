@@ -97,7 +97,7 @@ const App = () => {
       .get(`http://localhost:27029/api/Board/CurrentBoard/${boardId}/${userId}`)
       .then((res) => {
         if (res.status === 200) {
-          setCurrentBoard(res.data[0].board);
+          setCurrentBoard(res.data.board);
         }
       });
   };
